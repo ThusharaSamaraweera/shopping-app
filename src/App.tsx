@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import ClientApp from "./ClientApp";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-
+      <ClientApp/>
     </div>
   );
 }
-
 export default App;
