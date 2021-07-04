@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Nav, Navbar, Row} from "react-bootstrap";
 import {Phone, User} from "react-feather";
 
-const MainTopNavBar:React.FC = () => {
+const TopNavBar:React.FC = () => {
   return (
     <Row className='top-nav-col'>
       <Navbar expand="md">
@@ -33,4 +33,4 @@ const MainTopNavBar:React.FC = () => {
   );
 };
 
-export default MainTopNavBar;
+export default TopNavBar;
