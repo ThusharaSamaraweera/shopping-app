@@ -3,6 +3,7 @@ import {Container} from "react-bootstrap";
 import TopNavBar from "../components/TopNavBar";
 import MiddleNavBar from "../components/MiddleNavBar";
 import ShoppingArea from "../components/ShoppingArea";
+import Footer from "../components/Footer";
 
 const ShoppingApp: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const ShoppingApp: React.FC = () => {
       <TopNavBar/>
       <MiddleNavBar/>
       <ShoppingArea/>
+      <Footer/>
     </Container>
   );
 }
