@@ -24,7 +24,8 @@ const Category:React.FC = () => {
     }else if(category === 'Electronics'){
       setActiveCategory({id: 4, title: 'Electronics'})
     }
-  }
+  };
+  
   return (
     <Row className="category justify-content-around mt-2">
       <Col className={`cat-box cat-img text-center ${(activeCategory.title === "All") ? 'active' : ''}`}
