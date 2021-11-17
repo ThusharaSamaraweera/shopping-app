@@ -1,5 +1,5 @@
 import React from "react";
-import ShoppingAreaNavBar from "./BottomNavBar";
+import ShoppingAreaNavBar from "./NavBars/BottomNavBar";
 import Banner from "./Banner";
 import SearchBar from "./searchBar/SearchBar";
 import CategoryList from "./category/CategoryList";
