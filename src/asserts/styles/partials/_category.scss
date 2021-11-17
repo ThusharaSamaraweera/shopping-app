@@ -4,6 +4,11 @@
   margin-left: 5%;
   margin-right: 5%;
 
+  .cat-img.active {
+    background-color: #f1f8e9;
+    border: 2px solid #4caf50;
+  }
+
   .cat-box {
     position: relative;
     height: auto;
