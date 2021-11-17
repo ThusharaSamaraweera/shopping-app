@@ -2,6 +2,7 @@ import React from "react";
 import ShoppingAreaNavBar from "./BottomNavBar";
 import Banner from "./Banner";
 import SearchBar from "./searchBar/SearchBar";
+import CategoryList from "./category/CategoryList";
 
 const ShoppingArea: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const ShoppingArea: React.FC = () => {
       <ShoppingAreaNavBar/>
       <Banner/>
       <SearchBar/>
+      <CategoryList/>
     </div>
   );
 }
