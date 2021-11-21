@@ -19,6 +19,24 @@
               max-width: 100%;
               height: auto;
             }
+
+            .cart-product-name {
+              text-transform: capitalize;
+            }
+
+            .cart-product-qty {
+              padding-bottom: 10px;
+              color: #7e7e7e;
+            }
+
+            .cart-product-delete-btn {
+              color: #3c6382;
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+
           }
         }
       }

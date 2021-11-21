@@ -8,10 +8,10 @@ const Cart: React.FC = () => {
 
   const initCartProducts: ICartProduct[] =
   [
-    {id: 1, name: 'Carrot', qty: 5, price: 20088.99}
-    // {id: 2, name: 'coconut', qty: 10, price: 15500.65},
-    // {id: 3, name: 'Dal', qty: 5, price: 150000},
-    // {id: 4, name: 'cake', qty: 5, price: 150.62}
+    {id: 1, name: 'Carrot', qty: 5, price: 20088.99},
+    {id: 2, name: 'coconut', qty: 10, price: 15500.65},
+    {id: 3, name: 'Dal', qty: 5, price: 150000},
+    {id: 4, name: 'cake', qty: 5, price: 150.62}
   ];
 
   const [cartProducts, setCartProducts] = useState<ICartProduct[] | null>(initCartProducts);
