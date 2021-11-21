@@ -1,6 +1,7 @@
 import React from 'react'
 import {Row, Col, Image} from 'react-bootstrap';
 import { Trash } from 'react-feather';
+import NumberFormat from 'react-number-format';
 
 type CartProductProps = {
   id: number
@@ -11,6 +12,14 @@ type CartProductProps = {
 
 const CartProduct:React.FC<CartProductProps> = (props) => {
   const image: any = require(`../../asserts/images/ProductImages/${props.id}.jpg`);
+  const priceMain: number = Math.trunc(props.price);
+  const priceCents = () => {
+    if (props.price % 1 === 0) {
+      return '00'
+    } else {
+      return Math.trunc(props.price % 1 * 100)
+    }
+  };
 
   return (
     <Row className='py-2 mx-1 cart-product'>
@@ -25,7 +34,11 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
         <Row className='py-2'>
           <Col xs={3} className='cart-product-qty'>Qty. {props.qty}</Col>
           <Col xs={9} className='cart-prodcu-price text-end'>
-            
+          <NumberFormat thousandSeparator={true}
+                          displayType={'text'}
+                          prefix={'Rs. '}
+                          value={priceMain}
+            />.<span className='small-cents'>{priceCents()}</span>
           </Col>
         </Row>
       </Col>
