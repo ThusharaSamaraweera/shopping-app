@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import {Button, Col, Row, Dropdown} from "react-bootstrap";
 import {ShoppingCart} from "react-feather";
+import Cart from "../cart/Cart";
 
 const MainMiddleNavBar: React.FC = () => {
 
@@ -34,6 +35,7 @@ const MainMiddleNavBar: React.FC = () => {
         <Dropdown>
           <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-compnents'>
           </Dropdown.Toggle>
+          <Cart/>
         </Dropdown>
       </Col>
       <Col hidden-xs sm={2} md={2} lg={1} className='check-out-col py-2'>
