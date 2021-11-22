@@ -1,3 +1,5 @@
+@import "../variables";
+
 .main-middle-nav-bar {
   .dropdown {
     .cart-products {
@@ -9,7 +11,7 @@
         box-shadow: 0 1px 2px #c4c4c4;
 
         .cart-product-list {
-          max-height: 350px;
+          max-height: 280px;
           overflow-y: scroll;
 
           .cart-product {
@@ -68,11 +70,82 @@
           border: unset;
           color: white;
           border-radius: 20px;
-          font-size: 0.8em;
+          font-size: 1em;
           padding: 7px 35px;
 
           &:hover {
             background-color: #74e079;
+          }
+        }
+      }
+    }
+
+    .empty-cart {
+      .dropdown-menu {
+        width: 180px;
+        font-size: 0.7em;
+        border-radius: 10px;
+        padding: 13px;
+        box-shadow: 0 1px 7px #c4c4c4;
+
+        .empty-cart-image {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .empty-cart-row-1 {
+          text-align: center;
+          color: #c82333;
+        }
+
+        .empty-cart-row-2 {
+          text-align: center;
+          color: #5a6268;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium-device-size) {
+  .main-middle-nav-bar {
+    .dropdown {
+      .cart-products {
+        .dropdown-menu {
+          width: 25em;
+          font-size: 0.7em;
+
+          .cart-product-list {
+            max-height: 200px;
+
+            .class-product-list {
+              max-height: 250px;
+            }
+  
+            .cart-subtotal-price, .cart-Total-price, .cart-discount-price, .cart-product-qty {
+              padding-right: 2.2em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $extra-small-device-size) {
+  .main-middle-nav-bar {
+    .dropdown {
+      .cart-products {
+        .dropdown-menu {
+          width: 25em;
+          font-size: 0.6em;
+
+          .cart-product-list {
+            max-height: 160px;
+            
+            .cart-subtotal-price, .cart-Total-price, .cart-discount-price {
+              padding-right: 2.5em;
+            }
           }
         }
       }

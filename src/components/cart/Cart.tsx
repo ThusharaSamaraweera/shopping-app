@@ -9,8 +9,7 @@ import CartTotal from "./CartTotal";
 
 const Cart: React.FC = () => {
 
-  const initCartProducts: ICartProduct[] =
-  [
+  const initCartProducts: ICartProduct[] = [
     {id: 1, name: 'Carrot', qty: 5, price: 2008.99},
     {id: 2, name: 'coconut', qty: 10, price: 1550.65},
     {id: 3, name: 'Dal', qty: 5, price: 1500},
@@ -19,7 +18,7 @@ const Cart: React.FC = () => {
 
   const [cartProducts, setCartProducts] = useState<ICartProduct[] | null>(initCartProducts);
 
-  const RenderCartArea = () => {
+  const renderCartArea = () => {
     if(!cartProducts || cartProducts.length === 0){
       return (
         <div className='empty-cart'>
@@ -33,8 +32,10 @@ const Cart: React.FC = () => {
     } else {
       return (
         <div className='cart-products'>
-          <Dropdown.Menu>
-            <CartProductsList cartProducts={cartProducts} />
+          <Dropdown.Menu align='right'>
+            <CartProductsList cartProducts={cartProducts} 
+                              setCartProducts={setCartProducts} 
+            />
             <CartSubTotal numberOfProduct={cartProducts.length} 
                           priceMain={1110} 
                           priceCents={34}                          
@@ -53,11 +54,10 @@ const Cart: React.FC = () => {
         </div>
       )
     }
-
   };
 
   return (
-    <React.Fragment>{RenderCartArea()}</React.Fragment>
+    <React.Fragment>{renderCartArea()}</React.Fragment>
   )
 }
 

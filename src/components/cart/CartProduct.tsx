@@ -1,7 +1,6 @@
 import React from 'react'
 import {Row, Col, Image} from 'react-bootstrap';
 import { Trash } from 'react-feather';
-import NumberFormat from 'react-number-format';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
 
 type CartProductProps = {
@@ -9,6 +8,7 @@ type CartProductProps = {
   name: string
   qty: number
   price: number
+  OnDeleteCartProduct : (id: number) => void
 }
 
 const CartProduct:React.FC<CartProductProps> = (props) => {
@@ -24,17 +24,17 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
 
   return (
     <Row className='py-2 mx-1 cart-product'>
-      <Col xs={4}><Image src={image.default} alt="image not found" className='cart-product-image'/></Col>
-      <Col xs={8}>
+      <Col xs={3}><Image src={image.default} alt="image not found" className='cart-product-image'/></Col>
+      <Col xs={9}>
         <Row>
           <Col className='cart-product-name pt-1' xs={10}>{props.name}</Col>
           <Col className='cart-product-delete-btn' xs={2}>
-            <Trash size='1em'/>
+            <Trash size='1em' onClick={ () => props.OnDeleteCartProduct(props.id)}/>
           </Col>
         </Row>
         <Row className='py-2'>
-          <Col xs={3} className='cart-product-qty'>Qty. {props.qty}</Col>
-          <Col xs={9} className='cart-product-price text-end'>
+          <Col xs={4} className='cart-product-qty'>Qty. {props.qty}</Col>
+          <Col xs={8} className='cart-product-price text-end'>
             {ProductPrice(priceMain, priceCents(), '', 'small-cents')}
           </Col>
         </Row>
