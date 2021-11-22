@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Row, Col, Image} from "react-bootstrap";
-import allCategoryImage from '../../asserts/images/all-cat.jpg';
+import allCategoryImage from '../../asserts/images/all-cat.webp';
 import { ICategory } from "../../types/shoppingAreaTypes";
 
 const Category:React.FC = () => {
