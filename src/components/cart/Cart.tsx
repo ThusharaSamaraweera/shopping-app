@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Dropdown, Image } from "react-bootstrap";
+import { Col, Dropdown, Image, Row } from "react-bootstrap";
 import { ICartProduct } from "../../types/cartAreaTypes";
 import emptyCartImage from "../../asserts/images/emptyCart.webp";
 import CartProductsList from './CartProductsList';
@@ -44,6 +44,11 @@ const Cart: React.FC = () => {
             />
             <CartTotal TotalInteger={1000} 
                       TotalCents={21}/>
+            <Row className='mx-1'>
+              <Col>
+                <button className='cart-checkout-btn'>Checkout</button>
+              </Col>
+            </Row>
           </Dropdown.Menu>
         </div>
       )

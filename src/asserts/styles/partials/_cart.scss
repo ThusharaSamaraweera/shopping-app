@@ -63,7 +63,18 @@
           }
         }
 
+        .cart-checkout-btn {
+          background-color: #4caf50;
+          border: unset;
+          color: white;
+          border-radius: 20px;
+          font-size: 0.8em;
+          padding: 7px 35px;
 
+          &:hover {
+            background-color: #74e079;
+          }
+        }
       }
     }
   }
