@@ -4,6 +4,7 @@ import { ICartProduct } from "../../types/cartAreaTypes";
 import emptyCartImage from "../../asserts/images/emptyCart.webp";
 import CartProductsList from './CartProductsList';
 import CartSubTotal from "./CartSubTotal";
+import CartDiscount from "./CartDiscount";
 
 const Cart: React.FC = () => {
 
@@ -34,8 +35,11 @@ const Cart: React.FC = () => {
           <Dropdown.Menu>
             <CartProductsList cartProducts={cartProducts} />
             <CartSubTotal numberOfProduct={cartProducts.length} 
-                          priceMain={1110} 
+                          priceMain={111} 
                           priceCents={34}                          
+            />
+            <CartDiscount DiscountInteger={1000} 
+                          DiscountCents={44} 
             />
           </Dropdown.Menu>
         </div>
