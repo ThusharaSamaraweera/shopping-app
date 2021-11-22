@@ -49,15 +49,21 @@
           }
         }
 
-        .cart-subtotal-price {
+        .cart-subtotal-price, .cart-Total-price {
           color: #c82333;
           font-weight: 600;
         }
 
-        .cart-discount-price {
-          font-weight: 600;
-          color: #616161;
+        .cart-discount {
+          border-bottom: 1px solid #dedede;
+
+          .cart-discount-price {
+            font-weight: 600;
+            color: #616161;
+          }
         }
+
+
       }
     }
   }

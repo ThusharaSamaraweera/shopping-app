@@ -10,7 +10,7 @@ type CartDiscountProps = {
 const CartDiscount: React.FC<CartDiscountProps> = (props) => {
 
   return (
-    <Row className='cart-discount mx-1'>
+    <Row className='cart-discount mx-1 pb-1'>
       <Col xs={4}>Discount</Col>
       <Col xs={8} lg={7}className='cart-discount-price text-end'>
        {ProductPrice(props.DiscountInteger, props.DiscountCents, '', '')}
