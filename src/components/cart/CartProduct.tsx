@@ -2,6 +2,7 @@ import React from 'react'
 import {Row, Col, Image} from 'react-bootstrap';
 import { Trash } from 'react-feather';
 import NumberFormat from 'react-number-format';
+import { ProductPrice } from '../ProductPrice/ProductPrice';
 
 type CartProductProps = {
   id: number
@@ -33,12 +34,8 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
         </Row>
         <Row className='py-2'>
           <Col xs={3} className='cart-product-qty'>Qty. {props.qty}</Col>
-          <Col xs={9} className='cart-prodcu-price text-end'>
-          <NumberFormat thousandSeparator={true}
-                          displayType={'text'}
-                          prefix={'Rs. '}
-                          value={priceMain}
-            />.<span className='small-cents'>{priceCents()}</span>
+          <Col xs={9} className='cart-product-price text-end'>
+            {ProductPrice(priceMain, priceCents(), '', 'small-cents')}
           </Col>
         </Row>
       </Col>

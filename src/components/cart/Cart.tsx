@@ -3,6 +3,7 @@ import { Col, Dropdown, Image } from "react-bootstrap";
 import { ICartProduct } from "../../types/cartAreaTypes";
 import emptyCartImage from "../../asserts/images/emptyCart.webp";
 import CartProductsList from './CartProductsList';
+import CartSubTotal from "./CartSubTotal";
 
 const Cart: React.FC = () => {
 
@@ -32,6 +33,10 @@ const Cart: React.FC = () => {
         <div className='cart-products'>
           <Dropdown.Menu>
             <CartProductsList cartProducts={cartProducts} />
+            <CartSubTotal numberOfProduct={cartProducts.length} 
+                          priceMain={1110} 
+                          priceCents={34}                          
+            />
           </Dropdown.Menu>
         </div>
       )
