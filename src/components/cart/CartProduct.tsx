@@ -35,7 +35,7 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
         <Row className='py-2'>
           <Col xs={4} className='cart-product-qty'>Qty. {props.qty}</Col>
           <Col xs={8} className='cart-product-price text-end'>
-            {ProductPrice(priceMain, priceCents(), '', 'small-cents')}
+            {ProductPrice(priceMain, priceCents(), '', 'small-cents', undefined, false)}
           </Col>
         </Row>
       </Col>

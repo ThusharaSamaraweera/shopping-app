@@ -13,7 +13,7 @@ const CartTotal: React.FC<CartTotalProps> = (props) => {
     <Row className='cart-Total py-3 mx-1'>
       <Col xs={4}>Est.Total</Col>
       <Col xs={8} lg={7} className='cart-Total-price text-end'>
-        {ProductPrice(props.TotalInteger, props.TotalCents, '', '')}
+        {ProductPrice(props.TotalInteger, props.TotalCents, '', '', undefined, false)}
       </Col>
     </Row>
   )

@@ -3,6 +3,7 @@ import ShoppingAreaNavBar from "./NavBars/BottomNavBar";
 import Banner from "./Banner";
 import SearchBar from "./searchBar/SearchBar";
 import CategoryList from "./category/CategoryList";
+import ProductsList from "./ProductArea/ProductsList";
 
 const ShoppingArea: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const ShoppingArea: React.FC = () => {
       <Banner/>
       <SearchBar/>
       <CategoryList/>
+      <ProductsList/>
     </div>
   );
 }
