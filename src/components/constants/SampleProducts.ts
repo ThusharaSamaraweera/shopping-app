@@ -10,15 +10,15 @@ export const sampleProducts: IProduct[] = [
     regular_price: 150.55,
     image: "https://s3.amazonaws.com/cdn1.shub/grocery/coconut.jpg"
   },
-  // {
-  //   id: 2,
-  //   title: "Onions",
-  //   quantity: 200,
-  //   category: {id: 1, title: "Grocery"},
-  //   discount_price: 100,
-  //   regular_price: 150,
-  //   image: "https://s3.amazonaws.com/cdn1.shub/grocery/onions.jpg"
-  // },
+  {
+    id: 2,
+    title: "Onions",
+    quantity: 200,
+    category: {id: 1, title: "Grocery"},
+    discount_price: 100,
+    regular_price: 150,
+    image: "https://s3.amazonaws.com/cdn1.shub/grocery/onions.jpg"
+  },
   // {
   //   id: 3,
   //   title: "Dhal",
