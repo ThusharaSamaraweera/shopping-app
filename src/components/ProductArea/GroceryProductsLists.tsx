@@ -26,6 +26,7 @@ const GroceryProductsList: React.FC = () => {
   return (
     <Col>
       <Row className='product-list'>
+        <h5>Grocery</h5>
         {renderProducts()}
       </Row>
     </Col>

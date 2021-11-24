@@ -12,7 +12,9 @@ const ShoppingArea: React.FC = () => {
       <Banner/>
       <SearchBar/>
       <CategoryList/>
-      <ProductsList/>
+      <div className='product-area'>
+        <ProductsList/>
+      </div>
     </div>
   );
 }
