@@ -110,15 +110,6 @@ export const sampleProducts: IProduct[] = [
     image: "https://s3.amazonaws.com/cdn1.shub/pharmacy/dettol.jpg"
   },
   {
-    id: 12,
-    title: "Pizza",
-    quantity: 200,
-    category: {id: 3, title: "Grocery"},
-    discount_price: 100,
-    regular_price: 150,
-    image: "https://s3.amazonaws.com/cdn1.shub/food/creemy_cheese_sasuage_pizza.jpg"
-  },
-  {
     id: 13,
     title: "Pizza",
     quantity: 200,
@@ -147,12 +138,12 @@ export const sampleProducts: IProduct[] = [
   },
   {
     id: 16,
-    title: "Electric Oven",
+    title: "Pizza",
     quantity: 200,
-    category: {id: 4, title: "Grocery"},
+    category: {id: 3, title: "Grocery"},
     discount_price: 100,
     regular_price: 150,
-    image: "https://s3.amazonaws.com/cdn1.shub/electro/electric_oven.jpg"
+    image: "https://s3.amazonaws.com/cdn1.shub/food/creemy_cheese_sasuage_pizza.jpg"
   },
   {
     id: 17,
@@ -174,6 +165,15 @@ export const sampleProducts: IProduct[] = [
   },
   {
     id: 19,
+    title: "Electric Oven",
+    quantity: 200,
+    category: {id: 4, title: "Grocery"},
+    discount_price: 100,
+    regular_price: 150,
+    image: "https://s3.amazonaws.com/cdn1.shub/electro/electric_oven.jpg"
+  },
+  {
+    id: 20,
     title: "Electric Oven",
     quantity: 200,
     category: {id: 4, title: "Grocery"},
