@@ -45,6 +45,7 @@ const Category:React.FC = () => {
         <Image  id="all" src={imgGrocery} alt="categoryImage.jpg" 
                 height={imgHeight}>
         </Image>
+        <p className="cat-img-p mt-3 text-capitalize">Grocery</p>
       </Col>
 
       <Col className={`cat-box cat-img text-center ${(activeCategory.title === "Pharmacy") ? 'active' : ''}`}
