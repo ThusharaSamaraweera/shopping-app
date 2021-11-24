@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { IProduct } from "../../types/shoppingAreaTypes";
-import {sampleProducts} from "../constants/SampleProducts"
+import {sampleProducts} from "../constants/SampleProducts";
 import Product from "./Product";
 
 const ElectronicProductsList: React.FC = () => {
@@ -21,7 +21,7 @@ const ElectronicProductsList: React.FC = () => {
 
   useEffect(() => {
     renderProducts();
-  }, [products])
+  }, [products]);
 
   return (
     <Col xs={12} sm={12}>

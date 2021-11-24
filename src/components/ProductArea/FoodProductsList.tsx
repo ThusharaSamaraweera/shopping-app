@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { IProduct } from "../../types/shoppingAreaTypes";
-import {sampleProducts} from "../constants/SampleProducts"
+import {sampleProducts} from "../constants/SampleProducts";
 import Product from "./Product";
 
 const FoodProductsList: React.FC = () => {
@@ -17,11 +17,11 @@ const FoodProductsList: React.FC = () => {
       return <Product key={product.id} 
                       product={product}/>
     })
-  }
+  };
 
   useEffect(() => {
     renderProducts();
-  }, [products])
+  }, [products]);
 
   return (
     <Col xs={12} sm={12}>
