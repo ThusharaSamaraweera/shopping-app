@@ -5,8 +5,7 @@ $add-to-cart-btn: #4caf50;
 
 .shopping-area {
   .product-area {
-    max-width: 1000px;
-    // width: 80%;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 
@@ -85,6 +84,19 @@ $add-to-cart-btn: #4caf50;
               margin-right: .6rem;
               margin-bottom: .2em;
               font-size: 1em;
+              width: 80%;
+            }
+
+            .product-update {
+              float: right;
+              border-radius: if($rounded-corners, 25px, null);
+              background-color: white;
+              color: #17a2b8;
+              border: 1px solid #17a2b8;
+              margin-right: .6rem;
+              margin-bottom: .2em;
+              font-size: 1em;
+              width: 80%;
             }
           }
         }
@@ -129,6 +141,19 @@ $add-to-cart-btn: #4caf50;
                 float: none !important;
                 margin-left: 0.6em;
                 margin-right: 0.5em;
+                width: 90%;
+              }
+
+              .product-update {
+                float: right;
+                border-radius: if($rounded-corners, 25px, null);
+                background-color: white;
+                color: #17a2b8;
+                border: 1px solid #17a2b8;
+                margin-right: .6rem;
+                margin-bottom: .2em;
+                font-size: 1em;
+                width: 90%;
               }
             }
   
@@ -179,8 +204,7 @@ $add-to-cart-btn: #4caf50;
               .discount-price {
                 font-size: 1rem;
                 padding-left: 0 !important;
-              }
-        
+              }        
             }
   
             .product-btn {
@@ -196,14 +220,11 @@ $add-to-cart-btn: #4caf50;
                 margin-right: 0;
               }
             }
-          }
-  
-        }
-  
+          }  
+        }  
       }
     }
   }
-
 }
 
 @media only screen and (max-width: $extra-small-device-size) {
@@ -271,5 +292,4 @@ $add-to-cart-btn: #4caf50;
       }
     }
   }
-
 }

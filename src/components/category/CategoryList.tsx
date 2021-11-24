@@ -4,14 +4,14 @@ import Category from "./Category";
 
 const Categories: React.FC = () => {
   return (
-      <Container>
+      <React.Fragment>
         <Row>
           <Col>
             <h1 className="our-product-txt text-center mt-3">Our Products</h1>
           </Col>
         </Row>
         <Category/>
-      </Container>
+      </React.Fragment>
   );
 }
 

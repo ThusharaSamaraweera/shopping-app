@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Row, Image, Button } from 'react-bootstrap';
 import { IProduct } from '../../types/shoppingAreaTypes';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
@@ -8,7 +8,11 @@ type ProductProps = {
   product: IProduct
 }
 const Produst: React.FC<ProductProps> = (props) => {
-
+  const [itemToUpdate, setItemToUpdate] = useState<IProduct | null>(null);
+  
+  const handleOnProductUpdate = (product: IProduct) => {
+    setItemToUpdate(product);
+  }
   const PriceMain = (price: number) => {
     return Math.trunc(price);
   }
@@ -32,11 +36,13 @@ const Produst: React.FC<ProductProps> = (props) => {
           </Row>
           <Row className='prices'>
             <Col xs={6} className='regular-price'>
-              <h6>{ProductPrice(PriceMain(props.product.regular_price), PriceCents(props.product.regular_price), '', 'decimal-value', undefined, false)}</h6>
+              <h6>{ProductPrice(PriceMain(props.product.regular_price), 
+                          PriceCents(props.product.regular_price), '', 'decimal-value', undefined, false)}</h6>
             </Col>
 
             <Col xs={6} className='discount-price'>
-              <h6>{ProductPrice(PriceMain(props.product.discount_price), PriceCents(props.product.discount_price), '', 'decimal-value', undefined, false)}</h6>
+              <h6>{ProductPrice(PriceMain(props.product.discount_price), 
+                          PriceCents(props.product.discount_price), '', 'decimal-value', undefined, false)}</h6>
             </Col>
           </Row>
 
@@ -46,12 +52,15 @@ const Produst: React.FC<ProductProps> = (props) => {
             </Col>
 
             <Col className='product-btn' lg={8} md={8} xs={12} sm={12}>
-              <Button className='product-add-to-cart'>Add To Cart</Button>
+              {itemToUpdate ? 
+                <Button className='product-update'> Update </Button>
+                :
+                <Button className='product-add-to-cart' onClick={ () => handleOnProductUpdate(props.product)}>Add To Cart</Button>
+              }
             </Col>
           </Row>
         </Col>
-      </Row>
-      
+      </Row>      
     </Col>
   )
 }
