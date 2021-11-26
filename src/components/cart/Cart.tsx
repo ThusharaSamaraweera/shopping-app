@@ -6,6 +6,8 @@ import CartProductsList from './CartProductsList';
 import CartSubTotal from "./CartSubTotal";
 import CartDiscount from "./CartDiscount";
 import CartTotal from "./CartTotal";
+import { useSelector } from "react-redux";
+import { AppState } from "../../state/reducers";
 
 const Cart: React.FC = () => {
 

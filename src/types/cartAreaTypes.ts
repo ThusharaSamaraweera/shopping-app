@@ -4,3 +4,7 @@ export interface ICartProduct {
   qty: number
   price: number
 }
+
+export interface ICartProducts {
+  cartProducts: ICartProduct[]
+}
