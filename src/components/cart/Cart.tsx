@@ -18,7 +18,8 @@ const Cart: React.FC = () => {
     {id: 4, name: 'cake', qty: 5, price: 150.62}
   ];
 
-  const [cartProducts, setCartProducts] = useState<ICartProduct[] | null>(initCartProducts);
+  // const [cartProducts, setCartProducts] = useState<ICartProduct[] | null>(initCartProducts);
+  const cartProducts = useSelector( (state: AppState) => state.cartProducts.cartProducts);
 
   const renderCartArea = () => {
     if(!cartProducts || cartProducts.length === 0){
@@ -36,7 +37,6 @@ const Cart: React.FC = () => {
         <div className='cart-products'>
           <Dropdown.Menu align='right'>
             <CartProductsList cartProducts={cartProducts} 
-                              setCartProducts={setCartProducts} 
             />
             <CartSubTotal numberOfProduct={cartProducts.length} 
                           priceMain={1110} 

@@ -9,14 +9,14 @@ export function addCartProduct(newProduct: ICartProduct): AddCartProduct {
   }
 }
 
-export function RemoveCartProduct(id: number): RemoveCartProduct {
+export function removeCartProduct(id: number): RemoveCartProduct {
   return {
     type: ACTIONS.REMOVE_CART_PRODUCT,
     payload: id
   }
 }
 
-export function UpdateCartProduct(updateProduct: ICartProduct): UpdateCartProduct {
+export function updateCartProduct(updateProduct: ICartProduct): UpdateCartProduct {
   return {
     type: ACTIONS.UPDATE_CART_PRODUCT,
     payload: updateProduct
