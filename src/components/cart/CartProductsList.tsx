@@ -18,10 +18,7 @@ const CartProductsList:React.FC<CartProductsListProps> = (props) => {
     }
 
     return props.cartProducts.map( (cartProudct: IProduct) => {
-      return <CartProduct name={cartProudct.title}
-                          id={cartProudct.id}
-                          qty={cartProudct.quantity}
-                          price={cartProudct.discount_price}
+      return <CartProduct product={cartProudct}
                           key={cartProudct.id} 
          />
       })

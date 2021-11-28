@@ -3,10 +3,7 @@ import { CartProductActionTypes } from "../actionTypes/cartProductActionTypes";
 import * as ACTIONS from '../actionConstants/cartProductsActions';
 
 const CartProductsInitialState: ICartProducts = {
-  cartProducts: [
-    {id: 1, title: 'Carrot', category: {id: 2, title: 'Food'}, quantity: 5, regular_price: 2008.99, discount_price: 1999.99, image: 'https://s3.amazonaws.com/cdn1.shub/pharmacy/dettol.jpg'},
-    {id: 1, title: 'Carrot', category: {id: 2, title: 'Food'}, quantity: 5, regular_price: 2008.99, discount_price: 1999.99, image: 'https://s3.amazonaws.com/cdn1.shub/pharmacy/dettol.jpg'},
-  ]
+  cartProducts: []
 };
 
 export function CartProductReducter(state = CartProductsInitialState, action: CartProductActionTypes): ICartProducts {
