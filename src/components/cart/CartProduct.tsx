@@ -2,13 +2,14 @@ import React from 'react'
 import {Row, Col, Image} from 'react-bootstrap';
 import { Trash } from 'react-feather';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
+import {useDispatch} from 'react-redux';
+import { removeCartProduct } from '../../state/actions/cartProductActions';
 
 type CartProductProps = {
   id: number
   name: string
   qty: number
   price: number
-  OnDeleteCartProduct : (id: number) => void
 }
 
 const CartProduct:React.FC<CartProductProps> = (props) => {
@@ -22,6 +23,12 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
     }
   };
 
+  const dispactch = useDispatch();
+
+  const handleOnDeleteCartProduct = (id: number) => {
+    dispactch(removeCartProduct(id));    
+  };
+
   return (
     <Row className='py-2 mx-1 cart-product'>
       <Col xs={3}><Image src={image.default} alt="image not found" className='cart-product-image'/></Col>
@@ -29,7 +36,7 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
         <Row>
           <Col className='cart-product-name pt-1' xs={10}>{props.name}</Col>
           <Col className='cart-product-delete-btn' xs={2}>
-            <Trash size='1em' onClick={ () => props.OnDeleteCartProduct(props.id)}/>
+            <Trash size='1em' onClick={ () => handleOnDeleteCartProduct(props.id)}/>
           </Col>
         </Row>
         <Row className='py-2'>
