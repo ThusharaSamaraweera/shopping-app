@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Col, Row, Image, Button } from 'react-bootstrap';
 import {useDispatch} from "react-redux";
-import { addCartProduct } from '../../state/actions/cartProductActions';
+import { addCartProduct, updateCartProduct } from '../../state/actions/cartProductActions';
 
 import { IProduct } from '../../types/shoppingAreaTypes';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
@@ -16,8 +16,15 @@ const Produst: React.FC<ProductProps> = (props) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleOnProductAdd = (product: IProduct) => {
-    dispatch(addCartProduct(product));
+    dispatch(addCartProduct({...product, quantity: quantity}));
     setItemToAdd(product);
+  }
+
+  const handleOnUpdateQuantity = (product: IProduct) => {
+    dispatch(updateCartProduct({
+      ...product,
+      quantity: quantity
+    }))
   }
 
   const PriceMain = (price: number) => {
@@ -63,7 +70,8 @@ const Produst: React.FC<ProductProps> = (props) => {
 
             <Col className='product-btn' lg={8} md={8} xs={12} sm={12}>
               {itemToAdd ? 
-                <Button className='product-update'> Update </Button>
+                <Button className='product-update' 
+                        onClick={ () => handleOnUpdateQuantity(props.product)}> Update </Button>
                 :
                 <Button className='product-add-to-cart' onClick={ () => handleOnProductAdd(props.product)}>Add To Cart</Button>
               }

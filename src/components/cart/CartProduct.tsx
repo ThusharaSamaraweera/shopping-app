@@ -11,7 +11,6 @@ type CartProductProps = {
 }
 
 const CartProduct:React.FC<CartProductProps> = (props) => {
-  // const image: any = require(`../../asserts/images/ProductImages/${props.id}.jpg`);
   const priceMain: number = Math.trunc(props.product.discount_price);
   const priceCents = () => {
     if (props.product.discount_price % 1 === 0) {
