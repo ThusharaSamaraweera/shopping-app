@@ -1,10 +1,9 @@
 import React from "react";
-import { ICartProduct } from "../../types/cartAreaTypes";
+import { IProduct } from "../../types/shoppingAreaTypes";
 import CartProduct from "./CartProduct";
 
 type CartProductsListProps = {
-  cartProducts: ICartProduct[] | null
-  // setCartProducts : (cartProducts: ICartProduct[] | null)  => void
+  cartProducts: IProduct[] | null
 }
 
 const CartProductsList:React.FC<CartProductsListProps> = (props) => {
@@ -18,11 +17,11 @@ const CartProductsList:React.FC<CartProductsListProps> = (props) => {
       return;
     }
 
-    return props.cartProducts.map( (cartProudct: ICartProduct) => {
-      return <CartProduct name={cartProudct.name}
+    return props.cartProducts.map( (cartProudct: IProduct) => {
+      return <CartProduct name={cartProudct.title}
                           id={cartProudct.id}
-                          qty={cartProudct.qty}
-                          price={cartProudct.price}
+                          qty={cartProudct.quantity}
+                          price={cartProudct.discount_price}
                           key={cartProudct.id} 
          />
       })

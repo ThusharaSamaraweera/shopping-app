@@ -1,10 +1,5 @@
-export interface ICartProduct {
-  id: number
-  name: string
-  qty: number
-  price: number
-}
+import {IProduct} from './shoppingAreaTypes';
 
 export interface ICartProducts {
-  cartProducts: ICartProduct[]
+  cartProducts: IProduct[]
 }
