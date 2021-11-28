@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Col, Row, Image, Button } from 'react-bootstrap';
+import {useDispatch} from "react-redux";
+import { addCartProduct, updateCartProduct } from '../../state/actions/cartProductActions';
+
 import { IProduct } from '../../types/shoppingAreaTypes';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
 
@@ -8,11 +11,22 @@ type ProductProps = {
   product: IProduct
 }
 const Produst: React.FC<ProductProps> = (props) => {
-  const [itemToUpdate, setItemToUpdate] = useState<IProduct | null>(null);
-  
-  const handleOnProductUpdate = (product: IProduct) => {
-    setItemToUpdate(product);
+  const [itemToAdd, setItemToAdd] = useState<IProduct | null>(null);
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState<number>(1);
+
+  const handleOnProductAdd = (product: IProduct) => {
+    dispatch(addCartProduct({...product, quantity: quantity}));
+    setItemToAdd(product);
   }
+
+  const handleOnUpdateQuantity = (product: IProduct) => {
+    dispatch(updateCartProduct({
+      ...product,
+      quantity: quantity
+    }))
+  }
+
   const PriceMain = (price: number) => {
     return Math.trunc(price);
   }
@@ -46,16 +60,20 @@ const Produst: React.FC<ProductProps> = (props) => {
             </Col>
           </Row>
 
-          <Row >
+          <Row>
             <Col className='qty-input' xs={12} sm={12} md={4} lg={4}>
-              <input type="number" min={0} className="product-count w-100" defaultValue={1}/>
+              <input  type="number" min={1} className="product-count w-100" 
+                      value={quantity}
+                      onChange={ (event) => setQuantity(Number(event.target.value))}                    
+              />
             </Col>
 
             <Col className='product-btn' lg={8} md={8} xs={12} sm={12}>
-              {itemToUpdate ? 
-                <Button className='product-update'> Update </Button>
+              {itemToAdd ? 
+                <Button className='product-update' 
+                        onClick={ () => handleOnUpdateQuantity(props.product)}> Update </Button>
                 :
-                <Button className='product-add-to-cart' onClick={ () => handleOnProductUpdate(props.product)}>Add To Cart</Button>
+                <Button className='product-add-to-cart' onClick={ () => handleOnProductAdd(props.product)}>Add To Cart</Button>
               }
             </Col>
           </Row>

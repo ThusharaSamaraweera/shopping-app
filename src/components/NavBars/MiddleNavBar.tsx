@@ -1,10 +1,12 @@
 import React, { PropsWithChildren } from "react";
 import {Button, Col, Row, Dropdown} from "react-bootstrap";
 import {ShoppingCart} from "react-feather";
+import { useSelector } from "react-redux";
+import { AppState } from "../../state/reducers";
 import Cart from "../cart/Cart";
 
 const MainMiddleNavBar: React.FC = () => {
-
+  const quantity = useSelector( (state: AppState) => state.cartProducts.cartProducts.length);
   const CustomToggle = React.forwardRef<HTMLAnchorElement, PropsWithChildren<any>>(
     ({onClick}, ref) => (
       <a
@@ -18,7 +20,7 @@ const MainMiddleNavBar: React.FC = () => {
         {
           <div className='shopping-cart-icon'>
             <i className='cart-icon'><ShoppingCart size='2em'/></i>
-            <span className='dot'>2</span>
+            <span className='dot'>{quantity}</span>
           </div>
         }
       </a>
