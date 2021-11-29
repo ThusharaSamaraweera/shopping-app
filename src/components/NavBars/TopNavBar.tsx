@@ -5,10 +5,16 @@ import {Redirect} from "react-router-dom";
 
 const TopNavBar:React.FC = () => {
   const [isRedirectAccount, setIsRedirectAccount] = useState(false)
+  const [isRedirectRegister, setRedirectRegister] = useState(false);
 
   const handleOnAccountRedireact = () => {
     setIsRedirectAccount(true);
   }
+
+  const handleOnRegisterRedirect = () => {
+    setRedirectRegister(true);
+  }
+
   return (
     <Row className='top-nav-col'>
       <Navbar expand="md">
@@ -27,7 +33,9 @@ const TopNavBar:React.FC = () => {
               <i><User size='1.1em'/></i>
               <a>My Account</a>
             </Row>
-            <div className='register'>
+
+            {isRedirectRegister && <Redirect to='/register' />}
+            <div className='register' onClick={handleOnRegisterRedirect}>
               <Button variant="outline-success">Register</Button>
             </div>
             <Row className='login-row'>
