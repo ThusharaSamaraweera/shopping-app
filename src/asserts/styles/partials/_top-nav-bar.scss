@@ -121,6 +121,13 @@ $label-color: #262626;
             color: #4caf50;
             text-decoration: none;
             font-size: 0.9rem;
+            margin-left: 2px;
+            margin-right: 2px;
+
+            &:hover {
+              background-color: #4caf50;
+              color: white;
+            }
           }
         }
       }

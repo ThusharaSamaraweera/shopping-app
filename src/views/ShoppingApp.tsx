@@ -8,8 +8,6 @@ import Footer from "../components/Footer";
 const ShoppingApp: React.FC = () => {
   return (
     <Container fluid={true}>
-      <TopNavBar/>
-      <MiddleNavBar/>
       <ShoppingArea/>
       <Footer/>
     </Container>
