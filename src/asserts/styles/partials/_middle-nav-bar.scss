@@ -51,6 +51,11 @@ $color: #4caf50;
       font-size: 0.9em;
       background-color: $color;
       border: 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
     }
 
     .checkout-btn:focus {
