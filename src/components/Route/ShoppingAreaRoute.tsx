@@ -4,6 +4,7 @@ import Account from "../MyAccount/Account";
 import ShoppingApp from "../../views/ShoppingApp";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Checkout from "../checkout/Checkout";
 
 const ShoppingAreaRoute = () => {
 
@@ -14,6 +15,7 @@ const ShoppingAreaRoute = () => {
         <Route path="/account" component={Account} />
         <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
+        <Route path='/checkout' component={Checkout} />
       </Switch>
     </BrowserRouter>
   )
