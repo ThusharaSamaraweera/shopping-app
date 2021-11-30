@@ -1,9 +1,9 @@
 import React from "react";
-import ShoppingApp from "./views/ShoppingApp";
+import ShoppingAreaRoute from "./components/Route/ShoppingAreaRoute";
 
 const ClientApp: React.FC = () => {
   return (
-    <ShoppingApp/>
+    <ShoppingAreaRoute/>
   );
 }
 

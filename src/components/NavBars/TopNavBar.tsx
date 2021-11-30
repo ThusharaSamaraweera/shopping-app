@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {Button, Nav, Navbar, Row} from "react-bootstrap";
 import {Phone, User} from "react-feather";
+import {Redirect, Link} from "react-router-dom";
 
 const TopNavBar:React.FC = () => {
+  const [isRedirectAccount, setIsRedirectAccount] = useState(false);
+  const [isRedirectRegister, setRedirectRegister] = useState(false);
+  // const [isRedirectRegiser, see]
+
+  const handleOnAccountRedireact = () => {
+    setIsRedirectAccount(true);
+  }
+
+  const handleOnRegisterRedirect = () => {
+    setRedirectRegister(true);
+  }
+
   return (
     <Row className='top-nav-col'>
       <Navbar expand="md">
@@ -15,15 +28,20 @@ const TopNavBar:React.FC = () => {
               <i className="fas fa-truck fa-md"/>
               <a href="#delivery-area">Delivery Areas</a>
             </Row>
-            <Row className='my-account'>
+
+            {isRedirectAccount && <Redirect to='/account'/>}
+            <Row className='my-account' onClick={handleOnAccountRedireact}>
               <i><User size='1.1em'/></i>
-              <a href="#my-account">My Account</a>
+              <a>My Account</a>
             </Row>
-            <div className='register'>
+
+            {isRedirectRegister && <Redirect to='/register' />}
+            <div className='register' onClick={handleOnRegisterRedirect}>
               <Button variant="outline-success">Register</Button>
             </div>
+
             <Row className='login-row'>
-              <a href='#login'>Login</a>
+              <Link to={'login'}>Login</Link>
             </Row>
           </Nav>
         </Navbar.Collapse>
