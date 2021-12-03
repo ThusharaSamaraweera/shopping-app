@@ -20,7 +20,7 @@ const TopNavBar:React.FC = () => {
     <Row className='top-nav-col'>
       <Navbar expand="md">
         <i className='phone-icon'><Phone size='1.1em'/></i>
-        <a href='#' className='number'>+94779 510 260</a>
+        <a href='#number' className='number'>+94779 510 260</a>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -32,7 +32,7 @@ const TopNavBar:React.FC = () => {
             {isRedirectAccount && <Redirect to='/account'/>}
             <Row className='my-account' onClick={handleOnAccountRedireact}>
               <i><User size='1.1em'/></i>
-              <a>My Account</a>
+              <a href="#account">My Account</a>
             </Row>
 
             {isRedirectRegister && <Redirect to='/register' />}

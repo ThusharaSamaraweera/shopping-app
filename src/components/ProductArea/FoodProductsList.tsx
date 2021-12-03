@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { AppState } from "../../state/reducers";
@@ -8,21 +8,21 @@ import Product from "./Product";
 const FoodProductsList: React.FC = () => {
   const products = useSelector((state: AppState) => state.products.products);
 
-  const renderProducts = () => {
+  const renderProducts = useCallback(() => {
     if(products?.length === 0 || !products){
       return;
     }
-    const productsList = products?.filter(product => product.category.id === 3);
+    const productsList = products?.filter(product => product.category.title === 'Food');
 
     return productsList.map( (product: IProduct) => {
       return <Product key={product.id} 
                       product={product}/>
     })
-  };
+  }, [products]);
 
   useEffect(() => {
     renderProducts();
-  }, [products]);
+  }, [products, renderProducts]);
 
   return (
     <Col xs={12} sm={12}>
