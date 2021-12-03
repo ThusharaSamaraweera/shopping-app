@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Col, Row, Image, Button } from 'react-bootstrap';
-import {useDispatch} from "react-redux";
-import { addCartProduct, updateCartProduct } from '../../state/actions/cartProductActions';
+import {useDispatch, useSelector} from "react-redux";
 
+import { addCartProduct, updateCartProduct } from '../../state/actions/cartProductActions';
+import { AppState } from '../../state/reducers';
 import { IProduct } from '../../types/shoppingAreaTypes';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
 
@@ -11,13 +12,17 @@ type ProductProps = {
   product: IProduct
 }
 const Produst: React.FC<ProductProps> = (props) => {
-  const [itemToAdd, setItemToAdd] = useState<IProduct | null>(null);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState<number>(1);
+  const cartProducts = useSelector((state: AppState) => state.cartProducts.cartProducts);
+
+  const isInCart = (id: number) => {
+    const cartProductIDs: number[] = cartProducts.map(product => product.id);
+    return cartProductIDs.includes(id);
+  }
 
   const handleOnProductAdd = (product: IProduct) => {
     dispatch(addCartProduct({...product, quantity: quantity}));
-    setItemToAdd(product);
   }
 
   const handleOnUpdateQuantity = (product: IProduct) => {
@@ -69,7 +74,7 @@ const Produst: React.FC<ProductProps> = (props) => {
             </Col>
 
             <Col className='product-btn' lg={8} md={8} xs={12} sm={12}>
-              {itemToAdd ? 
+              {isInCart(props.product.id) ? 
                 <Button className='product-update' 
                         onClick={ () => handleOnUpdateQuantity(props.product)}> Update </Button>
                 :

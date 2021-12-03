@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { AppState } from "../../state/reducers";
 import { IProduct } from "../../types/shoppingAreaTypes";
-import {sampleProducts} from "../constants/SampleProducts";
 import Product from "./Product";
 
 const ElectronicProductsList: React.FC = () => {
-  const [products, setProducts] = useState<IProduct[] | null>(sampleProducts);
+  const products = useSelector((state: AppState) => state.products.products);
 
   const renderProducts = () => {
     if(products?.length === 0 || !products){
