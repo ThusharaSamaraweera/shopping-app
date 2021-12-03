@@ -12,7 +12,7 @@ const FoodProductsList: React.FC = () => {
     if(products?.length === 0 || !products){
       return;
     }
-    const productsList = products?.filter(product => product.category.id === 3);
+    const productsList = products?.filter(product => product.category.title === 'Food');
 
     return productsList.map( (product: IProduct) => {
       return <Product key={product.id} 
