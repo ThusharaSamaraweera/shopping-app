@@ -15,8 +15,7 @@ const ClientApp: React.FC = () => {
       return;
     }
     dispatch(setInitProducts(products.data.getAllProducts));
-    console.log("hi")
-    console.log(products)
+
   }, [dispatch, products, products.data]);
 
   return (

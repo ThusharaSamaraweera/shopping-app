@@ -11,7 +11,7 @@ const MainMiddleNavBar: React.FC = () => {
   const CustomToggle = React.forwardRef<HTMLAnchorElement, PropsWithChildren<any>>(
     ({onClick}, ref) => (
       <a
-        href=""
+        href="#icon"
         ref={ref}
         onClick={ e => {
           e.preventDefault()

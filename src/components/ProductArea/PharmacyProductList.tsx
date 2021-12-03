@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { AppState } from "../../state/reducers";
@@ -8,7 +8,7 @@ import Product from "./Product";
 const PharmacyProductsList: React.FC = () => {
   const products = useSelector((state: AppState) => state.products.products);
 
-  const renderProducts = () => {
+  const renderProducts = useCallback(() => {
     if(products?.length === 0 || !products){
       return;
     }
@@ -18,11 +18,11 @@ const PharmacyProductsList: React.FC = () => {
       return <Product key={product.id} 
                       product={product}/>
     })
-  }
+  }, [products])
 
   useEffect(() => {
     renderProducts();
-  }, [products])
+  }, [products, renderProducts]);
 
   return (
     <Col>

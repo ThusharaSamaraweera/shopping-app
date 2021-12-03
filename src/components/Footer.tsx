@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Row, Navbar, Nav, Container} from "react-bootstrap";
+import {Col, Row, Navbar, Nav} from "react-bootstrap";
 import {Twitter, Facebook, Instagram} from "react-feather";
 
 const Footer: React.FC = () => {
