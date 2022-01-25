@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <Row className='footer-navigation py-2'>
           <Navbar>
             <Navbar.Collapse className="justify-content-center">
-              <Nav className="ml-auto navbar-center">
+              <Nav className="navbar-center">
                 <Nav.Link href="#home">HOME</Nav.Link>
                 <Nav.Link href="#ABOUT">ABOUT US</Nav.Link>
                 <Nav.Link href="#FAQ">FAQ</Nav.Link>
@@ -37,6 +37,7 @@ const Footer: React.FC = () => {
         </Row>
       </Col>
     </Row>
+
   );
 }
 
