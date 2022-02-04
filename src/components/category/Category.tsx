@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {Row, Col, Image} from "react-bootstrap";
+import { useSelector } from "react-redux";
 import allCategoryImage from '../../asserts/images/all-cat.webp';
+import { AppState } from "../../state/reducers";
 import { ICategory } from "../../types/shoppingAreaTypes";
 
 const Category:React.FC = () => {
@@ -10,7 +12,8 @@ const Category:React.FC = () => {
   const imgElectronics = 'https://s3.amazonaws.com/cdn1.shub/categories/electro.png';
   const imgHeight = '100px';
 
-  const [activeCategory, setActiveCategory] = useState<ICategory>({id: 0, title: 'All'});
+  // const [activeCategory, setActiveCategory] = useState<ICategory>({id: 0, title: 'All'});
+  const activeCategory = useSelector( (state: AppState) => state.category.category);
 
   const handleOnCategoryChange = (category: string) => {
     if(category === 'All'){
@@ -27,7 +30,7 @@ const Category:React.FC = () => {
   };
   
   return (
-    <Row className="category justify-content-around mt-2">
+    <Row className="category justify-content-around my-2">
       <Col className={`cat-box cat-img text-center ${(activeCategory.title === "All") ? 'active' : ''}`}
             xs={2} lg={2} md={2} sm={2} xl={2} 
             onClick={ () => handleOnCategoryChange("All")}

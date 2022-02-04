@@ -26,7 +26,7 @@ const GroceryProductsList: React.FC = () => {
 
   return (
     <Col xs={12} sm={12}>
-      <Row className='product-list mt-5 mb-5'>
+      <Row className='product-list mt-2 mb-2'>
         <h5>Grocery</h5>
         {renderProducts()}
       </Row>
