@@ -21,3 +21,7 @@ export interface ICategory {
 export interface IProducts {
   products: IProduct[] 
 }
+
+export interface ICategoryList {
+  category: ICategory
+}

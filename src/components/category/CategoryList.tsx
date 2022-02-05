@@ -7,7 +7,7 @@ const Categories: React.FC = () => {
       <React.Fragment>
         <Row>
           <Col>
-            <h1 className="our-product-txt text-center mt-3">Our Products</h1>
+            <h1 className="our-product-txt text-center my-3">Our Products</h1>
           </Col>
         </Row>
         <Category/>
