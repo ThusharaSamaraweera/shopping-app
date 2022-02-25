@@ -1,0 +1,26 @@
+@import "../variables";
+
+.checkout-area {
+  h5 {
+    font-size: 1.3em;
+    font-weight: 600;
+
+  }
+
+  .checkout-page-title {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .continue-shopping-btn {
+    border-radius: 20px;
+    border-color: #6c747e;
+    color: #6c747e;
+    font-size: 0.8em;
+
+    &:hover {
+      background-color: unset;
+      color: $main-middle-navbar-logo-btn-color;
+    }
+  }
+}
