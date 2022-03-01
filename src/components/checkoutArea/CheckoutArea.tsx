@@ -1,10 +1,31 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import {ChevronLeft} from "react-feather";
+import { useHistory } from 'react-router-dom';
+import BootstrapTable from 'react-bootstrap-table-next';
+
+import { columns } from '../constants/checkoutAreaContants';
 
 const CheckoutArea: React.FC = () => {
-  const handleOnClickContinueBtn = () => {
+  const history = useHistory();
 
+  const handleOnClickContinueBtn = () => {
+    history.push('/')  
+  }
+
+  const listRows = () => {
+    return []
+    
+  }
+
+  const getTable = () => {
+    return <BootstrapTable  bootstrap4
+                            keyField='key'
+                            classes={`custom-table item-table`}
+                            columns={columns}
+                            data={listRows()}
+                            wrapperClasses="table-responsive"
+          />
   }
 
   return (
@@ -22,6 +43,11 @@ const CheckoutArea: React.FC = () => {
             <ChevronLeft size='1em'/>Continue Shopping
           </Button>
         </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} sm={12} className='py-3 checkout-table-title'>Shopping Cart </Col>
+        <Col xs={12} sm={12}>{getTable()}</Col>
       </Row>
     </Container>
   )
