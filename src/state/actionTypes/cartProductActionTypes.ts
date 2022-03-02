@@ -16,4 +16,9 @@ export interface UpdateCartProduct {
   payload: IProduct
 }
 
-export type CartProductActionTypes = AddCartProduct | RemoveCartProduct | UpdateCartProduct;
+export interface ChangeCartProduct {
+  type: typeof ACTIONS.CHANGE_CART_PRODUCT
+  payload: IProduct
+}
+
+export type CartProductActionTypes = AddCartProduct | RemoveCartProduct | UpdateCartProduct | ChangeCartProduct;

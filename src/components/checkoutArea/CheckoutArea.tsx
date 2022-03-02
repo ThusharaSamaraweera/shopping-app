@@ -4,13 +4,17 @@ import {ChevronLeft, Trash} from "react-feather";
 import { useHistory } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
 import { useSelector } from 'react-redux';
+import NumberFormat from "react-number-format";
 
 import { columns } from '../constants/checkoutAreaContants';
 import { AppState } from '../../state/reducers';
 
+import { smallCentsWithPrefix } from '../common/NumberCommon';
+
 // types
 import {IProduct} from "../../types/shoppingAreaTypes";
 import { CheckoutTableItem } from '../../types/checkoutAreaTypes';
+import EditableQty from './EditableQty';
 
 const CheckoutArea: React.FC = () => {
   const history = useHistory();
@@ -27,8 +31,12 @@ const CheckoutArea: React.FC = () => {
         key: index + 1,
         name: item.title,
         image :<Image src={item.image} alt="image not found" className='cart-product-image'/>,
-        qty: <div />,
-        unitPrice: <div />,
+        qty: <EditableQty item={item} />,
+        unitPrice: <NumberFormat  value={item.regular_price - item.discount_price} thousandSeparator={true}
+                                  displayType='text'
+                                  prefix={'Rs. '}
+                                  decimalScale={2} fixedDecimalScale={true} renderText={smallCentsWithPrefix}
+                    />,
         amount: <div />,
         removeIcon : <Trash size='1.3em' className="remove-btn" />
       };
