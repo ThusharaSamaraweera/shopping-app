@@ -1,10 +1,10 @@
 @import "../variables";
 
 .checkout-area {
+
   h5 {
     font-size: 1.3em;
     font-weight: 600;
-
   }
 
   .checkout-page-title {
@@ -28,5 +28,96 @@
     font-weight: 500;
     padding-left: 0;
   }
+
+  .checkout-table-area {
+    border: solid 1px #dee1e7;
+    border-radius: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    .item-table {
+      thead {
+        border-top: white;
+      }
   
+      th {
+        font-weight: 600;
+      }
+  
+      td:nth-child(1) {
+        font-weight: bold;
+        text-align: left;
+        min-width: 0.1em;
+        font-size: 0.8em;
+      }
+  
+      td:nth-child(3) {
+        text-align: left;
+      }
+  
+      th:nth-child(3), th:nth-child(1) {
+        text-align: left;
+      }
+  
+      td:nth-child(4) {
+        font-size: 1.0em;
+        text-align: center;
+      }
+  
+      td, th {
+        border: none !important;
+        border-bottom: 1px solid #dee2e6 !important;
+        vertical-align: middle !important;
+        text-align: center;
+  
+        .cart-product-image {
+          width: 5em;
+          height: auto;
+        }
+      }
+
+      .remove-btn {
+        cursor: pointer;
+      }
+    }  
+
+    td {
+      padding: 0;
+      font-size: small;
+    }
+
+    .react-bootstrap-table th .caret-4-desc:before {
+      margin-left: 3.5px;
+      content: "\2191";
+      opacity: .4;
+      box-sizing: inherit;
+    }
+
+    .react-bootstrap-table th .order-4:after {
+      content: "\2191 \2193";
+      box-sizing: inherit;
+      opacity: .4;
+      cursor: pointer;
+    }
+
+    .react-bootstrap-table th .caret-4-desc:after {
+      content: "\2193";
+      box-sizing: inherit;
+      cursor: pointer;
+    }
+
+    .react-bootstrap-table th .caret-4-asc:before {
+      margin-left: 3.5px;
+      content: "\2191";
+      box-sizing: inherit;
+      cursor: pointer;
+    }
+
+    .react-bootstrap-table th .caret-4-asc:after {
+      content: "\2193";
+      box-sizing: inherit;
+      opacity: .4;
+      cursor: pointer;
+    }
+  }  
 }

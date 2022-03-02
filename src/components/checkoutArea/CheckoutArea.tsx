@@ -1,10 +1,16 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import {ChevronLeft} from "react-feather";
+import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
+import {ChevronLeft, Trash} from "react-feather";
 import { useHistory } from 'react-router-dom';
 import BootstrapTable from 'react-bootstrap-table-next';
+import { useSelector } from 'react-redux';
 
 import { columns } from '../constants/checkoutAreaContants';
+import { AppState } from '../../state/reducers';
+
+// types
+import {IProduct} from "../../types/shoppingAreaTypes";
+import { CheckoutTableItem } from '../../types/checkoutAreaTypes';
 
 const CheckoutArea: React.FC = () => {
   const history = useHistory();
@@ -13,10 +19,23 @@ const CheckoutArea: React.FC = () => {
     history.push('/')  
   }
 
+  const items:IProduct[] = useSelector( (state: AppState) => state.cartProducts.cartProducts);
+
   const listRows = () => {
-    return []
-    
-  }
+    return items.map( (item: IProduct, index: number) => {
+      const itemRow: CheckoutTableItem = {
+        key: index + 1,
+        name: item.title,
+        image :<Image src={item.image} alt="image not found" className='cart-product-image'/>,
+        qty: <div />,
+        unitPrice: <div />,
+        amount: <div />,
+        removeIcon : <Trash size='1.3em' className="remove-btn" />
+      };
+
+      return itemRow;
+    });
+  };
 
   const getTable = () => {
     return <BootstrapTable  bootstrap4
@@ -45,9 +64,13 @@ const CheckoutArea: React.FC = () => {
         </Col>
       </Row>
 
-      <Row>
+      <Row className='checkout-table-area'>
         <Col xs={12} sm={12} className='py-3 checkout-table-title'>Shopping Cart </Col>
-        <Col xs={12} sm={12}>{getTable()}</Col>
+        <Col xs={12} sm={12}>
+          <Card.Body className="pt-0">
+            {getTable()}
+          </Card.Body>
+        </Col>
       </Row>
     </Container>
   )
