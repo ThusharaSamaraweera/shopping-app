@@ -1,6 +1,6 @@
 import {IProduct} from "../../types/shoppingAreaTypes";
 
-export const sampleProducts: IProduct[] = [
+export const sampleProducts = [
   {
     id: 1,
     title: "Coconut",

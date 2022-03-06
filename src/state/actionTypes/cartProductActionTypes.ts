@@ -8,7 +8,7 @@ export interface AddCartProduct {
 
 export interface RemoveCartProduct {
   type: typeof ACTIONS.REMOVE_CART_PRODUCT
-  payload: number
+  payload: string
 }
 
 export interface UpdateCartProduct {

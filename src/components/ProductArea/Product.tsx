@@ -8,7 +8,7 @@ import { IProduct } from '../../types/shoppingAreaTypes';
 import { ProductPrice } from '../ProductPrice/ProductPrice';
 
 type ProductProps = {
-  key: number
+  key: string
   product: IProduct
 }
 const Produst: React.FC<ProductProps> = (props) => {
@@ -16,8 +16,8 @@ const Produst: React.FC<ProductProps> = (props) => {
   const [quantity, setQuantity] = useState<number>(1);
   const cartProducts = useSelector((state: AppState) => state.cartProducts.cartProducts);
 
-  const isInCart = (id: number) => {
-    const cartProductIDs: number[] = cartProducts.map(product => product.id);
+  const isInCart = (id: string) => {
+    const cartProductIDs: string[] = cartProducts.map(product => product.id);
     return cartProductIDs.includes(id);
   }
 

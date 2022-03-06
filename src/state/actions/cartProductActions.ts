@@ -9,7 +9,7 @@ export function addCartProduct(newProduct: IProduct): AddCartProduct {
   }
 }
 
-export function removeCartProduct(id: number): RemoveCartProduct {
+export function removeCartProduct(id: string): RemoveCartProduct {
   return {
     type: ACTIONS.REMOVE_CART_PRODUCT,
     payload: id
