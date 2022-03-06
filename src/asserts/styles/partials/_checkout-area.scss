@@ -39,6 +39,11 @@
     padding-right: 15px;
     padding-left: 15px;
 
+    .checkout-table-empty-cart {
+      font-weight: 300;
+      font-size: 1.3em;
+    }
+
     .item-table {
       thead {
         border-top: white;
@@ -206,6 +211,10 @@
     .checkout-table-area {
       width: 100%;
       margin: 0;
+
+      .checkout-table-empty-cart .empty-cart-icon {
+        width: 10rem;
+      }
 
       .pagination {
         .page-link {

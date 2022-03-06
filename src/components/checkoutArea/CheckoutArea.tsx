@@ -10,7 +10,7 @@ import NumberFormat from "react-number-format";
 import { columns, options } from '../constants/checkoutAreaContants';
 import { AppState } from '../../state/reducers';
 import {removeCartProduct} from "../../state/actions/cartProductActions";
-
+import emptyCartIcon from "../../asserts/images/emptyCart.webp";
 import { smallCentsWithPrefix } from '../common/NumberCommon';
 
 // types
@@ -31,6 +31,16 @@ const CheckoutArea: React.FC = () => {
   const handleRemoveItem = (id: string) => {
     dispatch(removeCartProduct(id));
   }
+
+  const ifEmpty = () => {
+    return (
+      <div className="checkout-table-empty-cart text-center">
+        <img src={emptyCartIcon} alt="empty cart" className='empty-cart-icon'/>
+        <p>Your Cart is empty</p>
+        <label>Add items to your cart :)</label>
+      </div>
+    )
+  };
 
   const listRows = () => {
     return items.map( (item: IProduct, index: number) => {
@@ -70,6 +80,7 @@ const CheckoutArea: React.FC = () => {
                             data={listRows()}
                             pagination={paginationFactory(options)}
                             wrapperClasses="table-responsive"
+                            noDataIndication={ifEmpty}
           />
   }
 
