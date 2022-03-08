@@ -17,6 +17,7 @@ import { smallCentsWithPrefix } from '../common/NumberCommon';
 import {IProduct} from "../../types/shoppingAreaTypes";
 import { CheckoutTableItem } from '../../types/checkoutAreaTypes';
 import EditableQty from './EditableQty';
+import Discount from './Discount';
 
 const CheckoutArea: React.FC = () => {
   const history = useHistory();
@@ -108,6 +109,7 @@ const CheckoutArea: React.FC = () => {
             {getTable()}
           </Card.Body>
         </Col>
+        <Discount />
       </Row>
     </Container>
   )
