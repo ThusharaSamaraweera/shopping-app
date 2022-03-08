@@ -44,7 +44,7 @@ const Produst: React.FC<ProductProps> = (props) => {
   };
 
   return (
-    <Col className='product-item  my-2' lg='3' md='4' xs='5'>
+    <Col className='product-item my-2 ' lg={3} md={4} sm={5} xs={12}>
       <Row className=''>
         <Col className='product px-2 py-2'>
           <Row className='product-img py-4'>
