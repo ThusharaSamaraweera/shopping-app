@@ -190,9 +190,27 @@
         padding-right: 0;
         padding-left: 2em;
       }
+
+      
+      .discount-apply-btn {
+        background-color: $main-middle-navbar-logo-btn-color;
+        border: unset;
+        font-size: 0.8em;
+        padding: 7px 12px;
+      }
     }
 
   }  
+}
+
+@media only screen and (max-width: 1025px) {
+  .checkout-area {
+    .checkout-table-area {
+      .discount {
+        padding-right: 20px !important;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: $medium-device-size) {
@@ -205,12 +223,17 @@
     }
 
     .checkout-table-area {
-      .discount {
-        padding-right: 5px !important;
-      }
 
       .react-bootstrap-table-pagination-total {
         font-size: 0.9em;
+      }
+
+      .discount {
+        padding-right: 5px !important;
+
+        .discount-apply-btn {
+          margin-top: 3px;
+        }
       }
     }
   }
