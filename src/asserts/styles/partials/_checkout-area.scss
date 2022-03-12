@@ -200,6 +200,20 @@
       }
     }
 
+    .delivery-charge {
+      border-bottom: solid 1px #dee1e7;
+
+      .delivery-price {
+        font-size: 1.2em;
+        margin-right: 7vh;
+      }
+
+      .delivery-label {
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+    }
+
   }  
 }
 
@@ -233,6 +247,12 @@
 
         .discount-apply-btn {
           margin-top: 3px;
+        }
+      }
+
+      .delivery-charge {
+        .delivery-price {
+          margin-right: 5vh;
         }
       }
     }
@@ -276,6 +296,12 @@
             width: 3em;
             height: auto;
           }
+        }
+      }
+
+      .delivery-charge {
+        .delivery-price {
+          margin-right: 1vh;
         }
       }
     }

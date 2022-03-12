@@ -13,10 +13,10 @@ const Discount: React.FC = () => {
   }
 
   return (
-    <Col>
+    <Col xs={12}>
       <Form onSubmit={handleOnSubmitDiscountCode}>
         <Row className='px-1 discount'>
-          <Col xs={12} md={{span: 6, offset: 6}} sm={12} className='text-end'>
+          <Col xs={12} md={{span: 7, offset: 5}} sm={12} className='text-end'>
             <Row>
               <Col xs={4} md={4} className='discount-label text-end mt-2'>
                   <span>Have a discount code?</span>

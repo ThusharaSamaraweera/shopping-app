@@ -18,8 +18,9 @@ import {IProduct} from "../../types/shoppingAreaTypes";
 import { CheckoutTableItem } from '../../types/checkoutAreaTypes';
 import EditableQty from './EditableQty';
 import Discount from './Discount';
+import DeliveryCharge from './DeliveryCharge';
 
-const CheckoutArea: React.FC = () => {
+const CheckoutArea:React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -110,7 +111,9 @@ const CheckoutArea: React.FC = () => {
           </Card.Body>
         </Col>
         <Discount />
+        <DeliveryCharge />
       </Row>
+      
     </Container>
   )
 }
