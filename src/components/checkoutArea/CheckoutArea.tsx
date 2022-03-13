@@ -7,18 +7,21 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import { useSelector, useDispatch } from 'react-redux';
 import NumberFormat from "react-number-format";
 
+import emptyCartIcon from "../../asserts/images/emptyCart.webp";
+
+// components
 import { columns, options } from '../constants/checkoutAreaContants';
 import { AppState } from '../../state/reducers';
 import {removeCartProduct} from "../../state/actions/cartProductActions";
-import emptyCartIcon from "../../asserts/images/emptyCart.webp";
 import { smallCentsWithPrefix } from '../common/NumberCommon';
+import EditableQty from './EditableQty';
+import Discount from './Discount';
+import DeliveryCharge from './DeliveryCharge';
+import TotalBill from './TotalBill';
 
 // types
 import {IProduct} from "../../types/shoppingAreaTypes";
 import { CheckoutTableItem } from '../../types/checkoutAreaTypes';
-import EditableQty from './EditableQty';
-import Discount from './Discount';
-import DeliveryCharge from './DeliveryCharge';
 
 const CheckoutArea:React.FC = () => {
   const history = useHistory();
@@ -33,6 +36,9 @@ const CheckoutArea:React.FC = () => {
   const handleRemoveItem = (id: string) => {
     dispatch(removeCartProduct(id));
   }
+
+  const subTotalPrice = items.reduce((total: number, b: IProduct) =>
+      total + ((b.regular_price - b.discount_price) * b.quantity), 0);
 
   const ifEmpty = () => {
     return (
@@ -112,6 +118,7 @@ const CheckoutArea:React.FC = () => {
         </Col>
         <Discount />
         <DeliveryCharge />
+        <TotalBill subTotalPrice={subTotalPrice}/>
       </Row>
       
     </Container>
