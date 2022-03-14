@@ -1,0 +1,41 @@
+@import "../variables";
+
+.shopping-form-area {
+  .shopping-form-area-div {
+    .sign-area {
+      border: 1px solid rgba(0, 0, 0, .125);
+      margin: 5px 0;
+      padding: 15px;
+      background-color: white;
+      border-radius: 5px;
+
+      .signing-label {
+        padding-left: 0;
+
+        label {
+          font-size: 1em;
+        }
+      }
+
+      .signing-btn {
+        display: flex;
+        padding-left: 20px;
+        padding-right: 0;
+
+        .btn-success {
+          color: #fff;
+          background-color: $main-middle-navbar-logo-btn-color;
+          border-color: $main-middle-navbar-logo-btn-color;
+          font-size: 1.1rem;
+          font-weight: 400;
+          padding: 4px 0;
+          margin-bottom: 0;
+          border-radius: 6px;
+          float: right;
+          right: 2rem;
+          width: 8em;
+        }
+      }
+    }
+  }
+}
