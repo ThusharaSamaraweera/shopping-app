@@ -1,0 +1,47 @@
+@import "../variables";
+
+.minus-circle{
+  cursor: pointer;
+  color: #bdbdbd;
+  font-size: 1.0em;
+  margin-left: 1.0rem ;
+  margin-right: 1.0rem ;
+}
+.plus-circle{
+  cursor: pointer;
+  color: #bdbdbd;
+  margin-left:1.0rem ;
+  margin-right:1.0rem ;
+}
+
+@media only screen and (max-width: $medium-device-size) {
+  .minus-circle{
+    cursor: pointer;
+    color: #bdbdbd;
+    font-size: 1.0em;
+    margin-left: .5rem ;
+    margin-right: .5rem ;
+  }
+  .plus-circle{
+    cursor: pointer;
+    color: #bdbdbd;
+    margin-left: .4rem ;
+    margin-right: .4rem ;
+  }
+}
+
+@media only screen and (max-width: $extra-small-device-size) {
+  .minus-circle{
+    cursor: pointer;
+    color: #bdbdbd;
+    font-size: 1.0em;
+    margin-left: .5rem ;
+    margin-right: .5rem ;
+  }
+  .plus-circle{
+    cursor: pointer;
+    color: #bdbdbd;
+    margin-left: .4rem ;
+    margin-right: .4rem ;
+  }
+}

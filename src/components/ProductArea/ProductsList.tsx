@@ -32,7 +32,7 @@ const ProductsList: React.FC = () => {
     }
   }
   return (
-    <Row className='product-lists px-lg-8 py-2'>
+    <Row className='product-lists px-4 py-2'>
       {renderProducts()}
     </Row>
   )

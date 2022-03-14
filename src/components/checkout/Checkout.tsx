@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import CheckoutArea from "../checkoutArea/CheckoutArea";
 import BottomNabBar from "../NavBars/BottomNavBar";
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
@@ -11,6 +12,7 @@ const Checkout:React.FC = () => {
       <TopNavBar/>
       <MainMiddleNavBar/>
       <BottomNabBar/>
+      <CheckoutArea/>
     </Container>
   )
 }

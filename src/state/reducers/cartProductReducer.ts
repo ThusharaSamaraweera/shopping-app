@@ -22,14 +22,24 @@ export function CartProductReducter(state = CartProductsInitialState, action: Ca
           )
         };
       
-        case ACTIONS.UPDATE_CART_PRODUCT:
-          const cartProduct = state.cartProducts.slice();
-          const index = cartProduct.findIndex(product => product.id === action.payload.id);
-          cartProduct[index] = action.payload;
-          return {
-            ...state,
-            cartProducts: cartProduct
-          };
+      case ACTIONS.UPDATE_CART_PRODUCT:
+        const cartProduct = state.cartProducts.slice();
+        const index = cartProduct.findIndex(product => product.id === action.payload.id);
+        cartProduct[index] = action.payload;
+        return {
+          ...state,
+          cartProducts: cartProduct
+        };
+
+      case ACTIONS.CHANGE_CART_PRODUCT: {
+        const cartProducts = state.cartProducts.slice();
+        const indexOfUpdatedItem = cartProducts.findIndex(cartProduct => cartProduct.id === action.payload.id);
+        cartProducts[indexOfUpdatedItem] = action.payload;
+        return {
+          ...state,
+          cartProducts: cartProducts
+        };
+      }
       
       default: {
         return state;

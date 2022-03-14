@@ -22,7 +22,7 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
 
   const dispactch = useDispatch();
 
-  const handleOnDeleteCartProduct = (id: number) => {
+  const handleOnDeleteCartProduct = (id: string) => {
     dispactch(removeCartProduct(id));    
   };
 
