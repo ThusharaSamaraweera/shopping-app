@@ -23,8 +23,8 @@ export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitSta
   }
 
   const checkoutFormErrorInitError: ICheckoutFormError = {
-    fullNameError: '',
-    addressError: ''
+    fullNameError: 'Full name required',
+    addressError: 'Address required'
   }
 
   export function checkoutFormErrorReducer( state: ICheckoutFormError = checkoutFormErrorInitError,
