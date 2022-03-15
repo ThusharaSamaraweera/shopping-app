@@ -1,8 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import BillingForm from './BillingForm'
 import SigninArea from './SigninArea'
 
-const index = () => {
+const index: React.FC = () => {
   return (
     <Container>
       <Row className='shopping-form-area'>
@@ -11,9 +12,9 @@ const index = () => {
 
           <Row className='billing-address'>
             <Col className='billing-address-header'>
-             <h5>Shipping and Billing Address</h5>
-
+              <h5>Shipping and Billing Address</h5>
             </Col>
+            <BillingForm />
           </Row>
         </Col>
       </Row>
