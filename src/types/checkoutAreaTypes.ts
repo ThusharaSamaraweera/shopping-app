@@ -22,6 +22,7 @@ export interface ICheckoutFormInputData {
     | "contactNumber"
     | "email"
     | "retypedEmail"
+    | "password"
   value: string | CountrySelect
 }
 
@@ -33,6 +34,7 @@ export interface ICheckoutFormInputDataError {
   | 'contactNumberError'
   | 'emailError'
   | 'retypedEmailError'
+  | 'passwordError'
   value: string
 }
 
@@ -45,6 +47,7 @@ export interface ICheckoutForm {
   contactNumber: string,
   email: string,
   retypedEmail: string
+  password: string
 }
 
 export interface ICheckoutFormError {
@@ -55,4 +58,5 @@ export interface ICheckoutFormError {
   contactNumberError: string
   emailError: string
   retypedEmailError: string
+  passwordError: string
 }

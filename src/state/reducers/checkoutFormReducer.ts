@@ -11,7 +11,8 @@ const checkoutFormInitState: ICheckoutForm = {
   country: {value: SriLanka, label: SriLanka},
   contactNumber: '',
   email: '',
-  retypedEmail: ''
+  retypedEmail: '',
+  password: '',
 }
 
 export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitState,
@@ -37,7 +38,8 @@ export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitSta
     postalCodeError: 'postel code required',
     contactNumberError: 'contact number required',
     emailError: '',
-    retypedEmailError: ''
+    retypedEmailError: '',
+    passwordError: '',
   }
 
   export function checkoutFormErrorReducer( state: ICheckoutFormError = checkoutFormErrorInitError,

@@ -9,6 +9,7 @@ import { AppState } from '../../state/reducers'
 import { CountrySelect } from '../../types/checkoutAreaTypes'
 import { countries, customStyles } from '../constants/checkoutAreaContants'
 import { Australia, India, Singapore, SriLanka, UnitedStatesofAmerica } from '../constants/countries'
+import BillingFormPwd from '../common/password/BillingFormPwd'
 
 const BillingForm: React.FC = () => {
   const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
@@ -69,12 +70,12 @@ const BillingForm: React.FC = () => {
     }
   }
 
-  const handleOnEmailChanged = (value: string) => {
-    
+  const handleOnEmailChanged = (email: string) => {
+    dispatch(changeCheckoutForm({key: 'email', value: email}))
   }
 
-  const handleOnRetypedEmailChanged = (value: string) => {
-
+  const handleOnRetypedEmailChanged = (retypedEmail: string) => {
+    dispatch(changeCheckoutForm({key: 'retypedEmail', value: retypedEmail}))
   }
 
   return (
@@ -235,6 +236,7 @@ const BillingForm: React.FC = () => {
             </Row>
           </Form.Group>
         </Form.Row>
+        <BillingFormPwd/>
       </Form>
     </Col>
   )
