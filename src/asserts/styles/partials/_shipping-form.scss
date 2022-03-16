@@ -83,6 +83,129 @@
             color: red;
           }
         }
+
+        .form-row {
+          display: flex;
+
+          .form-group {
+            padding: 0 0 2px 5px;
+            margin-right: 0;
+
+            .form-label {
+              margin-bottom: 0.1rem;
+            }
+
+            .invalid-feedback {
+              font-size: 0.8em;
+            }
+          }
+
+          .select-country {
+            z-index: 5;
+          }
+        }
+
+        .city-postal-country-input {
+          .city-input {
+            padding: 0 4px 2px 5px;
+          }
+
+          .postal-code-input {
+            padding: 0 4px 2px 5px;
+          }
+
+          .select-country {
+            padding: 0 0 2px 5px;
+          }
+        }
+
+        .contact-number {
+          .form-group {
+            width: 100%;
+
+            .input-group {
+              margin-bottom: 0;
+
+              .input-group-prepend {
+                height: 20px;
+
+                .input-group-text {
+                  padding: 0.375rem 0.55rem;
+                  border-bottom-left-radius: 0.25rem;
+                  height: 1.8em;
+
+                  img {
+                    display: inline-block;
+                    width: 1em;
+                    height: 0.6em;
+                    vertical-align: middle;
+                    font-size: 2.2em;
+                    line-height: 1em;
+                    margin-right: 5px;
+                  }
+
+                  .country-code {
+                    font-size: 0.8em;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .email-area {
+          .email {
+            padding-right: 6px;
+          }
+
+          .retyped-email {
+            .match-validate-retype-email {
+              color: #dc3545;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .shopping-form-area {
+    .shopping-form-area-div {
+      .billing-address {
+        .billing-form {
+          .email-area {
+            .email {
+              padding-right: 0;
+            }
+
+            .re-email {
+              .match-validate-retype-email {
+                color: #dc3545;
+                font-size: 0.7em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .shopping-form-area {
+    .shopping-form-area-div {
+      .billing-address {
+        .billing-form {
+          .form-row {
+            display: block;
+
+            .form-group {
+              padding: 0 0 2px 5px;
+            }
+          }
+        }
       }
     }
   }

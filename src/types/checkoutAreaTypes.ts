@@ -15,22 +15,44 @@ export interface CountrySelect {
 
 export interface ICheckoutFormInputData {
   key: "fullName"
-    | "address",
-  value: string 
+    | "address"
+    | "city"
+    | "postalCode"
+    | "country"
+    | "contactNumber"
+    | "email"
+    | "retypedEmail"
+  value: string | CountrySelect
 }
 
 export interface ICheckoutFormInputDataError {
   key: 'fullNameError'
-  | 'addressError',
+  | 'addressError'
+  | 'cityError'
+  | 'postalCodeError'
+  | 'contactNumberError'
+  | 'emailError'
+  | 'retypedEmailError'
   value: string
 }
 
 export interface ICheckoutForm {
   fullName: string,
   address: string,
+  city: string,
+  postalCode: string,
+  country: CountrySelect,
+  contactNumber: string,
+  email: string,
+  retypedEmail: string
 }
 
 export interface ICheckoutFormError {
   fullNameError: string
   addressError: string  
+  cityError: string
+  postalCodeError: string
+  contactNumberError: string
+  emailError: string
+  retypedEmailError: string
 }
