@@ -25,6 +25,7 @@ export interface ICheckoutFormInputData {
     | "password"
     | "isChangeShippingAddress"
     | "deliveryInstructions"
+    | "paymentMethod"
   value: string | CountrySelect | boolean
 }
 
@@ -51,7 +52,8 @@ export interface ICheckoutForm {
   retypedEmail: string
   password: string,
   isChangeShippingAddress: boolean,
-  deliveryInstructions: string
+  deliveryInstructions: string,
+  paymentMethod: 'cashOnDelivery' | 'onlinePayment',
 }
 
 export interface ICheckoutFormError {

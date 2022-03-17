@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import BillingForm from './BillingForm'
 import ChangeShippingAddress from './ChangeShippingAddress'
 import DeliveryInstructions from './DeliveryInstructions'
+import PaymentMethod from './PaymentMethod'
 import SigninArea from './SigninArea'
 
 const index: React.FC = () => {
@@ -20,6 +21,7 @@ const index: React.FC = () => {
           </Row>
           <ChangeShippingAddress />
           <DeliveryInstructions />
+          <PaymentMethod />
         </Col>
       </Row>
     </Container>

@@ -14,7 +14,8 @@ const checkoutFormInitState: ICheckoutForm = {
   retypedEmail: '',
   password: '',
   isChangeShippingAddress: false,
-  deliveryInstructions: ''
+  deliveryInstructions: '',
+  paymentMethod: 'cashOnDelivery'
 }
 
 export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitState,

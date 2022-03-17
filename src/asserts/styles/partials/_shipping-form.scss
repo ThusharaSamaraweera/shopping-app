@@ -252,6 +252,53 @@
       }
     }
 
+    .payment-method-option {
+      position: relative;
+      margin: 0 0 1rem 0;
+
+      h5 {
+        font-size: 1rem;
+      }
+
+      .credit-card-bg {
+        width: 40%;
+        height: auto;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #cce5ff;
+        cursor: pointer;
+      }
+
+      .credit-card-bg:active {
+        background-color: #F1F8E9;
+        border: solid 2px $main-middle-navbar-logo-btn-color;
+      }
+
+      .selected-card {
+        background-color: #F1F8E9;
+        border: solid 2px $main-middle-navbar-logo-btn-color;
+      }
+
+      .fa-credit-card {
+        font-size: 6em;
+        margin: 1rem 0;
+      }
+
+      .fa-money-bill-alt {
+        font-size: 6em;
+        margin: 1rem 0;
+      }
+
+      .payment-label-name {
+        position: relative;
+      }
+
+      .validate-payment-method {
+        font-size: 0.5em;
+        color: red;
+      }
+    }
   }
 }
 
@@ -275,7 +322,15 @@
         }
       }
 
+      .payment-method-option {
+        .fa-credit-card {
+          font-size: 4rem;
+        }
 
+        .fa-money-bill-alt {
+          font-size: 4rem;
+        }
+      }
     }
   }
 }
