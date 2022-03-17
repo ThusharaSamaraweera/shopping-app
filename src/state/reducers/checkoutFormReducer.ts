@@ -13,6 +13,7 @@ const checkoutFormInitState: ICheckoutForm = {
   email: '',
   retypedEmail: '',
   password: '',
+  isChangeShippingAddress: false
 }
 
 export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitState,

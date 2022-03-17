@@ -220,6 +220,29 @@
       
       }
     }
+
+    .change-shipping-address-area {
+      .change-shipping-option {
+        font-size: 1.1rem;
+      }
+
+      .address-radio-area {
+        display: contents;
+        font-size: 0.9em;
+
+        .form-check {
+          padding: 0 0 0 30px;
+          min-width: 10rem;
+          cursor: pointer;
+
+          label {
+            margin: 0 4px;
+            padding: 2px 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -242,6 +265,8 @@
           }
         }
       }
+
+      
     }
   }
 }
