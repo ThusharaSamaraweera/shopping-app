@@ -24,6 +24,7 @@ export interface ICheckoutFormInputData {
     | "retypedEmail"
     | "password"
     | "isChangeShippingAddress"
+    | "deliveryInstructions"
   value: string | CountrySelect | boolean
 }
 
@@ -50,6 +51,7 @@ export interface ICheckoutForm {
   retypedEmail: string
   password: string,
   isChangeShippingAddress: boolean,
+  deliveryInstructions: string
 }
 
 export interface ICheckoutFormError {
