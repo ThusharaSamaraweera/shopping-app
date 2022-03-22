@@ -299,6 +299,44 @@
         color: red;
       }
     }
+
+    .order-btn {
+      text-decoration: none;
+
+      .btn-primary {
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+        width: 8rem;
+        margin: 1rem auto auto auto;
+      }
+
+      .btn-primary:hover {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:active {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:focus {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+    }
+
+    .order-btn {
+      a:hover {
+        text-decoration: none;
+      }
+    }
   }
 }
 
@@ -329,6 +367,13 @@
 
         .fa-money-bill-alt {
           font-size: 4rem;
+        }
+      }
+
+      .order-btn {
+        .btn-primary {
+          width: 80%;
+          padding: 0;
         }
       }
     }

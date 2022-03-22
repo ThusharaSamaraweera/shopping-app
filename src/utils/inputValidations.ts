@@ -12,3 +12,32 @@ export const calcStrength = (password:string) => {
   }
   return strengthVal;
 }
+
+export const validateEmail = (email:string) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )&& !(email === '');
+};
+export const validateOnlyLetters = (string:string) => {
+  return String(string)
+    .toLowerCase()
+    .match(
+      /^[A-Za-z\s]*$/
+    )&&!(string === '');
+};
+
+export const validateOnlyNumbers = (string:string) => {
+  return String(string)
+    .match(
+      /^[0-9]*$/
+    )&&!(string === '');
+};
+
+export const validateOnlyNumbersAndLetters = (string:string) => {
+  return String(string)
+    .match(
+      /^[,a-zA-Z0-9\s]*$/
+    )&&!(string === '');;
+};
