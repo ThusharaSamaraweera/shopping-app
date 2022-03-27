@@ -1,17 +1,51 @@
 import * as ACTIONS from '../actionConstants/checkoutForm';
-import { ICheckoutFormInputData, ICheckoutFormInputDataError } from '../../types/checkoutAreaTypes';
-import { changeCheckoutFormActionType, changeCheckoutFormErrorActionType } from '../actionTypes/checkoutFormActionTypes';
+import { 
+  ICheckoutBillingFormInputData, 
+  ICheckoutBillingFormInputDataError, 
+  ICheckoutShippingFormInputData, 
+  ICheckoutShippingFormInputDataError
+} from '../../types/checkoutAreaTypes';
+import { 
+  changeCheckoutBillingFormActionType, 
+  changeCheckoutBillingFormErrorActionType, 
+  changeCheckoutShippingFormActionType, 
+  changeCheckoutShippingFormErrorActionType 
+} from '../actionTypes/checkoutFormActionTypes';
 
-export function changeCheckoutForm(data: ICheckoutFormInputData) : changeCheckoutFormActionType  {
+export function changeCheckoutBillingForm(data: ICheckoutBillingFormInputData) 
+: changeCheckoutBillingFormActionType  {
   return {
-    type: ACTIONS.CHANGE_CHECKOUT_FORM_DATA,
+    type: ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_DATA,
     payload: data
   }
 }
 
-export function changeCheckoutFormError (error: ICheckoutFormInputDataError) : changeCheckoutFormErrorActionType {
+export function changeCheckoutBillingFormError (error: ICheckoutBillingFormInputDataError)
+ : changeCheckoutBillingFormErrorActionType {
   return {
-    type : ACTIONS.CHANGE_CHECKOUT_FORM_ERROR,
+    type : ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_ERROR,
     payload: error
   }
 }
+
+export function changeCheckoutShippingForm(data: ICheckoutShippingFormInputData) 
+: changeCheckoutShippingFormActionType  {
+  return {
+    type: ACTIONS.CHANGE_CHECKOUT_SHIPPING_FORM_DATA,
+    payload: data
+  }
+}
+
+export function changeCheckoutShippingFormError (error: ICheckoutShippingFormInputDataError)
+ : changeCheckoutShippingFormErrorActionType {
+  return {
+    type : ACTIONS.CHANGE_CHECKOUT_SHIPPING_FORM_ERROR,
+    payload: error
+  }
+}
+
+
+
+
+
+

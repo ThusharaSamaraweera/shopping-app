@@ -3,7 +3,7 @@ import { Col, Form, FormControl, InputGroup, Row, Image } from 'react-bootstrap'
 
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
-import { changeCheckoutForm, changeCheckoutFormError } from '../../state/actions/checkoutFormActions'
+import { changeCheckoutBillingForm, changeCheckoutBillingFormError } from '../../state/actions/checkoutFormActions'
 
 import { AppState } from '../../state/reducers'
 import { CountrySelect } from '../../types/checkoutAreaTypes'
@@ -19,36 +19,39 @@ const BillingForm: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleOnFullNameChanged = (fullName: string) => {
-    dispatch(changeCheckoutForm({key: 'fullName' , value: fullName}));
+    dispatch(changeCheckoutBillingForm({key: 'fullName' , value: fullName}));
     if(!validateOnlyLetters(fullName)){
-      dispatch(changeCheckoutFormError({key: 'fullNameError', value: 'Enter valid full name'}));
+      dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: 'Enter valid full name'}));
       return;
     }
-    dispatch(changeCheckoutFormError({key: 'fullNameError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: ''}));
   }
 
   const handleOnAddressChanged = (address: string) => {
-    dispatch(changeCheckoutForm({key: 'address', value: address}));
+    dispatch(changeCheckoutBillingForm({key: 'address', value: address}));
     if(!validateOnlyNumbersAndLetters(address)){
-      dispatch(changeCheckoutFormError({key: 'addressError', value: 'Enter valid address'}));
+      dispatch(changeCheckoutBillingFormError({key: 'addressError', value: 'Enter valid address'}));
+      return;
     }
-    dispatch(changeCheckoutFormError({key: 'addressError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'addressError', value: ''}));
   }
 
   const handleOnCityChanged = (city: string) => {
-    dispatch(changeCheckoutForm({key: 'city', value: city}));
+    dispatch(changeCheckoutBillingForm({key: 'city', value: city}));
     if(!validateOnlyLetters(city)){
-      dispatch(changeCheckoutFormError({key: 'addressError', value: 'Enter valid city'}));
+      dispatch(changeCheckoutBillingFormError({key: 'cityError', value: 'Enter valid city'}));
+      return;
     }
-    dispatch(changeCheckoutFormError({key: 'addressError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'cityError', value: ''}));
   }
 
   const handleOnPostalCodeChanged = (postelCode: string) => {
-    dispatch(changeCheckoutForm({key: 'postalCode', value: postelCode}));
+    dispatch(changeCheckoutBillingForm({key: 'postalCode', value: postelCode}));
     if(!validateOnlyNumbers(postelCode)){
-      dispatch(changeCheckoutFormError({key: 'postalCodeError', value: 'Must contain only numbers'}))
+      dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: 'Must contain only numbers'}))
+      return;
     }
-    dispatch(changeCheckoutFormError({key: 'postalCodeError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: ''}));
   }
 
   const handleOnCountry = (country: CountrySelect | null) => {
@@ -56,7 +59,7 @@ const BillingForm: React.FC = () => {
     if (!country) {
       return;
     }
-    dispatch(changeCheckoutForm({ key: 'country' , value: country}))
+    dispatch(changeCheckoutBillingForm({ key: 'country' , value: country}))
   }
 
   const selectCountry: CountrySelect[] = countries.map(
@@ -66,11 +69,12 @@ const BillingForm: React.FC = () => {
   )
 
   const handleOnContactNumberChanged = (contctNumber: string) => {
-    dispatch(changeCheckoutForm({key: 'contactNumber', value: contctNumber}));
+    dispatch(changeCheckoutBillingForm({key: 'contactNumber', value: contctNumber}));
     if(!validateOnlyNumbers(contctNumber)){
-      dispatch(changeCheckoutFormError({key: 'contactNumberError', value: 'Must contain only numbers'}))
+      dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: 'Must contain only numbers'}))
+      return;
     }
-    dispatch(changeCheckoutFormError({key: 'contactNumberError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: ''}));
   }
 
   const countryCode = () => {
@@ -93,19 +97,21 @@ const BillingForm: React.FC = () => {
   }
 
   const handleOnEmailChanged = (email: string) => {
-    dispatch(changeCheckoutForm({key: 'email', value: email}));
+    dispatch(changeCheckoutBillingForm({key: 'email', value: email}));
     if(!validateEmail(email)){
-      dispatch(changeCheckoutFormError({key: 'emailError', value: 'Enter valid email'}));
+      dispatch(changeCheckoutBillingFormError({key: 'emailError', value: 'Enter valid email'}));
+      return;
     }
-      dispatch(changeCheckoutFormError({key: 'emailError', value: ''}));
+      dispatch(changeCheckoutBillingFormError({key: 'emailError', value: ''}));
   }
 
   const handleOnRetypedEmailChanged = (retypedEmail: string) => {
-    dispatch(changeCheckoutForm({key: 'retypedEmail', value: retypedEmail}))
+    dispatch(changeCheckoutBillingForm({key: 'retypedEmail', value: retypedEmail}))
     if(checkoutForm.email !== retypedEmail && checkoutForm.email !== null){
-      dispatch(changeCheckoutFormError({key: 'retypedEmailError', value: 'Email and Retype Email should be equal'}))
+      dispatch(changeCheckoutBillingFormError({key: 'retypedEmailError', value: 'Email and Retype Email should be equal'}))
+      return;
     }
-    dispatch(changeCheckoutFormError({key: 'retypedEmailError', value: ''}))
+    dispatch(changeCheckoutBillingFormError({key: 'retypedEmailError', value: ''}))
   }
 
   return (

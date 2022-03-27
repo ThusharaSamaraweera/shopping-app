@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import { changeCheckoutForm } from '../../state/actions/checkoutFormActions';
+import { changeCheckoutBillingForm } from '../../state/actions/checkoutFormActions';
 import {AppState} from "../../state/reducers";
 
 const PaymentMethod: React.FC = () => {
@@ -10,11 +10,11 @@ const PaymentMethod: React.FC = () => {
 
     const handleOnClickCredit = () => {
 
-      dispatch(changeCheckoutForm({key: 'paymentMethod', value: 'onlinePayment'}));
+      dispatch(changeCheckoutBillingForm({key: 'paymentMethod', value: 'onlinePayment'}));
     };
 
     const handleOnClickMoney = () => {
-      dispatch(changeCheckoutForm({key: 'paymentMethod', value: 'cashOnDelivery'}));
+      dispatch(changeCheckoutBillingForm({key: 'paymentMethod', value: 'cashOnDelivery'}));
     };
 
     return (

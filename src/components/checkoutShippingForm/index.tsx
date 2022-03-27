@@ -6,57 +6,58 @@ import { Toast } from '../common/SweetAlerts'
 import { useDispatch } from 'react-redux'
 
 import BillingForm from './BillingForm'
-import ChangeShippingAddress from './ChangeShippingAddress'
+import ChangeShippingOption from './ChangeShippingOption'
 import DeliveryInstructions from './DeliveryInstructions'
 import PaymentMethod from './PaymentMethod'
 import SigninArea from './SigninArea'
-import { changeCheckoutFormError } from '../../state/actions/checkoutFormActions'
+import { changeCheckoutBillingFormError } from '../../state/actions/checkoutFormActions'
+import ChangeShippingForm from './ChangeShippingForm'
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state: AppState) => state.cartProducts.cartProducts);
   const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
-  const checkoutFormErrors = useSelector( (state: AppState) => state.checkoutFormError);
+  const isChangeShippingFormVisible = useSelector((state: AppState) => state.checkoutForm.isChangeShippingAddressVisible)
 
   const validtateBillingForm = () => {
     let isBillingFormFilled: boolean = true;
     if(!checkoutForm.fullName){
-      dispatch(changeCheckoutFormError({key: 'fullNameError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.address){
-      dispatch(changeCheckoutFormError({key: 'addressError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'addressError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.city){
-      dispatch(changeCheckoutFormError({key: 'cityError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'cityError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.postalCode){
-      dispatch(changeCheckoutFormError({key: 'postalCodeError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.contactNumber){
-      dispatch(changeCheckoutFormError({key: 'contactNumberError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.email){
-      dispatch(changeCheckoutFormError({key: 'emailError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'emailError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.retypedEmail){
-      dispatch(changeCheckoutFormError({key: 'retypedEmailError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'retypedEmailError', value: 'Required'}));
       isBillingFormFilled = false;
     }
 
     if(!checkoutForm.password){
-      dispatch(changeCheckoutFormError({key: 'passwordError', value: 'Required'}));
+      dispatch(changeCheckoutBillingFormError({key: 'passwordError', value: 'Required'}));
       isBillingFormFilled = false;
     }
   }
@@ -81,7 +82,8 @@ const Index: React.FC = () => {
             </Col>
             <BillingForm />
           </Row>
-          <ChangeShippingAddress />
+          <ChangeShippingOption />
+          {isChangeShippingFormVisible && <ChangeShippingForm />}
           <DeliveryInstructions />
           <PaymentMethod />
           <Row className="order-btn justify-content-center">

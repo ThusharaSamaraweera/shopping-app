@@ -1,12 +1,28 @@
 import  * as ACTIONS from '../actionConstants/checkoutForm';
-import { ICheckoutFormInputData, ICheckoutFormInputDataError } from '../../types/checkoutAreaTypes';
+import { 
+  ICheckoutBillingFormInputData, 
+  ICheckoutBillingFormInputDataError, 
+  ICheckoutShippingFormInputData,
+  ICheckoutShippingFormInputDataError
+} from '../../types/checkoutAreaTypes';
 
-export interface changeCheckoutFormActionType {
-  type: typeof ACTIONS.CHANGE_CHECKOUT_FORM_DATA,
-  payload: ICheckoutFormInputData
+export interface changeCheckoutBillingFormActionType {
+  type: typeof ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_DATA,
+  payload: ICheckoutBillingFormInputData
 }
 
-export interface changeCheckoutFormErrorActionType {
-  type: typeof ACTIONS.CHANGE_CHECKOUT_FORM_ERROR,
-  payload: ICheckoutFormInputDataError
+export interface changeCheckoutBillingFormErrorActionType {
+  type: typeof ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_ERROR,
+  payload: ICheckoutBillingFormInputDataError
+}
+
+export interface changeCheckoutShippingFormActionType {
+  type: typeof ACTIONS.CHANGE_CHECKOUT_SHIPPING_FORM_DATA,
+  payload: ICheckoutShippingFormInputData
+}
+
+export interface changeCheckoutShippingFormErrorActionType {
+  type: typeof ACTIONS.CHANGE_CHECKOUT_SHIPPING_FORM_ERROR,
+  payload:   ICheckoutShippingFormInputDataError
+
 }

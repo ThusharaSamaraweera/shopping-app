@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import { changeCheckoutForm } from '../../state/actions/checkoutFormActions';
+import { changeCheckoutBillingForm } from '../../state/actions/checkoutFormActions';
 import {AppState} from "../../state/reducers";
 
 const DeliveryInstructions: React.FC = () => {
@@ -10,7 +10,7 @@ const DeliveryInstructions: React.FC = () => {
   const shippingForm = useSelector((state: AppState) => state.checkoutForm);
 
   const handleOnChangeDeliveryInstructions = (deliveryInstructions: string) => {
-    dispatch(changeCheckoutForm({key: 'deliveryInstructions', value: deliveryInstructions}))
+    dispatch(changeCheckoutBillingForm({key: 'deliveryInstructions', value: deliveryInstructions}))
   }
 
   return (

@@ -1,9 +1,15 @@
 import * as ACTIONS from '../actionConstants/checkoutForm';
-import { changeCheckoutFormActionType, changeCheckoutFormErrorActionType } from '../actionTypes/checkoutFormActionTypes';
-import { ICheckoutForm, ICheckoutFormError } from '../../types/checkoutAreaTypes';
+import { 
+  changeCheckoutBillingFormActionType, 
+  changeCheckoutBillingFormErrorActionType
+} from '../actionTypes/checkoutFormActionTypes';
+import { 
+  ICheckoutBillingForm, 
+  ICheckoutBillingFormError 
+} from '../../types/checkoutAreaTypes';
 import { SriLanka } from '../../components/constants/countries';
 
-const checkoutFormInitState: ICheckoutForm = {
+const checkoutBillingFormInitState: ICheckoutBillingForm = {
   fullName: '',
   address: '',
   city : '',
@@ -13,16 +19,17 @@ const checkoutFormInitState: ICheckoutForm = {
   email: '',
   retypedEmail: '',
   password: '',
-  isChangeShippingAddress: false,
+  isChangeShippingAddressVisible: false,
   deliveryInstructions: '',
   paymentMethod: 'cashOnDelivery'
 }
 
-export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitState,
-                                      action: changeCheckoutFormActionType
-  ) : ICheckoutForm {
+export function checkoutBillingFormReducer(  
+  state: ICheckoutBillingForm = checkoutBillingFormInitState,
+  action: changeCheckoutBillingFormActionType
+  ) : ICheckoutBillingForm {
     switch(action.type ) {
-      case ACTIONS.CHANGE_CHECKOUT_FORM_DATA:
+      case ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_DATA:
          // @ts-ignore
         state[action.payload.key] = action.payload.value;
         const updatedState = {...state};
@@ -31,30 +38,33 @@ export function checkoutFormReducer(  state: ICheckoutForm = checkoutFormInitSta
       default: 
         return state;
    
-    }  
-  }
+    } 
+}
 
-  const checkoutFormErrorInitError: ICheckoutFormError = {
-    fullNameError: '',
-    addressError: '',
-    cityError: '',
-    postalCodeError: '',
-    contactNumberError: '',
-    emailError: '',
-    retypedEmailError: '',
-    passwordError: '',
-  }
+const checkoutBillingFormErrorInitError: ICheckoutBillingFormError = {
+  fullNameError: '',
+  addressError: '',
+  cityError: '',
+  postalCodeError: '',
+  contactNumberError: '',
+  emailError: '',
+  retypedEmailError: '',
+  passwordError: '',
+}
 
-  export function checkoutFormErrorReducer( state: ICheckoutFormError = checkoutFormErrorInitError,
-                                            action: changeCheckoutFormErrorActionType
-    ): ICheckoutFormError {
-      switch(action.type) {
-        case ACTIONS.CHANGE_CHECKOUT_FORM_ERROR : 
-          state[action.payload.key] = action.payload.value;
-          const updatedState = {...state};
-          return updatedState
-        
-        default: 
-          return state;
-      }
+export function checkoutBillingFormErrorReducer( 
+  state: ICheckoutBillingFormError = checkoutBillingFormErrorInitError,
+  action: changeCheckoutBillingFormErrorActionType
+): ICheckoutBillingFormError {
+    switch(action.type) {
+      case ACTIONS.CHANGE_CHECKOUT_BILLING_FORM_ERROR : 
+        state[action.payload.key] = action.payload.value;
+        const updatedState = {...state};
+        return updatedState
+      
+      default: 
+        return state;
     }
+}
+
+

@@ -1,15 +1,15 @@
 import React from 'react';
 import {Col, Form, Row} from "react-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
-import { changeCheckoutForm } from '../../state/actions/checkoutFormActions';
+import { changeCheckoutBillingForm } from '../../state/actions/checkoutFormActions';
 import { AppState } from '../../state/reducers'
 
 const ChangeShippingAddress = () => {
   const dispatch = useDispatch();
   const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
   
-  const handleOnChangeShippingAddress = (isChangeShippingAddress: boolean) => {
-    dispatch(changeCheckoutForm({key: 'isChangeShippingAddress', value: isChangeShippingAddress}))
+  const handleOnChangeShippingAddress = (isChangeShippingAddressVisible: boolean) => {
+    dispatch(changeCheckoutBillingForm({key: 'isChangeShippingAddressVisible', value: isChangeShippingAddressVisible}))
   }
 
   return (
@@ -25,7 +25,7 @@ const ChangeShippingAddress = () => {
           id='same'
           className='form-check'
           custom
-          defaultChecked={!checkoutForm.isChangeShippingAddress}
+          defaultChecked={!checkoutForm.isChangeShippingAddressVisible}
           onClick={() => handleOnChangeShippingAddress(false)}
         />
         <Form.Check
@@ -35,7 +35,7 @@ const ChangeShippingAddress = () => {
           id='other'
           className='form-check'
           custom
-          defaultChecked={checkoutForm.isChangeShippingAddress}
+          defaultChecked={checkoutForm.isChangeShippingAddressVisible}
           onClick={() => handleOnChangeShippingAddress(true)}
         />
       </Col>

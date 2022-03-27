@@ -13,7 +13,7 @@ export interface CountrySelect {
   label: string
 }
 
-export interface ICheckoutFormInputData {
+export interface ICheckoutBillingFormInputData {
   key: "fullName"
     | "address"
     | "city"
@@ -23,13 +23,13 @@ export interface ICheckoutFormInputData {
     | "email"
     | "retypedEmail"
     | "password"
-    | "isChangeShippingAddress"
+    | "isChangeShippingAddressVisible"
     | "deliveryInstructions"
     | "paymentMethod"
   value: string | CountrySelect | boolean
 }
 
-export interface ICheckoutFormInputDataError {
+export interface ICheckoutBillingFormInputDataError {
   key: 'fullNameError'
   | 'addressError'
   | 'cityError'
@@ -41,7 +41,7 @@ export interface ICheckoutFormInputDataError {
   value: string
 }
 
-export interface ICheckoutForm {
+export interface ICheckoutBillingForm {
   fullName: string,
   address: string,
   city: string,
@@ -51,12 +51,12 @@ export interface ICheckoutForm {
   email: string,
   retypedEmail: string
   password: string,
-  isChangeShippingAddress: boolean,
+  isChangeShippingAddressVisible: boolean,
   deliveryInstructions: string,
   paymentMethod: 'cashOnDelivery' | 'onlinePayment',
 }
 
-export interface ICheckoutFormError {
+export interface ICheckoutBillingFormError {
   fullNameError: string
   addressError: string  
   cityError: string
@@ -65,4 +65,22 @@ export interface ICheckoutFormError {
   emailError: string
   retypedEmailError: string
   passwordError: string
+}
+
+export interface ICheckoutShippingFormInputData {
+  key: "fullName",
+  value: string
+}
+
+export interface ICheckoutShippingFormInputDataError {
+  key: "fullNameError",
+  value: string
+}
+
+export interface ICheckoutChangedShippingForm {
+  fullName: string,
+}
+
+export interface ICheckoutChangedShippingFormError {
+  fullNameError: string
 }

@@ -5,7 +5,7 @@ import {Eye, EyeOff} from "react-feather"
 
 // components
 import { AppState } from '../../../state/reducers';
-import { changeCheckoutForm, changeCheckoutFormError } from '../../../state/actions/checkoutFormActions';
+import { changeCheckoutBillingForm, changeCheckoutBillingFormError } from '../../../state/actions/checkoutFormActions';
 import { calcStrength } from '../../../utils/inputValidations';
 import PasswordStrength from './PasswordStrength';
 
@@ -21,12 +21,12 @@ const BillingFormPwd = () => {
   };
 
   const handlePasswordChange = (password: string) => {
-    dispatch(changeCheckoutForm({key: 'password', value: password}));
+    dispatch(changeCheckoutBillingForm({key: 'password', value: password}));
     if (calcStrength(password)<5) {
-      dispatch(changeCheckoutFormError({key: 'passwordError', value: 'Use strong password'}));
+      dispatch(changeCheckoutBillingFormError({key: 'passwordError', value: 'Use strong password'}));
       return;
     }
-    dispatch(changeCheckoutFormError({key: 'passwordError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'passwordError', value: ''}));
   };
 
   return (
