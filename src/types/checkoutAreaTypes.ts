@@ -68,19 +68,23 @@ export interface ICheckoutBillingFormError {
 }
 
 export interface ICheckoutShippingFormInputData {
-  key: "fullName",
+  key: "fullName"
+     | "address",
   value: string
 }
 
 export interface ICheckoutShippingFormInputDataError {
-  key: "fullNameError",
+  key: "fullNameError"
+    | "addressError",
   value: string
 }
 
 export interface ICheckoutChangedShippingForm {
   fullName: string,
+  address: string,
 }
 
 export interface ICheckoutChangedShippingFormError {
-  fullNameError: string
+  fullNameError: string,
+  addressError: string,
 }

@@ -83,7 +83,11 @@ const Index: React.FC = () => {
             <BillingForm />
           </Row>
           <ChangeShippingOption />
-          {isChangeShippingFormVisible && <ChangeShippingForm />}
+          {isChangeShippingFormVisible && 
+            <div className='change-shipping-form'>
+              <ChangeShippingForm />
+            </div>  
+          }
           <DeliveryInstructions />
           <PaymentMethod />
           <Row className="order-btn justify-content-center">
