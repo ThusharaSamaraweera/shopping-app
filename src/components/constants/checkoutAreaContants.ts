@@ -69,7 +69,8 @@ export  const customStyles = {
     paddingTop: 2,
     paddingBottom: 2,
     fontSize: '.8em',
-    height: '29px'
+    height: '29px',
+    cursor: 'pointer',
   }),
   indicatorsContainer: (provided: any) => ({
     ...provided,
@@ -86,7 +87,6 @@ export  const customStyles = {
   indicatorContainer: (provided: any) => ({
     ...provided,
     padding: '0px 8px 11px 8px',
-
   }),
   placeholder: (provided: any) => ({
     ...provided,
@@ -100,11 +100,12 @@ export  const customStyles = {
     ...provided,
     fontSize: '.8rem',
     paddingTop: 2,
-    paddingBottom: 2
+    paddingBottom: 2,
+    cursor: 'pointer',
   }),
   singleValue: (provided: any) => ({
     ...provided,
-    paddingBottom: 2
+    paddingBottom: 2,
   }),
   indicatorSeparator: (provided: any) => ({
     ...provided,

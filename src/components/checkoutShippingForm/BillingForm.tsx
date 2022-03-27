@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Form, FormControl, InputGroup, Row, Image } from 'react-bootstrap'
+import { Col, Form, FormControl, InputGroup, Row } from 'react-bootstrap'
 
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
@@ -8,9 +8,9 @@ import { changeCheckoutBillingForm, changeCheckoutBillingFormError } from '../..
 import { AppState } from '../../state/reducers'
 import { CountrySelect } from '../../types/checkoutAreaTypes'
 import { countries, customStyles } from '../constants/checkoutAreaContants'
-import { Australia, India, Singapore, SriLanka, UnitedStatesofAmerica } from '../constants/countries'
 import BillingFormPwd from '../common/password/BillingFormPwd'
 import { validateEmail, validateOnlyLetters, validateOnlyNumbers, validateOnlyNumbersAndLetters } from '../../utils/inputValidations'
+import { countryCode } from '../common/countryCode'
 
 const BillingForm: React.FC = () => {
   const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
@@ -54,6 +54,10 @@ const BillingForm: React.FC = () => {
     dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: ''}));
   }
 
+  const getCountry = () => {
+    return countryCode(checkoutForm.country)
+  }
+
   const handleOnCountry = (country: CountrySelect | null) => {
 
     if (!country) {
@@ -75,25 +79,6 @@ const BillingForm: React.FC = () => {
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: ''}));
-  }
-
-  const countryCode = () => {
-    if (checkoutForm.country?.value === UnitedStatesofAmerica) {
-      return <div><Image src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/us.svg"/><span
-        className="country-code">+1</span></div>;
-    } else if (checkoutForm.country?.value === Australia) {
-      return <div><Image src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/as.svg"/><span
-        className="country-code">+61</span></div>;
-    } else if (checkoutForm.country?.value === SriLanka) {
-      return <div><Image src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/lk.svg"/><span
-        className="country-code">+94</span></div>;
-    } else if (checkoutForm.country?.value === Singapore) {
-      return <div><Image src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/sg.svg"/><span
-        className="country-code">+65</span></div>;
-    } else if (checkoutForm.country?.value === India) {
-      return <div><Image src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/in.svg"/><span
-        className="country-code">+91</span></div>;
-    }
   }
 
   const handleOnEmailChanged = (email: string) => {
@@ -218,7 +203,7 @@ const BillingForm: React.FC = () => {
             <InputGroup className="mb-1">
               <InputGroup.Prepend>
                 <InputGroup.Text>
-                  {countryCode()}
+                  {getCountry()}
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
