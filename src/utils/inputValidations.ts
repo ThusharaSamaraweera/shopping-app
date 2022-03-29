@@ -18,26 +18,26 @@ export const validateEmail = (email:string) => {
     .toLowerCase()
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )&& !(email === '');
+    )&& !(email.trim() === '');
 };
 export const validateOnlyLetters = (string:string) => {
   return String(string)
     .toLowerCase()
     .match(
       /^[A-Za-z\s]*$/
-    )&&!(string === '');
+    )&&!(string.trim() === '');
 };
 
 export const validateOnlyNumbers = (string:string) => {
   return String(string)
     .match(
       /^[0-9]*$/
-    )&&!(string === '');
+    )&&!(string.trim() === '');
 };
 
-export const validateOnlyNumbersAndLetters = (string:string) => {
+export const validateAddress = (string:string) => {
   return String(string)
     .match(
-      /^[,a-zA-Z0-9\s]*$/
+      /^[,a-zA-Z0-9\s, '/]*$/
     )&&!(string === '');;
 };

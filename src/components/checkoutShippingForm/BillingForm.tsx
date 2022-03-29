@@ -9,7 +9,7 @@ import { AppState } from '../../state/reducers'
 import { CountrySelect } from '../../types/checkoutAreaTypes'
 import { countries, customStyles } from '../constants/checkoutAreaContants'
 import BillingFormPwd from '../common/password/BillingFormPwd'
-import { validateEmail, validateOnlyLetters, validateOnlyNumbers, validateOnlyNumbersAndLetters } from '../../utils/inputValidations'
+import { validateAddress, validateEmail, validateOnlyLetters, validateOnlyNumbers } from '../../utils/inputValidations'
 import { countryCode } from '../common/countryCode'
 
 const BillingForm: React.FC = () => {
@@ -21,7 +21,7 @@ const BillingForm: React.FC = () => {
   const handleOnFullNameChanged = (fullName: string) => {
     dispatch(changeCheckoutBillingForm({key: 'fullName' , value: fullName}));
     if(!validateOnlyLetters(fullName)){
-      dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: 'Enter valid full name'}));
+      dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: 'Only can contain letter'}));
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'fullNameError', value: ''}));
@@ -29,8 +29,8 @@ const BillingForm: React.FC = () => {
 
   const handleOnAddressChanged = (address: string) => {
     dispatch(changeCheckoutBillingForm({key: 'address', value: address}));
-    if(!validateOnlyNumbersAndLetters(address)){
-      dispatch(changeCheckoutBillingFormError({key: 'addressError', value: 'Enter valid address'}));
+    if(!validateAddress(address)){
+      dispatch(changeCheckoutBillingFormError({key: 'addressError', value: 'Only can contain letter and number'}));
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'addressError', value: ''}));
@@ -39,7 +39,7 @@ const BillingForm: React.FC = () => {
   const handleOnCityChanged = (city: string) => {
     dispatch(changeCheckoutBillingForm({key: 'city', value: city}));
     if(!validateOnlyLetters(city)){
-      dispatch(changeCheckoutBillingFormError({key: 'cityError', value: 'Enter valid city'}));
+      dispatch(changeCheckoutBillingFormError({key: 'cityError', value: 'Only can contain letter'}));
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'cityError', value: ''}));
@@ -48,7 +48,7 @@ const BillingForm: React.FC = () => {
   const handleOnPostalCodeChanged = (postelCode: string) => {
     dispatch(changeCheckoutBillingForm({key: 'postalCode', value: postelCode}));
     if(!validateOnlyNumbers(postelCode)){
-      dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: 'Must contain only numbers'}))
+      dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: 'Only can contain number'}))
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'postalCodeError', value: ''}));
@@ -75,7 +75,7 @@ const BillingForm: React.FC = () => {
   const handleOnContactNumberChanged = (contctNumber: string) => {
     dispatch(changeCheckoutBillingForm({key: 'contactNumber', value: contctNumber}));
     if(!validateOnlyNumbers(contctNumber)){
-      dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: 'Must contain only numbers'}))
+      dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: 'Only can contain number'}))
       return;
     }
     dispatch(changeCheckoutBillingFormError({key: 'contactNumberError', value: ''}));
