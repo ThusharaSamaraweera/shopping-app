@@ -5,6 +5,7 @@ import BottomNabBar from "../NavBars/BottomNavBar";
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
 import ShippingForm from '../../components/checkoutShippingForm';
+import Footer from "../Footer";
 
 const Checkout:React.FC = () => {
 
@@ -15,6 +16,7 @@ const Checkout:React.FC = () => {
       <BottomNabBar/>
       <CheckoutArea/>
       <ShippingForm/>
+      <Footer />
     </Container>
   )
 }
