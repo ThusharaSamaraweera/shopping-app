@@ -13,8 +13,8 @@ const BillingFormPwd = () => {
   const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
-  const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
-  const checkoutFormErrors = useSelector( (state: AppState) => state.checkoutFormError);
+  const checkoutForm = useSelector((state: AppState) => state.checkoutBillingForm);
+  const checkoutFormErrors = useSelector( (state: AppState) => state.checkoutBillingFormError);
  
   const handleOnShowPassword = () => {
     setIsPasswordVisible(!isPasswordVisible);

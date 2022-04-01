@@ -7,7 +7,7 @@ import {AppState} from "../../state/reducers";
 const DeliveryInstructions: React.FC = () => {
 
   const dispatch = useDispatch();
-  const shippingForm = useSelector((state: AppState) => state.checkoutForm);
+  const shippingForm = useSelector((state: AppState) => state.checkoutBillingForm);
 
   const handleOnChangeDeliveryInstructions = (deliveryInstructions: string) => {
     dispatch(changeCheckoutBillingForm({key: 'deliveryInstructions', value: deliveryInstructions}))

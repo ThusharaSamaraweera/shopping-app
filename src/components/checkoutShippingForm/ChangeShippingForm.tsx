@@ -141,7 +141,7 @@ const ChangeShippingForm: React.FC = () => {
           </Row>
         </Form.Group>
 
-        <Form.Group controlId="changedShippingFullName">
+        <Form.Group controlId="changedShippingAddress">
           <Form.Label>Shipping Address*</Form.Label>
           <Form.Control
             type="text"
@@ -167,7 +167,7 @@ const ChangeShippingForm: React.FC = () => {
             xs={12}
             sm={12}
             md={4}
-            controlId="billingAddressCity"
+            controlId="changedShippingCity"
             className="city-input"
           >
             <Form.Label>City / suburb*</Form.Label>
@@ -193,7 +193,7 @@ const ChangeShippingForm: React.FC = () => {
             xs={12}
             sm={12}
             md={4}
-            controlId="formGridPostalCode"
+            controlId="changedShippingPostalCode"
             className="postal-code-input"
           >
             <Form.Label>Postal Code*</Form.Label>
@@ -219,7 +219,7 @@ const ChangeShippingForm: React.FC = () => {
             xs={12}
             sm={12}
             md={4}
-            controlId="billingAddressCountry"
+            controlId="changedShippingCountry"
             className="select-country"
           >
             <Form.Label>Country</Form.Label>
@@ -248,7 +248,7 @@ const ChangeShippingForm: React.FC = () => {
         </Form.Row>
 
         <Form.Row className="contact-number">
-          <Form.Group controlId="billingAddressContactNumber">
+          <Form.Group controlId="changedShippingContactNumber">
             <Form.Label>Contact Number*</Form.Label>
             <InputGroup className="mb-1">
               <InputGroup.Prepend>

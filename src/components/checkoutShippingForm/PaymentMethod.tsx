@@ -6,7 +6,7 @@ import {AppState} from "../../state/reducers";
 
 const PaymentMethod: React.FC = () => {
     const dispatch = useDispatch();
-    const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
+    const checkoutForm = useSelector((state: AppState) => state.checkoutBillingForm);
 
     const handleOnClickCredit = () => {
 

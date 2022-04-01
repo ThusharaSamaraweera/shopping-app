@@ -41,7 +41,7 @@ const MainMiddleNavBar: React.FC = () => {
           <Cart/>
         </Dropdown>
       </Col>
-      <Col hidden-xs sm={2} md={2} lg={1} className='check-out-col py-2'>
+      <Col sm={2} md={2} lg={1} className='check-out-col py-2'>
         <Button variant="success" size='sm' className='checkout-btn'>
           <Link to={'/checkout'}>Checkout</Link>
         </Button>

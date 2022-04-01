@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
         </Row>
         <Row xs={12} className='footer-details text-center py-3'>
           <Col lg={{span: 4, offset: 4}} md={{span: 8, offset: 2}} xs={{span: 12}}>
-            <Col xs={12}>React Base - Free Industrial Training</Col>
+            <Col xs={12}>React Base - Industrial Training</Col>
             <Col xs={12}>Sri Lanka</Col>
             <Col xs={12}>+94 585 858 585</Col>
             <Col xs={12}>+94 858 525 252</Col>

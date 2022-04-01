@@ -35,7 +35,7 @@ export function checkoutChangedShippingFormReducer(
 
 const checkoutChangedShippingFormErrorInit: ICheckoutChangedShippingFormError =
   {
-    fullNameError: "error",
+    fullNameError: "",
     addressError: "",
     cityError: "",
     postalCodeError: "",

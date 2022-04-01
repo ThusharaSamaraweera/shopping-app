@@ -25,7 +25,6 @@ const Category:React.FC = () => {
         dispatch(changeCategory({id: 2, title: "Grocery"}));
       }else if(category === "Pharmacy"){
         dispatch(changeCategory({id: 3, title: "Pharmacy"}));
-        console.log(activeCategory);
       }else if(category === "Food"){
         dispatch(changeCategory({id: 4, title: "Food"}));
       }else if(category === "Electronics"){

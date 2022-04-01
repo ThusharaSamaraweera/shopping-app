@@ -6,7 +6,7 @@ import { AppState } from '../../state/reducers'
 
 const ChangeShippingAddress = () => {
   const dispatch = useDispatch();
-  const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
+  const checkoutForm = useSelector((state: AppState) => state.checkoutBillingForm);
   
   const handleOnChangeShippingAddress = (isChangeShippingAddressVisible: boolean) => {
     dispatch(changeCheckoutBillingForm({key: 'isChangeShippingAddressVisible', value: isChangeShippingAddressVisible}))

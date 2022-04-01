@@ -13,8 +13,8 @@ import { validateAddress, validateEmail, validateOnlyLetters, validateOnlyNumber
 import { countryCode } from '../common/countryCode'
 
 const BillingForm: React.FC = () => {
-  const checkoutForm = useSelector((state: AppState) => state.checkoutForm);
-  const checkoutFormErrors = useSelector( (state: AppState) => state.checkoutFormError);
+  const checkoutBillingForm = useSelector((state: AppState) => state.checkoutBillingForm);
+  const checkoutBillingFormErrors = useSelector( (state: AppState) => state.checkoutBillingFormError);
 
   const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ const BillingForm: React.FC = () => {
   }
 
   const getCountry = () => {
-    return countryCode(checkoutForm.country)
+    return countryCode(checkoutBillingForm.country)
   }
 
   const handleOnCountry = (country: CountrySelect | null) => {
@@ -87,12 +87,13 @@ const BillingForm: React.FC = () => {
       dispatch(changeCheckoutBillingFormError({key: 'emailError', value: 'Enter valid email'}));
       return;
     }
-      dispatch(changeCheckoutBillingFormError({key: 'emailError', value: ''}));
+    dispatch(changeCheckoutBillingFormError({key: 'emailError', value: ''}));
+    handleOnRetypedEmailChanged(checkoutBillingForm.retypedEmail);
   }
 
   const handleOnRetypedEmailChanged = (retypedEmail: string) => {
     dispatch(changeCheckoutBillingForm({key: 'retypedEmail', value: retypedEmail}))
-    if(checkoutForm.email !== retypedEmail && checkoutForm.email !== null){
+    if(checkoutBillingForm.email !== retypedEmail && checkoutBillingForm.email !== null){
       dispatch(changeCheckoutBillingFormError({key: 'retypedEmailError', value: 'Email and Retype Email should be equal'}))
       return;
     }
@@ -104,7 +105,7 @@ const BillingForm: React.FC = () => {
       <Form>
         <Form.Group controlId="billingAddressFullName">
           <Form.Label>Full Name*</Form.Label>
-          <Form.Control value={checkoutForm.fullName}
+          <Form.Control value={checkoutBillingForm.fullName}
                         type="text"
                         placeholder="Your Full Name"
                         required
@@ -114,7 +115,7 @@ const BillingForm: React.FC = () => {
           />
           <Row>
             <span className='error-message'>
-              {checkoutFormErrors.fullNameError && checkoutFormErrors.fullNameError}
+              {checkoutBillingFormErrors.fullNameError && checkoutBillingFormErrors.fullNameError}
             </span>
           </Row>
         </Form.Group>
@@ -124,13 +125,13 @@ const BillingForm: React.FC = () => {
           <Form.Label>Address*</Form.Label>
           <Form.Control placeholder="Street Address"
                         required
-                        value={checkoutForm.address}
+                        value={checkoutBillingForm.address}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                           handleOnAddressChanged(event.target.value)}
           />
           <Row>
             <span className='error-message'>
-              {checkoutFormErrors.addressError && checkoutFormErrors.addressError}
+              {checkoutBillingFormErrors.addressError && checkoutBillingFormErrors.addressError}
             </span>
           </Row>
         </Form.Group>
@@ -141,7 +142,7 @@ const BillingForm: React.FC = () => {
             <Form.Control placeholder="City / suburb"
                           required
                           pattern="[A-Za-z\s]*$"
-                          value={checkoutForm.city}
+                          value={checkoutBillingForm.city}
                           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                             handleOnCityChanged(event.target.value)
                           }
@@ -149,7 +150,7 @@ const BillingForm: React.FC = () => {
             />
             <Row>
               <span className='error-message'>
-                {checkoutFormErrors.cityError && checkoutFormErrors.cityError}
+                {checkoutBillingFormErrors.cityError && checkoutBillingFormErrors.cityError}
               </span>
             </Row>
           </Form.Group>
@@ -159,14 +160,14 @@ const BillingForm: React.FC = () => {
             <Form.Control placeholder="Postal Code"
                           required
                           pattern="[0-9]*$"
-                          value={checkoutForm.postalCode}
+                          value={checkoutBillingForm.postalCode}
                           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                             handleOnPostalCodeChanged(event.target.value)
                           }
             />
             <Row>
               <span className='error-message'>
-                {checkoutFormErrors.postalCodeError && checkoutFormErrors.postalCodeError}
+                {checkoutBillingFormErrors.postalCodeError && checkoutBillingFormErrors.postalCodeError}
               </span>
             </Row>
           </Form.Group>
@@ -192,7 +193,7 @@ const BillingForm: React.FC = () => {
                       handleOnCountry(selected)
                     }
                     }
-                    defaultValue={checkoutForm.country}
+                    defaultValue={checkoutBillingForm.country}
             />
           </Form.Group>
         </Form.Row>
@@ -210,14 +211,14 @@ const BillingForm: React.FC = () => {
                 required
                 type="tel"
                 pattern="^\d{10}$"
-                value={checkoutForm.contactNumber ? checkoutForm.contactNumber : ''}
+                value={checkoutBillingForm.contactNumber ? checkoutBillingForm.contactNumber : ''}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleOnContactNumberChanged(event.target.value)}
               />
             </InputGroup>
             <Row>
                 <span className='error-message'>
-                  {checkoutFormErrors.contactNumberError && checkoutFormErrors.contactNumberError}
+                  {checkoutBillingFormErrors.contactNumberError && checkoutBillingFormErrors.contactNumberError}
                 </span>
             </Row>
           </Form.Group>
@@ -230,13 +231,13 @@ const BillingForm: React.FC = () => {
             <Form.Control type="email"
                           placeholder="Email"
                           required
-                          value={checkoutForm.email ? checkoutForm.email : ''}
+                          value={checkoutBillingForm.email ? checkoutBillingForm.email : ''}
                           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                             handleOnEmailChanged(event.target.value)}
             />
             <Row>
               <span className='error-message'>
-                {checkoutFormErrors.emailError && checkoutFormErrors.emailError}
+                {checkoutBillingFormErrors.emailError && checkoutBillingFormErrors.emailError}
               </span>
             </Row>
           </Form.Group>
@@ -246,13 +247,13 @@ const BillingForm: React.FC = () => {
             <Form.Control type="email"
                           placeholder='retype email'
                           required
-                          value={checkoutForm.retypedEmail}
+                          value={checkoutBillingForm.retypedEmail}
                           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                             handleOnRetypedEmailChanged(event.target.value)}
             />
             <Row>
               <span className='error-message'>
-                {checkoutFormErrors.retypedEmailError && checkoutFormErrors.retypedEmailError}
+                {checkoutBillingFormErrors.retypedEmailError && checkoutBillingFormErrors.retypedEmailError}
               </span>
             </Row>
           </Form.Group>

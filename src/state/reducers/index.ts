@@ -9,8 +9,8 @@ export const rootReducer = combineReducers({
   cartProducts: CartProductReducter,
   products: productReducer,
   category: categoryReducer,
-  checkoutForm : checkoutBillingFormReducer,
-  checkoutFormError : checkoutBillingFormErrorReducer,
+  checkoutBillingForm : checkoutBillingFormReducer,
+  checkoutBillingFormError : checkoutBillingFormErrorReducer,
   checkoutchangedShippingForm: checkoutChangedShippingFormReducer,
   checkoutchangedShippingFormError: checkoutChangedShippingFormErrorReducer
 })
