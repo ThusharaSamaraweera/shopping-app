@@ -73,6 +73,11 @@
           font-size: 1em;
           padding: 7px 35px;
 
+          a {
+            color: white;
+            text-decoration: none;
+          }
+
           &:hover {
             background-color: #74e079;
           }
