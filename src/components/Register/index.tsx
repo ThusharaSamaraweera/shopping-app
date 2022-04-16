@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
 import RegisterImage from '../../asserts/images/registerCart.png'
+import RegisterForm from "./RegisterForm";
 
 const Register:React.FC = () => {
 
@@ -11,16 +12,14 @@ const Register:React.FC = () => {
     <Container fluid={true}>
       <TopNavBar/>
       <MainMiddleNavBar/>
-      <Row className="register">
+      <Row className="register d-flex justify-content-center">
         <Col xs={12} sm={12} md={5} className='img-col d-flex justify-content-center'>
           <Image className="img mt-4"
                   src={RegisterImage}
                   alt="register cart"
           />
         </Col>
-        <Col>
-        
-        </Col>
+        <RegisterForm />
       </Row>
       <Footer/>
     </Container>
