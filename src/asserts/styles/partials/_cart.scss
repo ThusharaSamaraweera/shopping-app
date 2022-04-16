@@ -107,6 +107,8 @@
           text-align: center;
           color: #5a6268;
         }
+
+
       }
     }
   }
@@ -118,7 +120,7 @@
       .cart-products {
         .dropdown-menu {
           width: 25em;
-          font-size: 0.7em;
+          font-size: 1em;
 
           .cart-product-list {
             max-height: 200px;
@@ -131,6 +133,11 @@
               padding-right: 2.2em;
             }
           }
+
+          .cart-checkout-btn{
+            font-size: 0.8em;
+            padding: 3px 21px;
+          }
         }
       }
     }
@@ -142,8 +149,8 @@
     .dropdown {
       .cart-products {
         .dropdown-menu {
-          width: 25em;
-          font-size: 0.6em;
+          width: 20em;
+          font-size: 0.8em;
 
           .cart-product-list {
             max-height: 160px;

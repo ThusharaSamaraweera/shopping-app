@@ -32,13 +32,13 @@ const CartProduct:React.FC<CartProductProps> = (props) => {
       <Col xs={9}>
         <Row>
           <Col className='cart-product-name pt-1' xs={10}>{props.product.title}</Col>
-          <Col className='cart-product-delete-btn' xs={2}>
+          <Col className='cart-product-delete-btn text-end' xs={2}>
             <Trash size='1em' onClick={ () => handleOnDeleteCartProduct(props.product.id)}/>
           </Col>
         </Row>
         <Row className='py-2'>
-          <Col xs={4} className='cart-product-qty'>Qty. {props.product.quantity}</Col>
-          <Col xs={8} className='cart-product-price text-end'>
+          <Col xs={6} className='cart-product-qty'>Qty. {props.product.quantity}</Col>
+          <Col xs={6} className='cart-product-price text-end'>
             {ProductPrice(priceMain, priceCents(), '', 'small-cents', undefined, false)}
           </Col>
         </Row>
