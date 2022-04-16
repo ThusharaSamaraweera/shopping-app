@@ -11583,6 +11583,11 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
+"sweetalert2@^11.1.8":
+  "integrity" "sha512-OH2fnmx2K9AhT9F3Tkt2KKKO8/4bt7roDJ6F95dG/whZJtRiqPgk1B0rUPiztKZSPzqthzVtVJnueJdsL2f8TA=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.1.8.tgz"
+  "version" "11.1.8"
+
 "symbol-observable@^4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-4.0.0.tgz"

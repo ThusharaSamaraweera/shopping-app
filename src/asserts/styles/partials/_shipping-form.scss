@@ -1,0 +1,213 @@
+@import "../variables";
+
+.shopping-form-area {
+  .shopping-form-area-div {
+    .sign-area {
+      border: 1px solid rgba(0, 0, 0, .125);
+      margin: 5px 0;
+      padding: 15px;
+      background-color: white;
+      border-radius: 5px;
+
+      .signing-label {
+        padding-left: 0;
+
+        label {
+          font-size: 1em;
+        }
+      }
+
+      .signing-btn {
+        display: flex;
+        padding-left: 20px;
+        padding-right: 0;
+        align-content: center;
+        .btn-success {
+          color: #fff;
+          background-color: $main-middle-navbar-logo-btn-color;
+          border-color: $main-middle-navbar-logo-btn-color;
+          font-size: 1rem;
+          font-weight: 400;
+          padding: 4px 0;
+          margin-bottom: 0;
+          border-radius: 6px;
+          float: right;
+          right: 2rem;
+          width: 8em;
+          height: 2rem;
+        }
+      }
+    }
+
+    .billing-address {
+      border: 1px solid rgba(0, 0, 0, .125);
+      margin: 5px 0;
+      border-radius: 5px;
+      background-color: white;
+
+      .billing-address-header {
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        margin-bottom: 0;
+        padding: 12px 15px;
+
+        h5 {
+          margin-bottom: 0;
+          font-weight: 500;
+          font-size: 1.1rem;
+        }
+      }
+      
+    }
+
+    .change-shipping-address-area {
+      .change-shipping-option {
+        font-size: 1.1rem;
+      }
+
+      .address-radio-area {
+        display: contents;
+        font-size: 0.9em;
+
+        .form-check {
+          padding: 0 0 0 30px;
+          min-width: 10rem;
+          cursor: pointer;
+
+          label {
+            margin: 0 4px;
+            padding: 2px 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .delivery-instructions-area {
+      padding: 5px 0 5px 5px;
+
+      .mt-3 {
+        padding: 0 8px;
+      }
+    }
+
+    .payment-method-option {
+      position: relative;
+      margin: 0 0 1rem 0;
+
+      h5 {
+        font-size: 1rem;
+      }
+
+      .credit-card-bg {
+        width: 40%;
+        height: auto;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #cce5ff;
+        cursor: pointer;
+      }
+
+      .credit-card-bg:active {
+        background-color: #F1F8E9;
+        border: solid 2px $main-middle-navbar-logo-btn-color;
+      }
+
+      .selected-card {
+        background-color: #F1F8E9;
+        border: solid 2px $main-middle-navbar-logo-btn-color;
+      }
+
+      .fa-credit-card {
+        font-size: 6em;
+        margin: 1rem 0;
+      }
+
+      .fa-money-bill-alt {
+        font-size: 6em;
+        margin: 1rem 0;
+      }
+
+      .payment-label-name {
+        position: relative;
+      }
+
+      .validate-payment-method {
+        font-size: 0.5em;
+        color: red;
+      }
+    }
+
+    .order-btn {
+      text-decoration: none;
+
+      .btn-primary {
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+        width: 8rem;
+        margin: 1rem auto auto auto;
+      }
+
+      .btn-primary:hover {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:active {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:focus {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+    }
+
+    .order-btn {
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .shopping-form-area {
+    .shopping-form-area-div {
+
+      .payment-method-option {
+        .fa-credit-card {
+          font-size: 4rem;
+        }
+
+        .fa-money-bill-alt {
+          font-size: 4rem;
+        }
+      }
+
+      .order-btn {
+        .btn-primary {
+          width: 80%;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .shopping-form-area {
+    .shopping-form-area-div {
+      .billing-address {
+
+      }
+    }
+  }
+}
