@@ -1,6 +1,6 @@
 import { IProduct } from '../../types/shoppingAreaTypes';
 import * as ACTIONS from '../actionConstants/cartProductsActions';
-import { AddCartProduct, RemoveCartProduct, UpdateCartProduct } from '../actionTypes/cartProductActionTypes';
+import { AddCartProduct, RemoveCartProduct, UpdateCartProduct, ChangeCartProduct } from '../actionTypes/cartProductActionTypes';
 
 export function addCartProduct(newProduct: IProduct): AddCartProduct {
   return {
@@ -9,10 +9,17 @@ export function addCartProduct(newProduct: IProduct): AddCartProduct {
   }
 }
 
-export function removeCartProduct(id: number): RemoveCartProduct {
+export function removeCartProduct(id: string): RemoveCartProduct {
   return {
     type: ACTIONS.REMOVE_CART_PRODUCT,
     payload: id
+  }
+}
+
+export function changeCartProduct(changeItem: IProduct): ChangeCartProduct {
+  return {
+    type: ACTIONS.CHANGE_CART_PRODUCT,
+    payload: changeItem
   }
 }
 

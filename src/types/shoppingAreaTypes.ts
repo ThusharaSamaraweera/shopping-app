@@ -4,7 +4,7 @@ export interface ICategory{
 }
 
 export interface IProduct {
-  id: number
+  id: string
   title: string
   quantity: number
   category: ICategory

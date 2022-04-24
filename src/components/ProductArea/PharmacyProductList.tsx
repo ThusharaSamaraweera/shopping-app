@@ -25,8 +25,8 @@ const PharmacyProductsList: React.FC = () => {
   }, [products, renderProducts]);
 
   return (
-    <Col>
-      <Row className='product-list mt-5 mb-5'>
+    <Col xs={12} sm={12}>
+      <Row className='product-list justify-content-center justify-content-sm-start mt-5 mb-5'>
         <h5>Pharmacy</h5>
         {renderProducts()}
       </Row>

@@ -7,6 +7,7 @@ import CartDiscount from "./CartDiscount";
 import CartTotal from "./CartTotal";
 import { useSelector } from "react-redux";
 import { AppState } from "../../state/reducers";
+import { Link } from "react-router-dom";
 
 const Cart: React.FC = () => {
 
@@ -40,7 +41,9 @@ const Cart: React.FC = () => {
                       TotalCents={21}/>
             <Row className='mx-1'>
               <Col>
-                <button className='cart-checkout-btn'>Checkout</button>
+                <button className='cart-checkout-btn'>
+                  <Link to={'/checkout'}>Checkout</Link>
+                </button>
               </Col>
             </Row>
           </Dropdown.Menu>
