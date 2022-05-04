@@ -3,7 +3,7 @@
 $color: #4caf50;
 
 .main-middle-nav-bar {
-  border-top: 1px #CCC solid;
+  border-top: 1px #ccc solid;
   box-shadow: 0 5px 8px -3px #ccc;
   z-index: 50;
   background-color: white;
@@ -35,7 +35,7 @@ $color: #4caf50;
       color: #fff;
       padding-top: 0.3em;
       box-shadow: 0 1px 1px 1px #757575;
-      font-size: .7rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-align: center;
       margin-top: -8px;
@@ -45,7 +45,6 @@ $color: #4caf50;
   }
 
   .check-out-col {
-
     .checkout-btn {
       padding: 6px 10px;
       font-size: 0.9em;
@@ -67,13 +66,12 @@ $color: #4caf50;
 
 @media only screen and (max-width: $extra-large-device-size) {
   .main-middle-nav-bar {
-    padding-right: 15vw;
+    padding-right: 10vw;
   }
 }
 
 @media only screen and (max-width: $medium-device-size) {
   .main-middle-nav-bar {
-
     .shopping-cart-icon {
       justify-content: flex-end;
     }

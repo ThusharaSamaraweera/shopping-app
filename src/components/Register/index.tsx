@@ -13,7 +13,7 @@ const Register:React.FC = () => {
       <TopNavBar/>
       <MainMiddleNavBar/>
       <Row className="register d-flex justify-content-center">
-        <Col xs={12} sm={12} md={5} className='img-col d-flex justify-content-center'>
+        <Col xs={12} sm={12} md={12} lg={5} className='img-col d-flex justify-content-center'>
           <Image className="img mt-4"
                   src={RegisterImage}
                   alt="register cart"
