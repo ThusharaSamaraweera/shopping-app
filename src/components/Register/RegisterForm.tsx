@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Col,
@@ -14,8 +14,13 @@ import { countries, customStyles } from "../constants/checkoutAreaContants";
 import { countryCode } from "../common/countryCode";
 import Password from "./Password";
 import { calcStrength } from "../../utils/inputValidations";
+import { useMutation } from "@apollo/client";
+import { SIGNUP_CUSTOMER } from "../../graphQL/auth/authMutations";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "../../state/actions/authActions";
 
 const RegisterForm = () => {
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -33,6 +38,7 @@ const RegisterForm = () => {
   const [strongPasswordError, setStrongPasswordError] = useState<string>("");
   const [isValidPhoneNumber, setValidPhoneNumber] = useState<boolean>(true);
   const [retypedEmailError, setRetypedEmailError] = useState<string>("");
+  const [signup] = useMutation(SIGNUP_CUSTOMER);
 
   const handleOnNameChanged = (inputName: string) => {
     setName(inputName);
@@ -65,24 +71,47 @@ const RegisterForm = () => {
     return countryCode(country);
   };
 
-  const handleOnContactNumberChanged = (inputContactNumber: string) => [
-    setContactNumber(inputContactNumber),
-  ];
+  const handleOnContactNumberChanged = (inputContactNumber: string) => {
+    setContactNumber(inputContactNumber);
+  };
 
   const handleOnEmailChanged = (inputEmail: string) => {
     setEamil(inputEmail);
   };
 
   const handleOnRetypedEmailChanged = (inputRetypeEmail: string) => {
+    console.log(email, inputRetypeEmail);
     setRetypeEmail(inputRetypeEmail);
     if (email !== inputRetypeEmail && email !== null) {
       setRetypedEmailError("Eamil and Re-type email must be same");
       return;
     }
-    setRetypedEmailError("")
+    setRetypedEmailError("");
   };
 
-  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    handleOnRetypedEmailChanged(retypeEmail);
+  }, [email]);
+
+  const signup_customer = async () => {
+    return await signup({
+      variables: {
+        newUser: {
+          name: name,
+          address: address,
+          city: city,
+          postalCode: postalCode,
+          phoneNumber: contactNumber,
+          email: email,
+          password: password,
+          country: country.value,
+          userType: "user",
+        },
+      },
+    });
+  };
+
+  const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     event.preventDefault();
 
@@ -93,6 +122,16 @@ const RegisterForm = () => {
     }
     setValidated(false);
     console.log(name, password);
+    signup_customer()
+      .then(async ({ data }) => {
+        if (data) {
+          console.log(data);
+          dispatch(setAuthUser(data))
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleOnPasswordChanged = (inputPassword: string) => {
@@ -237,6 +276,7 @@ const RegisterForm = () => {
                 required
                 pattern="^\d+$"
                 value={contactNumber}
+                maxLength={9}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleOnContactNumberChanged(event.target.value)
                 }

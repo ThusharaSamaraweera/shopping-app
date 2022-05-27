@@ -24,5 +24,4 @@ export interface changeCheckoutShippingFormActionType {
 export interface changeCheckoutShippingFormErrorActionType {
   type: typeof ACTIONS.CHANGE_CHECKOUT_SHIPPING_FORM_ERROR,
   payload:   ICheckoutShippingFormInputDataError
-
 }

@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import {Button, Nav, Navbar, Row} from "react-bootstrap";
 import {Phone, User} from "react-feather";
-import {Redirect, Link} from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
+import PublicGuards from "../common/authGuards/PublicGuards";
 
 const TopNavBar:React.FC = () => {
-  const [isRedirectAccount, setIsRedirectAccount] = useState(false);
-  const [isRedirectRegister, setRedirectRegister] = useState(false);
-  // const [isRedirectRegiser, see]
+  const history = useHistory()
 
   const handleOnAccountRedireact = () => {
-    setIsRedirectAccount(true);
+    history.push('/account')
   }
 
   const handleOnRegisterRedirect = () => {
-    setRedirectRegister(true);
+    history.push('/register')
+  }
+
+  const handleOnLogout = () => {
+
   }
 
   return (
@@ -29,20 +32,23 @@ const TopNavBar:React.FC = () => {
               <a href="#delivery-area">Delivery Areas</a>
             </Row>
 
-            {isRedirectAccount && <Redirect to='/account'/>}
             <Row className='my-account' onClick={handleOnAccountRedireact}>
               <i><User size='1.1em'/></i>
               <a href="#account">My Account</a>
             </Row>
 
-            {isRedirectRegister && <Redirect to='/register' />}
             <div className='register' onClick={handleOnRegisterRedirect}>
               <Button variant="outline-success">Register</Button>
             </div>
+            <PublicGuards>
+              <Row className='login-row'>
+                <Link to={'login'}>Login</Link>
+              </Row>
+            </PublicGuards>
 
-            <Row className='login-row'>
-              <Link to={'login'}>Login</Link>
-            </Row>
+            <div className='register' onClick={handleOnLogout}>
+              <Button variant="outline-success">Logout</Button>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

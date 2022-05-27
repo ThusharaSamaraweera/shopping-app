@@ -1,22 +1,22 @@
 import { IProduct } from '../../types/shoppingAreaTypes';
 import * as ACTIONS from '../actionConstants/cartProductsActions';
 
-export interface AddCartProduct {
+interface AddCartProduct {
   type: typeof ACTIONS.ADD_CART_PRODUCT
   payload: IProduct
 }
 
-export interface RemoveCartProduct {
+interface RemoveCartProduct {
   type: typeof ACTIONS.REMOVE_CART_PRODUCT
   payload: string
 }
 
-export interface UpdateCartProduct {
+interface UpdateCartProduct {
   type: typeof ACTIONS.UPDATE_CART_PRODUCT
   payload: IProduct
 }
 
-export interface ChangeCartProduct {
+interface ChangeCartProduct {
   type: typeof ACTIONS.CHANGE_CART_PRODUCT
   payload: IProduct
 }
