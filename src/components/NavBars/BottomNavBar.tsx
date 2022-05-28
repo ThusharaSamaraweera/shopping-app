@@ -14,7 +14,7 @@ const BottomNabBar: React.FC = () => {
                 <NavDropdown.Item href="#action/3.2">Grocery</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Pharmacy</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.4">Food</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Electronic</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.5">Electronic</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#link">FAQ</Nav.Link>
