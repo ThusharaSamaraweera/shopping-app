@@ -9,15 +9,15 @@ import {
 } from "react-bootstrap";
 import Select from "react-select";
 
-import { CountrySelect } from "../../types/checkoutAreaTypes";
-import { countries, customStyles } from "../constants/checkoutAreaContants";
-import { countryCode } from "../common/countryCode";
+import { CountrySelect } from "../../../types/checkoutAreaTypes";
+import { countries, customStyles } from "../../constants/checkoutAreaContants";
+import { countryCode } from "../../common/countryCode";
 import Password from "./Password";
-import { calcStrength } from "../../utils/inputValidations";
+import { calcStrength } from "../../../utils/inputValidations";
 import { useMutation } from "@apollo/client";
-import { SIGNUP_CUSTOMER } from "../../graphQL/auth/authMutations";
+import { SIGNUP_CUSTOMER } from "../../../graphQL/auth/authMutations";
 import { useDispatch } from "react-redux";
-import { setAuthUser } from "../../state/actions/authActions";
+import { setAuthUser } from "../../../state/actions/authActions";
 
 const RegisterForm = () => {
   const dispatch = useDispatch()

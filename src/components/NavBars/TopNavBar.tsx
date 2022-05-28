@@ -40,11 +40,11 @@ const TopNavBar:React.FC = () => {
             <div className='register' onClick={handleOnRegisterRedirect}>
               <Button variant="outline-success">Register</Button>
             </div>
-            <PublicGuards>
+            {/* <PublicGuards> */}
               <Row className='login-row'>
                 <Link to={'login'}>Login</Link>
               </Row>
-            </PublicGuards>
+            {/* </PublicGuards> */}
 
             <div className='register' onClick={handleOnLogout}>
               <Button variant="outline-success">Logout</Button>
