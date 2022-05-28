@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                 <Nav.Link href="#home">HOME</Nav.Link>
                 <Nav.Link href="#ABOUT">ABOUT US</Nav.Link>
                 <Nav.Link href="#FAQ">FAQ</Nav.Link>
-                <Nav.Link href="#PRICING">PRICING</Nav.Link>
+                {/* <Nav.Link href="#PRICING">PRICING</Nav.Link> */}
                 <Nav.Link href="#CONTACT">CONTACT US</Nav.Link>
               </Nav>
             </Navbar.Collapse>
@@ -21,10 +21,9 @@ const Footer: React.FC = () => {
         </Row>
         <Row xs={12} className='footer-details text-center py-3'>
           <Col lg={{span: 4, offset: 4}} md={{span: 8, offset: 2}} xs={{span: 12}}>
-            <Col xs={12}>React Base - Industrial Training</Col>
             <Col xs={12}>Sri Lanka</Col>
-            <Col xs={12}>+94 585 858 585</Col>
-            <Col xs={12}>+94 858 525 252</Col>
+            <Col xs={12}>+94 xxx xxx xxx</Col>
+            <Col xs={12}>+94 xxx xxx xxx</Col>
             <Col xs={12}>Copyright © 2020</Col>
             <Col xs={12} className='py-3'>
               <div className='social'>

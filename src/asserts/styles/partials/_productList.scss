@@ -78,6 +78,9 @@ $add-to-cart-btn: #4caf50;
             }
       
             .product-btn {
+              display: flex;
+              justify-content: center;
+              
               .product-add-to-cart {
                 float: right;
                 border-radius: if($rounded-corners, 25px, null);

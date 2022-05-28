@@ -1,0 +1,124 @@
+.login-row {
+
+  .login-section {
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: fit-content;
+  
+    .login-form-title {
+      font-weight: 700;
+    }
+  
+    .login-form {
+      .form-group {
+        padding: 0;
+        margin-right: -5px;
+        margin-bottom: 1rem;
+  
+        .form-label {
+          margin-bottom: 4px;
+          font-size: 1.1em;
+          font-weight: 500;
+        }
+  
+        .form-control {
+          background-color: #fff;
+          padding: 4px 10px;
+          border: 1px solid #9e9e9e;
+          font-size: 0.8em;
+          border-radius: 3px;
+        }
+  
+        .error-message {
+          font-size: 0.7em !important;
+          color: red;
+        }
+      }
+  
+      .password-group {
+        padding-bottom: 0;
+  
+        .password-append {
+          .form-control {
+            border: 1px solid #9e9e9e;
+            border-right: none;
+            border-radius: 3px 0px 0px 3px;
+          }
+  
+          .input-group-append {
+            .input-group-text {
+              background-color: #fff;
+              border: 1px solid #9e9e9e;
+              border-radius: 0 3px 3px 0;
+              padding: 6px 10px;
+              cursor: pointer;
+              height: 30px;
+  
+              svg {
+                width: 15px;
+              }
+            }
+          }
+  
+          .error-message {
+            font-size: 0.7em !important;
+            color: red;
+          }
+        }
+      }
+  
+      .login-btn {
+        text-decoration: none;
+  
+        .btn-primary {
+          display: flex;
+          justify-content: center;
+          color: #fff;
+          background-color: $main-middle-navbar-logo-btn-color;
+          border-color: $main-middle-navbar-logo-btn-color;
+          width: 12rem;
+          margin: 1rem auto auto auto;
+          font-weight: 700;
+        }
+  
+        .btn-primary:hover {
+          color: $main-middle-navbar-logo-btn-color;
+          background-color: white;
+          border-color: $main-middle-navbar-logo-btn-color;
+        }
+  
+        .btn-primary:active {
+          color: #fff;
+          background-color: $main-middle-navbar-logo-btn-color;
+          border-color: $main-middle-navbar-logo-btn-color;
+        }
+  
+        .btn-primary:focus {
+          color: #fff;
+          background-color: $main-middle-navbar-logo-btn-color;
+          border-color: $main-middle-navbar-logo-btn-color;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .login-row {
+    min-height: 55vh;
+    
+    .login-section {
+      .login-form-title {
+        font-weight: 400;
+      }
+  
+      .login-form {
+        font-size: small;
+      }
+  
+      .login-btn{
+        font-size: small;
+      }
+    }
+  }
+}

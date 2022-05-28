@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Footer from "../Footer";
-import MainMiddleNavBar from "../NavBars/MiddleNavBar";
-import TopNavBar from "../NavBars/TopNavBar";
-import RegisterImage from '../../asserts/images/registerCart.png'
+import Footer from "../../Footer";
+import MainMiddleNavBar from "../../NavBars/MiddleNavBar";
+import TopNavBar from "../../NavBars/TopNavBar";
+import RegisterImage from '../../../asserts/images/registerCart.png'
 import RegisterForm from "./RegisterForm";
 
 const Register:React.FC = () => {

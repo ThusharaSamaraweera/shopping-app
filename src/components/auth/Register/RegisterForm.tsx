@@ -8,19 +8,21 @@ import {
   Row,
 } from "react-bootstrap";
 import Select from "react-select";
+import { useHistory } from "react-router-dom";
 
-import { CountrySelect } from "../../types/checkoutAreaTypes";
-import { countries, customStyles } from "../constants/checkoutAreaContants";
-import { countryCode } from "../common/countryCode";
+import { CountrySelect } from "../../../types/checkoutAreaTypes";
+import { countries, customStyles } from "../../constants/checkoutAreaContants";
+import { countryCode } from "../../common/countryCode";
 import Password from "./Password";
-import { calcStrength } from "../../utils/inputValidations";
+import { calcStrength } from "../../../utils/inputValidations";
 import { useMutation } from "@apollo/client";
-import { SIGNUP_CUSTOMER } from "../../graphQL/auth/authMutations";
+import { SIGNUP_CUSTOMER } from "../../../graphQL/auth/authMutations";
 import { useDispatch } from "react-redux";
-import { setAuthUser } from "../../state/actions/authActions";
+import { setAuthUser } from "../../../state/actions/authActions";
 
 const RegisterForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -80,7 +82,6 @@ const RegisterForm = () => {
   };
 
   const handleOnRetypedEmailChanged = (inputRetypeEmail: string) => {
-    console.log(email, inputRetypeEmail);
     setRetypeEmail(inputRetypeEmail);
     if (email !== inputRetypeEmail && email !== null) {
       setRetypedEmailError("Eamil and Re-type email must be same");
@@ -126,7 +127,8 @@ const RegisterForm = () => {
       .then(async ({ data }) => {
         if (data) {
           console.log(data);
-          dispatch(setAuthUser(data))
+          dispatch(setAuthUser(data));
+          history.push('/')
         }
       })
       .catch((err) => {
