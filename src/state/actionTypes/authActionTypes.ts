@@ -6,4 +6,8 @@ interface SetAuthUser {
   payload: IAuthUser
 }
 
-export type authActionTypes = SetAuthUser;
+interface logout {
+  type: typeof actions.LOGOUT,
+}
+
+export type authActionTypes = SetAuthUser | logout;

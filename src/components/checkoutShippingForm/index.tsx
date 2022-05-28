@@ -15,6 +15,7 @@ import {
   changeCheckoutShippingFormError,
 } from "../../state/actions/checkoutFormActions";
 import ChangeShippingForm from "./ChangeShippingForm";
+import GuestComponent from "../common/authGuards/GeustComponent";
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
@@ -219,14 +220,17 @@ const Index: React.FC = () => {
           md={12}
           lg={{ span: 7, offset: 5 }}
         >
-          <SigninArea />
+          <GuestComponent>
+            <SigninArea />
+            
+            <Row className="billing-address">
+              <Col className="billing-address-header">
+                <h5>Shipping and Billing Address</h5>
+              </Col>
+              <BillingForm />
+            </Row>
+          </GuestComponent>
 
-          <Row className="billing-address">
-            <Col className="billing-address-header">
-              <h5>Shipping and Billing Address</h5>
-            </Col>
-            <BillingForm />
-          </Row>
           <ChangeShippingOption />
           {checkoutBillingForm.isChangeShippingAddressVisible && (
             <div className="change-shipping-form">
