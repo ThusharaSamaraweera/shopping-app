@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                 <Nav.Link href="#home">HOME</Nav.Link>
                 <Nav.Link href="#ABOUT">ABOUT US</Nav.Link>
                 <Nav.Link href="#FAQ">FAQ</Nav.Link>
-                <Nav.Link href="#PRICING">PRICING</Nav.Link>
+                {/* <Nav.Link href="#PRICING">PRICING</Nav.Link> */}
                 <Nav.Link href="#CONTACT">CONTACT US</Nav.Link>
               </Nav>
             </Navbar.Collapse>

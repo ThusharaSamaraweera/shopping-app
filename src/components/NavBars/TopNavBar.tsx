@@ -62,7 +62,7 @@ const TopNavBar: React.FC = () => {
             </GuestComponent>
 
             <GuestComponent>
-              <div className="login-row">
+              <div className="login-div">
                 <Link to={"login"}>Login</Link>
                 {/* <Button variant="outline-success">Login</Button> */}
               </div>

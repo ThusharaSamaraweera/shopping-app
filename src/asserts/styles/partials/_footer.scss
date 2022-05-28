@@ -7,16 +7,22 @@
   margin-top: 10vh;
 
   .footer-navigation {
-    border-bottom: solid 1px #3b3b3b;
+    border-bottom: solid 1px $main-middle-navbar-logo-btn-color;
     white-space: nowrap;
 
     .nav-link {
       color: $footer-font-color;
       font-weight: 200;
+      font-weight: 600;
+
       &:hover {
-        color: #c4c4c4;
+        color: $main-middle-navbar-logo-btn-color;
       }
     }
+    
+      .active {
+        color: $main-middle-navbar-logo-btn-color !important;
+      }
   }
 
   .footer-details {
@@ -30,9 +36,9 @@
       i {
         padding-right: 5px;
         padding-left: 5px;
-
+        
         a {
-          color: $footer-font-color;
+          color: $main-middle-navbar-logo-btn-color !important;
         }
       }
     }
