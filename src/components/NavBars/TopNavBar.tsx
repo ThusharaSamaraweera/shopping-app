@@ -46,7 +46,7 @@ const TopNavBar: React.FC = () => {
                 <i>
                   <User size="1.1em" />
                 </i>
-                <a href="#account">My Account</a>
+                <a href="account">My Account</a>
               </Row>
             </UserComponent>
 

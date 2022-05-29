@@ -5,6 +5,8 @@ import ShoppingApp from "../../views/ShoppingApp";
 import Register from "../auth/Register";
 import Login from "../auth/Login/Login";
 import Checkout from "../checkout/Checkout";
+import GuestRoute from "./GuestRoute";
+import UserRoute from "./UserRoute";
 
 const ShoppingAreaRoute = () => {
 
@@ -12,10 +14,15 @@ const ShoppingAreaRoute = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ShoppingApp} />
-        <Route path="/account" component={Account} />
-        <Route path='/register' component={Register} />
-        <Route path='/login' component={Login} />
         <Route path='/checkout' component={Checkout} />
+        <Route path="/account" component={Account} />
+
+        <GuestRoute>
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+        </GuestRoute>
+
+
       </Switch>
     </BrowserRouter>
   )
