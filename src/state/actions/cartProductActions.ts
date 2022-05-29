@@ -29,3 +29,9 @@ export function updateCartProduct(updateProduct: IProduct): CartProductActionTyp
     payload: updateProduct
   }
 }
+
+export function getProductFromSessionStorage(): CartProductActionTypes{
+  return {
+    type: ACTIONS.GET_PRODUCTS_FROM_SESSION_STORAGE
+  }
+}
