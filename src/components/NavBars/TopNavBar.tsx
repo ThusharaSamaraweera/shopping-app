@@ -24,6 +24,10 @@ const TopNavBar: React.FC = () => {
     history.push("/");
   };
 
+  const handleOnAdminNavigate = ()  => {
+    history.push('/admin')
+  }
+
   return (
     <Row className="top-nav-col">
       <Navbar expand="md">
@@ -31,7 +35,7 @@ const TopNavBar: React.FC = () => {
           <Phone size="1.1em" />
         </i>
         <a href="#number" className="number">
-          +94779 510 260
+          +94 xxx xxx xxxx
         </a>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -42,11 +46,20 @@ const TopNavBar: React.FC = () => {
             </Row>
 
             <UserComponent>
-              <Row className="my-account" onClick={handleOnAccountRedireact}>
+              <div className="my-account" onClick={handleOnAccountRedireact}>
                 <i>
                   <User size="1.1em" />
                 </i>
                 <a href="account">My Account</a>
+              </div>
+            </UserComponent>
+
+            <UserComponent>
+              <Row className="my-account" onClick={handleOnAdminNavigate}>
+                <i>
+                  <User size="1.1em" />
+                </i>
+                <a href="admin">Admin</a>
               </Row>
             </UserComponent>
 
