@@ -64,11 +64,13 @@ export function CartProductReducter(
     case ACTIONS.GET_PRODUCTS_FROM_SESSION_STORAGE: {
       // @ts-ignore
       tempCart = sessionStorage.getItem('cart')
-
+      // @ts-ignore
+      tempCart = JSON.parse(tempCart) ? JSON.parse(tempCart) : []
+      
       return {
         ...state,
         // @ts-ignore
-        cartProducts:  JSON.parse(tempCart)
+        cartProducts:  tempCart
       }
     }
 
