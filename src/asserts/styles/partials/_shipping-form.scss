@@ -60,6 +60,8 @@
     }
 
     .change-shipping-address-area {
+      padding: 5px 0 5px 5px;
+
       .change-shipping-option {
         font-size: 1.1rem;
       }
@@ -139,42 +141,45 @@
     }
 
     .order-btn {
-      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      background-color: $main-middle-navbar-logo-btn-color;
+      border-color: $main-middle-navbar-logo-btn-color;
+      width: 15rem;
+      font-size: 1.3em;
+      height: auto;
+      font-weight: 700;
+      margin: 1rem auto;
 
-      .btn-primary {
+      .ant-btn-loading-icon {
         display: flex;
-        justify-content: center;
-        color: #fff;
-        background-color: $main-middle-navbar-logo-btn-color;
-        border-color: $main-middle-navbar-logo-btn-color;
-        width: 8rem;
-        margin: 1rem auto auto auto;
-      }
-
-      .btn-primary:hover {
-        color: #fff;
-        background-color: $main-middle-navbar-logo-btn-color;
-        border-color: $main-middle-navbar-logo-btn-color;
-      }
-
-      .btn-primary:active {
-        color: #fff;
-        background-color: $main-middle-navbar-logo-btn-color;
-        border-color: $main-middle-navbar-logo-btn-color;
-      }
-
-      .btn-primary:focus {
-        color: #fff;
-        background-color: $main-middle-navbar-logo-btn-color;
-        border-color: $main-middle-navbar-logo-btn-color;
+        padding-top: 8px;
       }
     }
 
-    .order-btn {
-      a:hover {
-        text-decoration: none;
-      }
+    .order-btn:hover {
+      color: $main-middle-navbar-logo-btn-color;
+      background-color: #fff;
+      border-color: $main-middle-navbar-logo-btn-color;
     }
+
+    .order-btn:active {
+      color: #fff;
+      background-color: $main-middle-navbar-logo-btn-color;
+      border-color: $main-middle-navbar-logo-btn-color;
+    }
+
+    .order-btn:focus {
+      color: #fff;
+      background-color: $main-middle-navbar-logo-btn-color;
+      border-color: $main-middle-navbar-logo-btn-color;
+    }
+
+    .order-btn:disabled {
+      cursor: not-allowed;
+    }
+
   }
 }
 
@@ -193,10 +198,8 @@
       }
 
       .order-btn {
-        .btn-primary {
-          width: 80%;
-          padding: 0;
-        }
+        width: 80%;
+        padding: 4px;
       }
     }
   }

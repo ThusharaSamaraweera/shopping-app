@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
 
-const Account = () => {
+const Account: React.FC = () => {
 
   return (
     <Container fluid={true}>
