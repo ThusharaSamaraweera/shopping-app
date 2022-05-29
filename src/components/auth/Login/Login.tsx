@@ -47,7 +47,6 @@ const Login: React.FC = () => {
       return;
     }
     setLoading(true)
-    console.log(email, password);
     loginUser().then(async ({ data }) => {
       if (data) {
         console.log(data)

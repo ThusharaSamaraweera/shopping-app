@@ -8,6 +8,7 @@ export const SIGNUP_CUSTOMER = gql`
   }
 
   fragment userDetails on LogedUser{
+    id
     email
     name
     userType
@@ -22,6 +23,7 @@ export const LOGIN = gql`
   }
 
   fragment userDetails on LogedUser{
+    id
     email
     name
     userType

@@ -112,6 +112,8 @@ const RegisterForm = () => {
     });
   };
 
+  
+
   const handleOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
     event.preventDefault();
@@ -122,18 +124,18 @@ const RegisterForm = () => {
       return;
     }
     setValidated(false);
-    console.log(name, password);
     signup_customer()
       .then(async ({ data }) => {
         if (data) {
           console.log(data);
           dispatch(setAuthUser(data));
-          history.push('/')
         }
       })
       .catch((err) => {
         console.log(err);
       });
+    
+    
   };
 
   const handleOnPasswordChanged = (inputPassword: string) => {
