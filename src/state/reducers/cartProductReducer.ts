@@ -7,7 +7,7 @@ const CartProductsInitialState: ICartProducts = {
   cartProducts: [],
 };
 
-export function CartProductReducter(
+export function CartProductReducer(
   state = CartProductsInitialState,
   action: CartProductActionTypes
 ): ICartProducts {

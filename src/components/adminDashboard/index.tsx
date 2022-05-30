@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Layout, Menu } from "antd";
 import {
   UnorderedListOutlined,
 } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
+import { QueryResult, useQuery } from "@apollo/client";
+import { useDispatch } from "react-redux";
 
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
 import AdminRoutes from "../Route/AdminRoutes";
+import { GET_ALL_ORDERS } from "../../graphQL/order/orderQuery";
+import { setAllOrders } from "../../state/actions/admin/orderActions";
 
 const { Content, Sider } = Layout;
 
 const AdminDashboard: React.FC = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
+  const getAllOrders: QueryResult = useQuery(GET_ALL_ORDERS)
   const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    const orders = getAllOrders.data
+    dispatch(setAllOrders(orders))
+    
+  }, [getAllOrders])
 
   const handleOnNavigate = (path: string) => {
     history.push(`/admin/${path}`)
