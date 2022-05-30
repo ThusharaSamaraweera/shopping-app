@@ -22,3 +22,7 @@ interface IRequestedUser {
   country: string;
   contactNumber: string;
 }
+
+export interface IOrderReduxStore {
+  orders: Order[]
+}

@@ -21,11 +21,18 @@ const AdminDashboard: React.FC = () => {
   const dispatch = useDispatch()
   const getAllOrders: QueryResult = useQuery(GET_ALL_ORDERS)
   const [collapsed, setCollapsed] = useState(false);
-
+  
   useEffect(() => {
-    const orders = getAllOrders.data
-    dispatch(setAllOrders(orders))
-    
+    const getOrders = async () => {
+      if(!getAllOrders || !getAllOrders.data){
+        return
+      }
+
+      const orders = await getAllOrders.data.getAllOrders
+      dispatch(setAllOrders(orders))
+    }
+    getOrders()
+
   }, [getAllOrders])
 
   const handleOnNavigate = (path: string) => {

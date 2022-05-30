@@ -5,7 +5,7 @@ import { checkoutBillingFormErrorReducer, checkoutBillingFormReducer } from "./c
 import {checkoutChangedShippingFormErrorReducer, checkoutChangedShippingFormReducer} from './checkoutChangedShippingFormReducer';
 import { productReducer } from "./ProductReducer";
 import { authUserReducer } from "./authReducer";
-import { OrdersReducer } from "./admin/orderReducer";
+import { ordersReducer } from "./admin/orderReducer";
 
 export const rootReducer = combineReducers({
   cartProducts: CartProductReducer,
@@ -16,7 +16,7 @@ export const rootReducer = combineReducers({
   checkoutchangedShippingForm: checkoutChangedShippingFormReducer,
   checkoutchangedShippingFormError: checkoutChangedShippingFormErrorReducer,
   authUser: authUserReducer,
-  orderReducer: OrdersReducer
+  orderReducer: ordersReducer
 })
 
 export type AppState = ReturnType<typeof rootReducer>
