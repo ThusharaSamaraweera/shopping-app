@@ -1,7 +1,7 @@
 import { ICheckoutShippingFormInputData } from "./checkoutAreaTypes";
 import { IProduct, IProducts } from "./shoppingAreaTypes";
 
-export interface Order {
+export interface IOrder {
   id: string;
   orderCode: string;
   requestedUser: IRequestedUser;
@@ -24,5 +24,5 @@ interface IRequestedUser {
 }
 
 export interface IOrderReduxStore {
-  orders: Order[]
+  orders: IOrder[]
 }

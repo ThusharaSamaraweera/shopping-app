@@ -294,6 +294,7 @@ const Index: React.FC = () => {
       });
 
     setLoading(false)
+    history.push('/')
   };
 
   const getOrderCode = () => {

@@ -9,7 +9,6 @@ const ordersInitialState: IOrderReduxStore = {
 export function ordersReducer( state = ordersInitialState, action: OrderActionTypes){
   switch(action.type){
     case actions.SET_ALL_ORDERS: 
-    console.log(action)
       return {
         ...state,
         orders: action.payload
