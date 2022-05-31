@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Layout, Menu } from "antd";
 import {
   UnorderedListOutlined,
+  AppstoreOutlined
 } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { QueryResult, useQuery } from "@apollo/client";
@@ -39,6 +40,10 @@ const AdminDashboard: React.FC = () => {
     history.push(`/admin/${path}`)
   }
 
+  const handleOnNavigateToDashboard = () => {
+    history.push('/admin')
+  }
+
   return (
     <Container fluid={true}>
       <TopNavBar />
@@ -56,9 +61,18 @@ const AdminDashboard: React.FC = () => {
             mode="inline"
           > 
             <Menu.Item
+              icon={ <AppstoreOutlined />}
+              title='Dashboard'
+              key={1}
+              onClick={() => handleOnNavigateToDashboard()}
+            >
+                Dashboard
+            </Menu.Item>
+
+            <Menu.Item
               icon={ <UnorderedListOutlined />}
               title='Order list'
-              key={1}
+              key={2}
               onClick={() => handleOnNavigate('orders')}
             >
                 Order list
@@ -67,7 +81,7 @@ const AdminDashboard: React.FC = () => {
             <Menu.Item
               icon={ <UnorderedListOutlined />}
               title='Product list'
-              key={2}
+              key={3}
               onClick={() => handleOnNavigate('products')}
             >
                 product list

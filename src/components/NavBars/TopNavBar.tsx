@@ -11,7 +11,7 @@ const TopNavBar: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleOnAccountRedireact = () => {
+  const handleOnAccountRedirect = () => {
     history.push("/account");
   };
 
@@ -46,7 +46,7 @@ const TopNavBar: React.FC = () => {
             </Row>
 
             <UserComponent>
-              <div className="my-account" onClick={handleOnAccountRedireact}>
+              <div className="my-account" onClick={handleOnAccountRedirect}>
                 <i>
                   <User size="1.1em" />
                 </i>
