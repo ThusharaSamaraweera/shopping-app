@@ -18,19 +18,12 @@ const Order: React.FC = () => {
   const orders = useSelector((state: AppState) => state.orderReducer.orders);
   const [order, setOrder] = useState<IOrder>();
 
-  const calTotal = (items: IProducts) => {
-    //@ts-ignore
-    const subTotalPrice = items.reduce((total: number, b: IProduct) =>
-    total + ((b.regular_price - b.discount_price) * b.quantity), 0);
-    console.log(subTotalPrice)
-  }
+
   
   useEffect(() => {
     const tempOrder: IOrder[] = orders.filter(
       (order) => order.orderCode === orderCode
     );
-    console.log(tempOrder)
-    calTotal(tempOrder[0].productList)
     setOrder(tempOrder[0]);
   }, [orderCode, order, orders]);
 
@@ -73,7 +66,7 @@ const Order: React.FC = () => {
 
         <ItemTable items={order?.productList} />
 
-        <TotalPrice />
+        <TotalPrice items={order?.productList} />
       </Col>
     </Row>
   );

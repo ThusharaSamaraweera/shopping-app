@@ -117,7 +117,7 @@ const CheckoutArea:React.FC = () => {
           </Card.Body>
         </Col>
         {/* <Discount /> */}
-        <DeliveryCharge />
+        <DeliveryCharge deliveryCharge={1000} />
         <TotalBill subTotalPrice={subTotalPrice}/>
       </Row>
       

@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import NumberFormat from 'react-number-format'
+import { IProducts } from '../../../../types/shoppingAreaTypes'
 import DeliveryCharge from '../../../checkoutArea/DeliveryCharge'
 import TotalBill from '../../../checkoutArea/TotalBill'
 
-const TotalPrice = () => {
-  const calculateTotalPrice = () => {
+type TotalPriceProps = {
+  items: IProducts | undefined
+}
 
+const TotalPrice: React.FC <TotalPriceProps> = (props) => {
+  const {items} = props;
+  const [subTotal, setSubTotal] = useState<number>(0)
+  const [deliveryCharge, setDeliveryCharge] = useState<number>(1000)
+
+  const calTotal = () => {
+    if(!items){
+      return 0;
+    }
+
+    //@ts-ignore
+    const subTotalPrice = items.reduce((total: number, b: IProduct) =>
+    total + (b.discount_price * b.quantity), 0);
+    setSubTotal(subTotalPrice)
+    console.log(subTotal)
   }
+
+  useEffect(() => {
+    calTotal()
+  }, [items])
 
   return (
     <Row>
@@ -16,7 +37,7 @@ const TotalPrice = () => {
             <Row className='py-2 ml-4'>
               <Col className='total-bill-label'>Total price: </Col>
               <Col className='text-end total-bill-price'>
-                <NumberFormat value={100}
+                <NumberFormat value={subTotal}
                               thousandSeparator={true}
                               displayType='text'
                               prefix={'Rs. '}
@@ -27,8 +48,8 @@ const TotalPrice = () => {
             </Row>
           </Col>
 
-        <DeliveryCharge/>
-        <TotalBill subTotalPrice={1000}/>
+        <DeliveryCharge deliveryCharge={deliveryCharge} />
+        <TotalBill subTotalPrice={deliveryCharge + subTotal}/>
       </Col>
     </Row>
   )
