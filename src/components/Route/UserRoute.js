@@ -6,7 +6,6 @@ const UserRoute = (props) => {
   const authUser = useSelector((state) => state.authUser.authUser);
 
   if (Object.keys(authUser).length === 0) {
-    console.log('hi')
     return <Redirect to='/' />;
   }
   return children;

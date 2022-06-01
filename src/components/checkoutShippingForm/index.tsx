@@ -51,7 +51,7 @@ const Index: React.FC = () => {
   // @ts-ignore
   const [customerId, setCustomerId] = useState<string>(authUser?.login?.id);
 
-  const validtateBillingForm = () => {
+  const validateBillingForm = () => {
     let isBillingFormFilled: boolean = true;
     if (!checkoutBillingForm.fullName) {
       dispatch(
@@ -242,7 +242,7 @@ const Index: React.FC = () => {
           status: "requested",
           paymentType: checkoutBillingForm.paymentMethod,
           paymentStatus: false,
-          requestedDate: new Date().toLocaleDateString(),
+          requestedDate: moment().format(),
         },
       },
     });
@@ -255,7 +255,7 @@ const Index: React.FC = () => {
     }
 
     // check whether billing form is valid
-    if (Object.keys(authUser).length === 0 && !validtateBillingForm()) {
+    if (Object.keys(authUser).length === 0 && !validateBillingForm()) {
       return;
     }
 
@@ -294,10 +294,11 @@ const Index: React.FC = () => {
       });
 
     setLoading(false)
+    history.push('/')
   };
 
   const getOrderCode = () => {
-    const date: string = moment().format();
+    const date: string = moment().format('YYYYMMDD');
     const randomString: string = String(Math.floor(Math.random() * 9999));
     return date + "ODR" + randomString;
   };

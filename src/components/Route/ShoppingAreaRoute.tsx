@@ -6,7 +6,6 @@ import Register from "../auth/Register";
 import Login from "../auth/Login/Login";
 import Checkout from "../checkout/Checkout";
 import GuestRoute from "./GuestRoute";
-import UserRoute from "./UserRoute";
 import AdminDashboard from "../adminDashboard";
 
 const ShoppingAreaRoute = () => {

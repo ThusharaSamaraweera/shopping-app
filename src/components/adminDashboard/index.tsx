@@ -1,23 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Layout, Menu } from "antd";
 import {
   UnorderedListOutlined,
+  AppstoreOutlined
 } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
+import { QueryResult, useQuery } from "@apollo/client";
+import { useDispatch } from "react-redux";
 
 import MainMiddleNavBar from "../NavBars/MiddleNavBar";
 import TopNavBar from "../NavBars/TopNavBar";
 import AdminRoutes from "../Route/AdminRoutes";
+import { GET_ALL_ORDERS } from "../../graphQL/order/orderQuery";
+import { setAllOrders } from "../../state/actions/admin/orderActions";
 
 const { Content, Sider } = Layout;
 
 const AdminDashboard: React.FC = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
+  const getAllOrders: QueryResult = useQuery(GET_ALL_ORDERS)
   const [collapsed, setCollapsed] = useState(false);
+  
+  useEffect(() => {
+    const getOrders = async () => {
+      if(!getAllOrders || !getAllOrders.data){
+        return
+      }
+
+      const orders = await getAllOrders.data.getAllOrders
+      dispatch(setAllOrders(orders))
+    }
+    getOrders()
+
+  }, [getAllOrders])
 
   const handleOnNavigate = (path: string) => {
     history.push(`/admin/${path}`)
+  }
+
+  const handleOnNavigateToDashboard = () => {
+    history.push('/admin')
   }
 
   return (
@@ -37,9 +61,18 @@ const AdminDashboard: React.FC = () => {
             mode="inline"
           > 
             <Menu.Item
+              icon={ <AppstoreOutlined />}
+              title='Dashboard'
+              key={1}
+              onClick={() => handleOnNavigateToDashboard()}
+            >
+                Dashboard
+            </Menu.Item>
+
+            <Menu.Item
               icon={ <UnorderedListOutlined />}
               title='Order list'
-              key={1}
+              key={2}
               onClick={() => handleOnNavigate('orders')}
             >
                 Order list
@@ -48,7 +81,7 @@ const AdminDashboard: React.FC = () => {
             <Menu.Item
               icon={ <UnorderedListOutlined />}
               title='Product list'
-              key={2}
+              key={3}
               onClick={() => handleOnNavigate('products')}
             >
                 product list

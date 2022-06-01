@@ -38,7 +38,6 @@ const RegisterForm = () => {
   const [validated, setValidated] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [strongPasswordError, setStrongPasswordError] = useState<string>("");
-  const [isValidPhoneNumber, setValidPhoneNumber] = useState<boolean>(true);
   const [retypedEmailError, setRetypedEmailError] = useState<string>("");
   const [signup] = useMutation(SIGNUP_CUSTOMER);
 
@@ -129,13 +128,12 @@ const RegisterForm = () => {
         if (data) {
           console.log(data);
           dispatch(setAuthUser(data));
+          history.push('/')
         }
       })
       .catch((err) => {
         console.log(err);
       });
-    
-    
   };
 
   const handleOnPasswordChanged = (inputPassword: string) => {

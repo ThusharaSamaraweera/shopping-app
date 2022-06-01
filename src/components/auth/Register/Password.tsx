@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Col, Form, InputGroup } from "react-bootstrap";
-import { calcStrength } from "../../../utils/inputValidations";
 import { Eye, EyeOff } from "react-feather";
 import PasswordStrength from "../../common/password/PasswordStrength";
 
