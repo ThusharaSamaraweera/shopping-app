@@ -1,9 +1,13 @@
-import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Button } from "antd";
 import { useSelector } from "react-redux";
 import { AppState } from "../../state/reducers";
 import { Toast } from "../common/SweetAlerts";
 import { useDispatch } from "react-redux";
+import { useMutation } from "@apollo/client";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 import BillingForm from "./BillingForm";
 import ChangeShippingOption from "./ChangeShippingOption";
@@ -15,9 +19,18 @@ import {
   changeCheckoutShippingFormError,
 } from "../../state/actions/checkoutFormActions";
 import ChangeShippingForm from "./ChangeShippingForm";
+import GuestComponent from "../common/authGuards/GeustComponent";
+import { SIGNUP_CUSTOMER } from "../../graphQL/auth/authMutations";
+import { setAuthUser } from "../../state/actions/authActions";
+import { PLACE_ORDER } from "../../graphQL/order/orderMutation";
 
 const Index: React.FC = () => {
   const dispatch = useDispatch();
+  const [signup] = useMutation(SIGNUP_CUSTOMER);
+  const [placeOrder] = useMutation(PLACE_ORDER);
+  const history = useHistory();
+  const [loading, setLoading] = useState<boolean>(false);
+
   const productList = useSelector(
     (state: AppState) => state.cartProducts.cartProducts
   );
@@ -34,7 +47,11 @@ const Index: React.FC = () => {
     (state: AppState) => state.checkoutchangedShippingFormError
   );
 
-  const validtateBillingForm = () => {
+  const authUser = useSelector((state: AppState) => state.authUser.authUser);
+  // @ts-ignore
+  const [customerId, setCustomerId] = useState<string>(authUser?.login?.id);
+
+  const validateBillingForm = () => {
     let isBillingFormFilled: boolean = true;
     if (!checkoutBillingForm.fullName) {
       dispatch(
@@ -186,27 +203,104 @@ const Index: React.FC = () => {
     return isChangeShippingFormValid;
   };
 
-  const handleOnSubmit = () => {
+  const signup_customer = async () => {
+    return await signup({
+      variables: {
+        newUser: {
+          name: checkoutBillingForm.fullName,
+          address: checkoutBillingForm.address,
+          city: checkoutBillingForm.city,
+          postalCode: checkoutBillingForm.postalCode,
+          phoneNumber: checkoutBillingForm.contactNumber,
+          email: checkoutBillingForm.email,
+          password: checkoutBillingForm.password,
+          country: checkoutBillingForm.country.value,
+          userType: "user",
+        },
+      },
+    });
+  };
+
+  const addOrder = async (orderCode: string, requestedUserId: string) => {
+    return await placeOrder({
+      variables: {
+        newOrder: {
+          orderCode: orderCode,
+          requestedUser: requestedUserId,
+          changeShippingAddress:
+            checkoutBillingForm.isChangeShippingAddressVisible,
+          shippingDetails: {
+            fullName: checkoutShippingForm.fullName,
+            address: checkoutShippingForm.address,
+            city: checkoutShippingForm.city,
+            postalCode: checkoutShippingForm.postalCode,
+            country: checkoutShippingForm.country.value,
+            contactNumber: checkoutShippingForm.contactNumber,
+          },
+          productList: productList,
+          deliveryInstructions: checkoutBillingForm.deliveryInstructions,
+          status: "requested",
+          paymentType: checkoutBillingForm.paymentMethod,
+          paymentStatus: false,
+          requestedDate: moment().format(),
+        },
+      },
+    });
+  };
+
+  const handleOnSubmit = async () => {
     if (productList.length === 0) {
       Toast("Add products to the Cart", "", "info");
       return;
     }
 
-    // check whether billing form is valid 
-    if (
-      !validtateBillingForm()
-    ) {
+    // check whether billing form is valid
+    if (Object.keys(authUser).length === 0 && !validateBillingForm()) {
       return;
     }
 
     // check whether shipping form is valid when change shipping form is opened
     if (
       checkoutBillingForm.isChangeShippingAddressVisible &&
-      !validateShippingForm() 
+      !validateShippingForm()
     ) {
       return;
     }
 
+    setLoading(true);
+    let tempCustomerId = customerId;
+
+    if (Object.keys(authUser).length === 0) {
+      await signup_customer()
+        .then(async ({ data }) => {
+          if (data) {
+            // @ts-ignore
+            setCustomerId(data.id);
+            tempCustomerId = data.addUser.id;
+            dispatch(setAuthUser(data));
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          Toast("User signup failed", "", "error");
+        });
+    }
+    await addOrder(getOrderCode(), tempCustomerId)
+      .then((data) => {
+        Toast("Order placed successfully", "", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setLoading(false)
+    history.push('/')
+  };
+
+  const getOrderCode = () => {
+    const date: string = moment().format('YYYYMMDD');
+    const randomString: string = String(Math.floor(Math.random() * 9999));
+    return date + "ODR" + randomString;
   };
 
   return (
@@ -219,14 +313,17 @@ const Index: React.FC = () => {
           md={12}
           lg={{ span: 7, offset: 5 }}
         >
-          <SigninArea />
+          <GuestComponent>
+            <SigninArea />
 
-          <Row className="billing-address">
-            <Col className="billing-address-header">
-              <h5>Shipping and Billing Address</h5>
-            </Col>
-            <BillingForm />
-          </Row>
+            <Row className="billing-address">
+              <Col className="billing-address-header">
+                <h5>Shipping and Billing Address</h5>
+              </Col>
+              <BillingForm />
+            </Row>
+          </GuestComponent>
+
           <ChangeShippingOption />
           {checkoutBillingForm.isChangeShippingAddressVisible && (
             <div className="change-shipping-form">
@@ -235,8 +332,14 @@ const Index: React.FC = () => {
           )}
           <DeliveryInstructions />
           <PaymentMethod />
-          <Row className="order-btn justify-content-center">
-            <Button type="submit" onClick={handleOnSubmit}>
+          <Row className="justify-content-center">
+            <Button
+              htmlType="submit"
+              onClick={handleOnSubmit}
+              disabled={loading}
+              loading={loading}
+              className="order-btn"
+            >
               Order
             </Button>
           </Row>

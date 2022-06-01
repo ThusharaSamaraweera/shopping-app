@@ -1,0 +1,65 @@
+@import "../variables";
+
+.register {
+  .img-col {
+    border-radius: 15px;
+
+    .img {
+      width: 40vw;
+    }
+  }
+
+  .billing-form {
+    .signup-btn {
+      text-decoration: none;
+
+      .btn-primary {
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+        width: 12rem;
+        margin: 1rem auto auto auto;
+      }
+
+      .btn-primary:hover {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:active {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+
+      .btn-primary:focus {
+        color: #fff;
+        background-color: $main-middle-navbar-logo-btn-color;
+        border-color: $main-middle-navbar-logo-btn-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .register {
+    .img-col {
+      border-radius: 15px;
+
+      .img {
+        width: 50vw;
+      }
+    }
+    .billing-form {
+      .signup-btn {
+        .btn-primary {
+          width: 80%;
+          padding: 4px;
+        }
+      }
+    }
+  }
+}
