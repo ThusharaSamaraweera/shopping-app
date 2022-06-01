@@ -11,7 +11,7 @@ const TotalBill: React.FC<TotalBillProps> = (props) => {
   return (
     <Col xs={12}>
       <Row className='mx-4 total-bill py-2'>
-        <Col className='total-bill-label'>Est.Total</Col>
+        <Col className='total-bill-label'>Total price: </Col>
         <Col className='text-end total-bill-price'>
           <NumberFormat value={subTotalPrice}
                         thousandSeparator={true}

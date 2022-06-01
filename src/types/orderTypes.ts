@@ -6,7 +6,7 @@ export interface IOrder {
   orderCode: string;
   requestedUser: IRequestedUser;
   productList: IProducts;
-  ShippingDetails: ICheckoutShippingFormInputData;
+  shippingDetails: IShippingDetails;
   status: string;
   paymentType: string;
   paymentStatus: boolean;
@@ -15,14 +15,23 @@ export interface IOrder {
 }
 
 interface IRequestedUser {
-  fullName: string;
+  name: string;
   address: string;
   city: string;
   postalCode: string;
   country: string;
-  contactNumber: string;
+  phoneNumber: string;
 }
 
 export interface IOrderReduxStore {
   orders: IOrder[]
+}
+
+export interface IShippingDetails {
+  fullName: string
+  address: string
+  city: string
+  postalCode: string
+  country: string
+  contactNumber: string
 }
