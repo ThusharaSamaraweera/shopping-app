@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { Layout, Menu } from "antd";
-import {
-  UnorderedListOutlined,
-  AppstoreOutlined
-} from "@ant-design/icons";
+import { UnorderedListOutlined, AppstoreOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { QueryResult, useQuery } from "@apollo/client";
 import { useDispatch } from "react-redux";
@@ -18,30 +15,41 @@ import { setAllOrders } from "../../state/actions/admin/orderActions";
 const { Content, Sider } = Layout;
 
 const AdminDashboard: React.FC = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const getAllOrders: QueryResult = useQuery(GET_ALL_ORDERS)
-  const [collapsed, setCollapsed] = useState(false);
-  
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const getAllOrders: QueryResult = useQuery(GET_ALL_ORDERS);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
+    // setLoading(true)
     const getOrders = async () => {
-      if(!getAllOrders || !getAllOrders.data){
-        return
+      if (!getAllOrders || !getAllOrders.data) {
+        return;
       }
 
-      const orders = await getAllOrders.data.getAllOrders
-      dispatch(setAllOrders(orders))
-    }
-    getOrders()
-
-  }, [getAllOrders])
+      const orders = await getAllOrders.data.getAllOrders;
+      dispatch(setAllOrders(orders));
+    };
+    getOrders();
+    setLoading(false)
+  }, [getAllOrders]);
 
   const handleOnNavigate = (path: string) => {
-    history.push(`/admin/${path}`)
-  }
+    history.push(`/admin/${path}`);
+  };
 
   const handleOnNavigateToDashboard = () => {
-    history.push('/admin')
+    history.push("/admin");
+  };
+
+  if (isLoading) {
+    return (
+      <Container fluid={true} className='loading-page'>
+        {" "}
+        <Spinner animation="grow" />
+      </Container>
+    );
   }
 
   return (
@@ -55,36 +63,32 @@ const AdminDashboard: React.FC = () => {
           theme="light"
           onCollapse={(value) => setCollapsed(value)}
         >
-          <Menu
-            theme="light"
-            defaultSelectedKeys={["1"]}
-            mode="inline"
-          > 
+          <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
-              icon={ <AppstoreOutlined />}
-              title='Dashboard'
+              icon={<AppstoreOutlined />}
+              title="Dashboard"
               key={1}
               onClick={() => handleOnNavigateToDashboard()}
             >
-                Dashboard
+              Dashboard
             </Menu.Item>
 
             <Menu.Item
-              icon={ <UnorderedListOutlined />}
-              title='Order list'
+              icon={<UnorderedListOutlined />}
+              title="Order list"
               key={2}
-              onClick={() => handleOnNavigate('orders')}
+              onClick={() => handleOnNavigate("orders")}
             >
-                Order list
+              Order list
             </Menu.Item>
 
             <Menu.Item
-              icon={ <UnorderedListOutlined />}
-              title='Product list'
+              icon={<UnorderedListOutlined />}
+              title="Product list"
               key={3}
-              onClick={() => handleOnNavigate('products')}
+              onClick={() => handleOnNavigate("products")}
             >
-                product list
+              product list
             </Menu.Item>
           </Menu>
         </Sider>
@@ -93,7 +97,7 @@ const AdminDashboard: React.FC = () => {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            <AdminRoutes/>
+            <AdminRoutes />
           </div>
         </Content>
       </Layout>

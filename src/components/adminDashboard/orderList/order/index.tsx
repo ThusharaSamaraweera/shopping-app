@@ -30,7 +30,7 @@ const Order: React.FC = () => {
   return (
     <Row className="order-page">
       <Col xs={12}>
-        <Row className="order-details-card">
+        <Row className="order-details-card p-2">
           <Col xs={12} md={6}>
             <h6>Order id: {orderCode}</h6>
             <h6>Order date: {moment(order?.requestedDate).format("lll")}</h6>
@@ -42,7 +42,7 @@ const Order: React.FC = () => {
             </h6>
           </Col>
         </Row>
-        <Row className="billing-user-details mt-4 mb-4">
+        <Row className="billing-user-details p-2 mt-4 mb-4">
           <Col xs={12} lg={6} className='mt-2 mb-2'>
             <h5>Billing details</h5>
             <h6>Name : {order?.requestedUser.name} </h6>
@@ -64,6 +64,13 @@ const Order: React.FC = () => {
           </Col>
         </Row>
 
+        {
+          order?.deliveryInstructions && 
+          <Row className="delivery-instructions p-2 mt-4 mb-4">
+            <h5>Delivery instructions</h5>
+            <h6>{order?.deliveryInstructions}</h6>
+          </Row>
+        }
         <ItemTable items={order?.productList} />
 
         <TotalPrice items={order?.productList} />

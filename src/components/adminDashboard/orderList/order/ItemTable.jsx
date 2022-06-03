@@ -91,7 +91,7 @@ const ItemTable = (props) => {
   ];
 
   return (
-    <Row>
+    <Row className='item-table-section p-2 mt-4 mb-4'>
       <h5>Items list</h5>
       <Table columns={columns} dataSource={items} rowKey={items?.id} />
     </Row>
