@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../../state/reducers";
 import { IOrder } from "../../../../types/orderTypes";
 import moment from "moment";
-import { IProduct, IProducts } from "../../../../types/shoppingAreaTypes";
 import TotalPrice from "./TotalPrice";
+import OrderStatus from "./OrderStatus";
 
 interface params {
   orderCode: string;
@@ -16,21 +16,21 @@ interface params {
 const Order: React.FC = () => {
   const { orderCode }: params = useParams();
   const orders = useSelector((state: AppState) => state.orderReducer.orders);
-  const [order, setOrder] = useState<IOrder>();
+  const [order, setOrder] = useState<IOrder | null>(null);
 
-
-  
   useEffect(() => {
     const tempOrder: IOrder[] = orders.filter(
       (order) => order.orderCode === orderCode
     );
+
     setOrder(tempOrder[0]);
+    console.log(tempOrder[0])
   }, [orderCode, order, orders]);
 
   return (
     <Row className="order-page">
       <Col xs={12}>
-        <Row className="order-details-card p-2">
+        <Row className="order-details-card px-2 py-4">
           <Col xs={12} md={6}>
             <h6>Order id: {orderCode}</h6>
             <h6>Order date: {moment(order?.requestedDate).format("lll")}</h6>
@@ -40,6 +40,10 @@ const Order: React.FC = () => {
                 ? "Cash on Delivery"
                 : "Online payment"}
             </h6>
+          </Col>
+          <Col xs={12} md={6} className='mt-2'>
+            <h5>Order Status</h5>
+            <OrderStatus order={order} />
           </Col>
         </Row>
         <Row className="billing-user-details p-2 mt-4 mb-4">

@@ -11,6 +11,7 @@ import TopNavBar from "../NavBars/TopNavBar";
 import AdminRoutes from "../Route/AdminRoutes";
 import { GET_ALL_ORDERS } from "../../graphQL/order/orderQuery";
 import { setAllOrders } from "../../state/actions/admin/orderActions";
+import { setTimeout } from "timers";
 
 const { Content, Sider } = Layout;
 
@@ -22,7 +23,7 @@ const AdminDashboard: React.FC = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    // setLoading(true)
+    setLoading(true)
     const getOrders = async () => {
       if (!getAllOrders || !getAllOrders.data) {
         return;
@@ -32,7 +33,10 @@ const AdminDashboard: React.FC = () => {
       dispatch(setAllOrders(orders));
     };
     getOrders();
-    setLoading(false)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
   }, [getAllOrders]);
 
   const handleOnNavigate = (path: string) => {

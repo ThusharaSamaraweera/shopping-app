@@ -1,4 +1,3 @@
-import {IAuthUser} from '../../types/authTypes'
 import * as actions from '../actionConstants/authActions'
 import {authActionTypes} from '../actionTypes/authActionTypes'
 
