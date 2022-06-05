@@ -94,6 +94,15 @@ const AdminDashboard: React.FC = () => {
             >
               product list
             </Menu.Item>
+
+            <Menu.Item
+              icon={<UnorderedListOutlined />}
+              title="Product list"
+              key={4}
+              onClick={() => handleOnNavigate("create-product")}
+            >
+              Create product
+            </Menu.Item>
           </Menu>
         </Sider>
         <Content style={{ margin: "0 16px", backgroundColor: "white" }}>
