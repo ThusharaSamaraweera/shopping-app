@@ -41,7 +41,6 @@ const OrderStatus: React.FC<OrderStatusProps> = (props) => {
     if (!selectStatus) {
       return;
     }
-    console.log(selectedStatus);
     confirmationBox(`Are you sure to change state of order : ${order?.orderCode} to ${selectStatus.label}`,
       `Change to ${selectStatus.label}`,
       'No',

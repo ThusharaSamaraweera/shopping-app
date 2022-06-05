@@ -1,7 +1,7 @@
-import {ApolloClient, InMemoryCache} from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://shopping-app-with-mern.herokuapp.com/graphql',
+  uri: process.env.REACT_APP_BACKEND_URL,
   cache: new InMemoryCache({ addTypename: false }),
 });
 
