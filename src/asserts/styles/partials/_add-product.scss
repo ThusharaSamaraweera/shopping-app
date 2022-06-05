@@ -1,11 +1,13 @@
 @import "../variables";
 
 .add-product{
+  margin-right: 0;
+
   .create-product-preview {
     padding: 25px 25px;
 
     .product-preview-title {
-      font-size: 0.8em;
+      font-size: 1em;
     }
 
     .product {
@@ -91,6 +93,8 @@
   }
 
   .add-product-form {
+    padding-top: 25px;
+
     .ant-form-item-label{
       text-align: start;
     }
@@ -100,6 +104,14 @@
     
     .ant-form-item-explain-error{
       font-size: 0.7rem;
+    }
+
+    .create-product-btn {
+      background-color: $main-middle-navbar-logo-btn-color;
+      float: right;
+      border: none;
+      color: white;
+      font-weight: 800;
     }
   }
 }

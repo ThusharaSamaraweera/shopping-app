@@ -1,69 +1,87 @@
-import React from 'react';
-import {Col, Row, Image, Button} from "react-bootstrap";
+import React from "react";
+import { Col, Row, Image, Button } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 
 type AddProductPreviewProps = {
-  productName: string
-  price: number | null
-  discount: number | null
-  productImage: null | string
-}
+  productName: string;
+  price: number;
+  discount: number;
+  productImage: string;
+  quantity: number;
+};
 
 const AddProductPreview: React.FC<AddProductPreviewProps> = (props) => {
   const image: any = require(`../../../asserts/images/insertImage.webp`);
-  const {productName, price, discount} = props;
+  const { productName, price, discount, quantity, productImage } = props;
 
   const priceMain = (price: number): number | string => {
-    if (!price) {
-      return "";
+    if (price < 0) {
+      return price;
     }
     return Math.trunc(price);
-  }
+  };
 
   const priceCents = (price: number) => {
     if (price % 1 === 0) {
-      return '00';
+      return "00";
     } else {
-      return Math.trunc(price % 1 * 100);
+      return Math.trunc((price % 1) * 100);
     }
-  }
+  };
   const renderImage = () => {
-    if (!props.productImage) {
+    if (!productImage) {
       return image.default;
     }
-    return props.productImage;
-  }
+    return productImage;
+  };
 
   return (
     <React.Fragment>
-      <Col xs={12} className='product-preview-title'>Preview</Col>
+      <Col xs={12} className="product-preview-title">
+        Preview
+      </Col>
       <Col className="product px-2 " lg="3" md="4" xs="6">
         <Row className="product-item py-2">
           <Col className="img-col" xs="12">
-            <Image className="img" src={renderImage()} alt="Image"/>
+            <Image className="img" src={renderImage()} alt="Image" />
           </Col>
-          <Col xs="12" className='product-name py-0'>
-            <h6>{productName ? productName : ''}</h6>
+          <Col xs="12" className="product-name py-0">
+            <h6>{productName ? productName : ""}</h6>
           </Col>
           <Col className="regular-price pb-2" xs={6}>
-            <NumberFormat displayType={'text'}
-                          prefix={'Rs. '}
-                          decimalScale={2}
-                          fixedDecimalScale={true}
-                          thousandSeparator={true}
-                          value={price ? price : ''}/>
+            <NumberFormat
+              displayType={"text"}
+              prefix={"Rs. "}
+              decimalScale={2}
+              fixedDecimalScale={true}
+              thousandSeparator={true}
+              value={price}
+            />
           </Col>
           <Col className="discount-price pb-2" xs={6}>
-            <NumberFormat displayType={'text'}
-                          prefix={'Rs. '}
-                          thousandSeparator={true}
-                          value={(discount && price) ? priceMain(price - discount) : ''}
+            <NumberFormat
+              displayType={"text"}
+              prefix={"Rs. "}
+              thousandSeparator={true}
+              value={priceMain(price! - discount!)}
             />
-            {(discount && price) ? <span className="decimal-value">.{priceCents(price - discount)}</span> : ''}
+            {discount && price ? (
+              <span className="decimal-value">
+                .{priceCents(price - discount)}
+              </span>
+            ) : (
+              ""
+            )}
           </Col>
 
           <Col xs={4}>
-            <input type="number" disabled={true} min={0} className="product-count w-100" defaultValue={1}/>
+            <input
+              type="number"
+              disabled={true}
+              min={0}
+              className="product-count w-100"
+              value={quantity}
+            />
           </Col>
           <Col xs={8} className="product-btn">
             <Button disabled={true} className="product-add-btn">
@@ -74,6 +92,6 @@ const AddProductPreview: React.FC<AddProductPreviewProps> = (props) => {
       </Col>
     </React.Fragment>
   );
-}
+};
 
 export default AddProductPreview;
