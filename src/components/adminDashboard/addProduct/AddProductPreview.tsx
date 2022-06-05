@@ -1,4 +1,5 @@
-import React from "react";
+import { UploadFile } from "antd/lib/upload/interface";
+import React, { useEffect } from "react";
 import { Col, Row, Image, Button } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 
@@ -6,13 +7,17 @@ type AddProductPreviewProps = {
   productName: string;
   price: number;
   discount: number;
-  productImage: string;
+  productImage: UploadFile | null;
   quantity: number;
 };
 
 const AddProductPreview: React.FC<AddProductPreviewProps> = (props) => {
   const image: any = require(`../../../asserts/images/insertImage.webp`);
   const { productName, price, discount, quantity, productImage } = props;
+
+  useEffect(() => {
+    renderImage()
+  }, [props.productImage])
 
   const priceMain = (price: number): number | string => {
     if (price < 0) {
@@ -28,11 +33,13 @@ const AddProductPreview: React.FC<AddProductPreviewProps> = (props) => {
       return Math.trunc((price % 1) * 100);
     }
   };
+
   const renderImage = () => {
     if (!productImage) {
-      return image.default;
+      return <Image className="img" src={image.default} alt="Image" />
     }
-    return productImage;
+    //@ts-ignore
+    return <Image className="img" src={productImage.thumbUrl} alt="Image" />
   };
 
   return (
@@ -43,7 +50,7 @@ const AddProductPreview: React.FC<AddProductPreviewProps> = (props) => {
       <Col className="product px-2 " lg="3" md="4" xs="6">
         <Row className="product-item py-2">
           <Col className="img-col" xs="12">
-            <Image className="img" src={renderImage()} alt="Image" />
+            {renderImage()}
           </Col>
           <Col xs="12" className="product-name py-0">
             <h6>{productName ? productName : ""}</h6>

@@ -1,7 +1,9 @@
 import { Button, Form, Input, Select } from "antd";
+import { UploadFile } from "antd/lib/upload/interface";
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import AddProductPreview from "./AddProductPreview";
+import ImageCrop from "./ImageCrop";
 
 const AddProduct = () => {
   const [form] = Form.useForm();
@@ -13,6 +15,7 @@ const AddProduct = () => {
     productImage: "",
     quantity: 0
   });
+  const [imgSrc, setImgSrc] = useState<UploadFile | null>(null)
 
   const category = ["category 1", "category 2", "category 3"];
 
@@ -60,7 +63,7 @@ const AddProduct = () => {
               discount={formValues.discount}
               price={formValues.regular_price}
               productName={formValues.title}
-              productImage={formValues.productImage}
+              productImage={imgSrc}
             />
           </Col>
 
@@ -151,6 +154,10 @@ const AddProduct = () => {
                       type="number"
                     />
                   </Form.Item>
+                </Col>
+
+                <Col xs={12}>
+                  <ImageCrop setImgSrc={setImgSrc} />
                 </Col>
 
                 <Col xs={12}>
