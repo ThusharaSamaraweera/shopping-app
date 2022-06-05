@@ -24,7 +24,6 @@ const Order: React.FC = () => {
     );
 
     setOrder(tempOrder[0]);
-    console.log(tempOrder[0])
   }, [orderCode, order, orders]);
 
   return (
