@@ -1,4 +1,95 @@
+@import "../variables";
+
 .add-product{
+  .create-product-preview {
+    padding: 25px 25px;
+
+    .product-preview-title {
+      font-size: 0.8em;
+    }
+
+    .product {
+      max-width: 1240px;
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+
+      .product-item {
+        border: 1px solid #bdbdbd;
+        margin-right: .1em;
+        margin-left: .1em;
+        border-radius: 10px;
+
+        .img-col {
+          height: 50%;
+
+          .img {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            width: 10rem;
+            min-height: 9rem;
+            max-height: 9rem;
+            cursor: pointer;
+          }
+        }
+
+        .product-name {
+          overflow-wrap: anywhere;
+
+          h6 {
+            text-align: center;
+            font-weight: 600;
+            padding-bottom: 1em;
+            padding-top: .5em;
+          }
+        }
+
+        .regular-price {
+          overflow-wrap: anywhere;
+          padding-right: .1em;
+          text-decoration: line-through;
+          color: #9aa0a6;
+          text-align: start;
+        }
+
+        .discount-price {
+          overflow-wrap: anywhere;
+          color: $add-to-cart-btn;
+          padding-left: 1em;
+          font-weight: 600;
+          text-align: end;
+          padding-right: 1.6rem;
+
+          .decimal-value {
+            font-size: .8em;
+          }
+        }
+
+        .product-count {
+          color: #6c757d;
+          border: 1px solid #ced4da;
+          border-radius: .25em;
+          padding: .3em;
+          opacity: 70%;
+        }
+
+        .product-btn {
+          .product-add-btn {
+            float: right;
+            border-radius: 25px;
+            background-color: #4caf50;
+            border: none;
+            margin-right: .6rem;
+            margin-bottom: .2em;
+            font-size: 1em;
+            opacity: 50%;
+          }
+        }
+      }
+    }
+  }
+
   .add-product-form {
     .ant-form-item-label{
       text-align: start;
