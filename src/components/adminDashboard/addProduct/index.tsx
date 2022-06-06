@@ -1,11 +1,14 @@
-import { Button, Form, Input, Select } from "antd";
-import { UploadFile } from "antd/lib/upload/interface";
 import React, { useState } from "react";
+import { Button, Form, Input, Select } from "antd";
+import { RcFile } from "antd/lib/upload/interface";
 import { Col, Row } from "react-bootstrap";
 import AddProductPreview from "./AddProductPreview";
 import ImageCrop from "./ImageCrop";
 import { firebaseStorage } from "../../../config/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+import { useMutation } from "@apollo/client";
+import { ADD_PRODUCT } from "../../../graphQL/products/productMutations";
+import { Toast } from "../../common/SweetAlerts";
 
 const AddProduct = () => {
   const [form] = Form.useForm();
@@ -17,33 +20,69 @@ const AddProduct = () => {
     productImage: "",
     quantity: 0,
   });
-  const [imgSrc, setImgSrc] = useState<UploadFile | null>(null);
+  const [imgSrc, setImgSrc] = useState<RcFile | null>(null);
+  const [addProduct] = useMutation(ADD_PRODUCT)
+  const [downloadableFileUrl, setDownloadableFileUrl] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const category = ["category 1", "category 2", "category 3"];
 
-  const uploadFile = () => {
+  // firebase file uploading
+  const uploadFile = async () => {
     if (!imgSrc) return;
 
     const storageRef = ref(firebaseStorage, `files/products/${imgSrc.name}`);
     //@ts-ignore
     const uploadTask = uploadBytesResumable(storageRef, imgSrc);
+      
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        console.log((snapshot.bytesTransferred / snapshot.totalBytes)* 100);
+        // console.log(Math.round((snapshot.bytesTransferred / snapshot.totalBytes)* 100));
       },
       (err) => console.log(err),
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((res) => console.log(res))
+      async () => {
+        await getDownloadURL(uploadTask.snapshot.ref)
+          .then((res) => {
+            setDownloadableFileUrl(res)
+          })
           .catch((err) => console.log(err));
       }
     );
   }
 
-  const handleOnSubmit = async (values: any) => {
-    console.log(imgSrc);
+  const createProduct = async (fileUrl: string) => {
+    return await addProduct({
+      variables: {
+        newProduct: {
+          title: formValues.title,
+          category: {
+            id: "",
+            title: "cat"
+          },
+          quantity: formValues.quantity - 0,
+          regular_price: formValues.regular_price - 0,
+          discount_price: formValues.regular_price - formValues.discount,
+          image: fileUrl
+        }
+      }
+    })
+  }
 
+  const handleOnSubmit = async (values: any) => {
+    setLoading(true)
+    await uploadFile()
+    if(!downloadableFileUrl){
+      return;
+    }
+    await createProduct(downloadableFileUrl)
+      .then((res) => {
+        Toast("Add product successfully", "", "success")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    setLoading(false)
   };
 
   const renderCategories = category.map((category) => {
@@ -185,7 +224,7 @@ const AddProduct = () => {
                 </Col>
 
                 <Col xs={12}>
-                  <Button htmlType="submit" className="create-product-btn">
+                  <Button htmlType="submit" className="create-product-btn" loading={loading}>
                     Create product
                   </Button>
                 </Col>

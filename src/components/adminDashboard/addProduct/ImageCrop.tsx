@@ -4,15 +4,18 @@ import ImgCrop from 'antd-img-crop';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 
 type ImageCropProps = {
-  setImgSrc: (img: UploadFile) => void
+  setImgSrc: (img: RcFile) => void
 }
 const ImageCrop: React.FC<ImageCropProps> = (props) => {
   const {setImgSrc} = props;
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const onChange: UploadProps['onChange'] = (e) => {
+    if(!e.file.originFileObj){
+      return
+    }
     setFileList(e.fileList);
-    setImgSrc(e.file)
+    setImgSrc(e.file.originFileObj)
   };
 
   const onPreview = async (file: UploadFile) => {
