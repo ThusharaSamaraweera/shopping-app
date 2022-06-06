@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import AddProductPreview from "./AddProductPreview";
 import ImageCrop from "./ImageCrop";
+import { firebaseStorage } from "../../../config/firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 
 const AddProduct = () => {
   const [form] = Form.useForm();
@@ -13,13 +15,36 @@ const AddProduct = () => {
     regular_price: 0,
     title: "XXX",
     productImage: "",
-    quantity: 0
+    quantity: 0,
   });
-  const [imgSrc, setImgSrc] = useState<UploadFile | null>(null)
+  const [imgSrc, setImgSrc] = useState<UploadFile | null>(null);
 
   const category = ["category 1", "category 2", "category 3"];
 
-  const handleOnSubmit = (values: any) => {};
+  const uploadFile = () => {
+    if (!imgSrc) return;
+
+    const storageRef = ref(firebaseStorage, `files/products/${imgSrc.name}`);
+    //@ts-ignore
+    const uploadTask = uploadBytesResumable(storageRef, imgSrc);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        console.log((snapshot.bytesTransferred / snapshot.totalBytes)* 100);
+      },
+      (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+      }
+    );
+  }
+
+  const handleOnSubmit = async (values: any) => {
+    console.log(imgSrc);
+
+  };
 
   const renderCategories = category.map((category) => {
     return (
@@ -45,8 +70,7 @@ const AddProduct = () => {
   );
 
   const handleOnChange = (changedValue: any, allValues: any) => {
-    console.log(allValues);
-    setFormValues(allValues)
+    setFormValues(allValues);
   };
 
   return (
@@ -59,7 +83,7 @@ const AddProduct = () => {
 
           <Col xs={12} lg={5} className="create-product-preview">
             <AddProductPreview
-              quantity={formValues.quantity}
+              quantity={1}
               discount={formValues.discount}
               price={formValues.regular_price}
               productName={formValues.title}

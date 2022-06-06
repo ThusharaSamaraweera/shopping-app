@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Upload } from 'antd';
+import { Form, Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 
@@ -31,17 +31,23 @@ const ImageCrop: React.FC<ImageCropProps> = (props) => {
   };
 
   return (
-    <ImgCrop rotate>
-      <Upload
-        listType="picture-card"
-        fileList={fileList}
-        onChange={onChange}
-        onPreview={onPreview}
-        maxCount={1}
-      >
-        {fileList.length < 5 && '+ Upload'}
-      </Upload>
-    </ImgCrop>
+    <Form.Item
+      name='image'
+      label='Product image'
+      hasFeedback
+    >
+      <ImgCrop rotate>
+        <Upload
+          listType="picture-card"
+          fileList={fileList}
+          onChange={onChange}
+          onPreview={onPreview}
+          maxCount={1}
+        >
+          {fileList.length < 5 && '+ Upload'}
+        </Upload>
+      </ImgCrop>
+    </Form.Item>
   );
 
 }
