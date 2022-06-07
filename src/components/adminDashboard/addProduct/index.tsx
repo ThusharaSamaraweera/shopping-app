@@ -9,6 +9,9 @@ import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../../../graphQL/products/productMutations";
 import { Toast } from "../../common/SweetAlerts";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../state/reducers";
+import moment from "moment";
 
 const AddProduct = () => {
   const [form] = Form.useForm();
@@ -19,19 +22,26 @@ const AddProduct = () => {
     title: "XXX",
     productImage: "",
     quantity: 0,
+    category: ""
   });
   const [imgSrc, setImgSrc] = useState<RcFile | null>(null);
   const [addProduct] = useMutation(ADD_PRODUCT)
   const [downloadableFileUrl, setDownloadableFileUrl] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
+  const allCategories = useSelector((state: AppState) => state.category.allCategories)
 
-  const category = ["category 1", "category 2", "category 3"];
+  const getProductCode = () => {
+    const date: string = moment().format('YYYYMMDD');
+    const randomString: string = String(Math.floor(Math.random() * 9999));
+    return date + "PDT" + randomString;
+  };
 
   // firebase file uploading
   const uploadFile = async () => {
     if (!imgSrc) return;
 
-    const storageRef = ref(firebaseStorage, `files/products/${imgSrc.name}`);
+    const imgId = getProductCode()
+    const storageRef = ref(firebaseStorage, `files/products/${formValues.title}-${imgId}`);
     //@ts-ignore
     const uploadTask = uploadBytesResumable(storageRef, imgSrc);
       
@@ -57,8 +67,7 @@ const AddProduct = () => {
         newProduct: {
           title: formValues.title,
           category: {
-            id: "",
-            title: "cat"
+            title: formValues.category
           },
           quantity: formValues.quantity - 0,
           regular_price: formValues.regular_price - 0,
@@ -73,6 +82,8 @@ const AddProduct = () => {
     setLoading(true)
     await uploadFile()
     if(!downloadableFileUrl){
+      console.log('hi')
+      setLoading(false)
       return;
     }
     await createProduct(downloadableFileUrl)
@@ -85,10 +96,10 @@ const AddProduct = () => {
     setLoading(false)
   };
 
-  const renderCategories = category.map((category) => {
+  const renderCategories = allCategories.map((category) => {
     return (
-      <Option value={category} key={category}>
-        {category}
+      <Option value={category.title} key={category.id}>
+        {category.title}
       </Option>
     );
   });

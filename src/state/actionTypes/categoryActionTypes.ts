@@ -6,4 +6,9 @@ export interface ChangeCategory {
   payload : ICategory
 }
 
-export type CategoryActionTypes = ChangeCategory;
+export interface getAllCategoriesActionType {
+  type: typeof ACTIONS.GET_ALL_CATEGORY
+  payload: ICategory[]
+}
+
+export type CategoryActionTypes = ChangeCategory | getAllCategoriesActionType;
