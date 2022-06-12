@@ -24,4 +24,5 @@ export interface IProducts {
 
 export interface ICategoryList {
   category: ICategory
+  allCategories: ICategory[]
 }

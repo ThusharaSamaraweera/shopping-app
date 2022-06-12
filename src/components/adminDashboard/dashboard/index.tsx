@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminDashboard : React.FC = () => {
   return (
-    <div>AdminDashboard</div>
+    <div className='fw-bold my-2'>AdminDashboard</div>
   )
 }
 
