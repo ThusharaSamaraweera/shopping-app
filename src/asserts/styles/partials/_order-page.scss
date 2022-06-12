@@ -1,17 +1,49 @@
-.order-page{
+@import "../variables";
+
+.order-page {
+  h5 {
+    color: $main-middle-navbar-logo-btn-color;
+  }
+
+  .order-details-card,
+  .billing-user-details,
+  .item-table-section,
+  .delivery-instructions {
+    box-shadow: 0 1px 2px #443838;
+  }
+
   .total-bill-section {
     .total-price {
       .total-bill-price {
         // color: #d00000;
         // font-weight: 700;
         // font-size: 1.3em;
+        color: brown;
         margin-right: 7vh;
+        font-size: 1.2em;
+        font-weight: 700;
       }
 
       .total-bill-label {
         // font-size: 1.2em;
         // font-weight: 600;
       }
+    }
+  }
+
+  .delivery-charge {
+    .delivery-price {
+      color: brown;
+      font-size: 1.2em;
+      font-weight: 700;
+    }
+  }
+
+  .total-bill {
+    .total-bill-price{
+      color: red;
+      font-size: 1.2em;
+      font-weight: 700;
     }
   }
 }

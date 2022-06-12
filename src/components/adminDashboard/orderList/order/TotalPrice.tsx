@@ -23,7 +23,6 @@ const TotalPrice: React.FC <TotalPriceProps> = (props) => {
     const subTotalPrice = items.reduce((total: number, b: IProduct) =>
     total + (b.discount_price * b.quantity), 0);
     setSubTotal(subTotalPrice)
-    console.log(subTotal)
   }
 
   useEffect(() => {

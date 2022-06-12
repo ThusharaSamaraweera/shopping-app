@@ -1,5 +1,4 @@
-import { ICheckoutShippingFormInputData } from "./checkoutAreaTypes";
-import { IProduct, IProducts } from "./shoppingAreaTypes";
+import { IProducts } from "./shoppingAreaTypes";
 
 export interface IOrder {
   id: string;
@@ -34,4 +33,17 @@ export interface IShippingDetails {
   postalCode: string
   country: string
   contactNumber: string
+}
+
+export interface INewStateDetails {
+  id: string,
+  newState: 'approved' | 'rejected'
+}
+export interface IOrders {
+  orders:IOrder[]
+}
+
+export interface IOrderStatus {
+  value: string | undefined
+  label: string | undefined
 }
