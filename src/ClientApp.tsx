@@ -20,13 +20,11 @@ const ClientApp: React.FC = () => {
   useEffect(() => {
     setLoading(true);
     if (!products || !products.data || !categories || !categories.data) {
-      console.log(products)
       setLoading(false)
       return;
     }
     dispatch(setInitProducts(products.data.getAllProducts));
     dispatch(getAllCategories(categories.data.getAllCategories));
-    console.log(products.data);
 
     setTimeout(() => {
       setLoading(false);

@@ -4,7 +4,7 @@ import OrderTable from './OrderTable'
 const OrderList: React.FC = () => {
   return (
     <>
-      <div>OrderList</div>
+      <div className='fw-bold my-2'>OrderList</div>
       <OrderTable/>
     </>
   )

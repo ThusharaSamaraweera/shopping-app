@@ -26,7 +26,6 @@ const AddProduct = () => {
   });
   const [imgSrc, setImgSrc] = useState<RcFile | null>(null);
   const [addProduct] = useMutation(ADD_PRODUCT)
-  const [downloadableFileUrl, setDownloadableFileUrl] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const allCategories = useSelector((state: AppState) => state.category.allCategories)
 
@@ -35,31 +34,6 @@ const AddProduct = () => {
     const randomString: string = String(Math.floor(Math.random() * 9999));
     return date + "PDT" + randomString;
   };
-
-  // firebase file uploading
-  const uploadFile = async () => {
-    if (!imgSrc) return;
-
-    const imgId = getProductCode()
-    const storageRef = ref(firebaseStorage, `files/products/${formValues.title}-${imgId}`);
-    //@ts-ignore
-    const uploadTask = uploadBytesResumable(storageRef, imgSrc);
-      
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // console.log(Math.round((snapshot.bytesTransferred / snapshot.totalBytes)* 100));
-      },
-      (err) => console.log(err),
-      async () => {
-        await getDownloadURL(uploadTask.snapshot.ref)
-          .then((res) => {
-            setDownloadableFileUrl(res)
-          })
-          .catch((err) => console.log(err));
-      }
-    );
-  }
 
   const createProduct = async (fileUrl: string) => {
     return await addProduct({
@@ -80,19 +54,40 @@ const AddProduct = () => {
 
   const handleOnSubmit = async (values: any) => {
     setLoading(true)
-    await uploadFile()
-    if(!downloadableFileUrl){
-      console.log('hi')
-      setLoading(false)
-      return;
-    }
-    await createProduct(downloadableFileUrl)
-      .then((res) => {
-        Toast("Add product successfully", "", "success")
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      
+    if (!imgSrc) return;
+
+    // create code for product image file name
+    const imgId = getProductCode()
+
+    const storageRef = ref(firebaseStorage, `files/products/${formValues.title}-${imgId}`);
+    //@ts-ignore
+    const uploadTask = uploadBytesResumable(storageRef, imgSrc);
+      
+    // upload to firebase
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // console.log(Math.round((snapshot.bytesTransferred / snapshot.totalBytes)* 100));
+      },
+      (err) => console.log(err),
+      async () => {
+        await getDownloadURL(uploadTask.snapshot.ref)
+          .then( async (res) => {
+            await createProduct(res)
+            .then((res) => {
+              Toast("Add product successfully", "", "success")
+              form.resetFields()
+            })
+            .catch((err) => {
+              console.log(err)
+              Toast("Failed to create product", "", "error")
+            })
+          })
+          .catch((err) => console.log(err));
+      }
+    );
+
     setLoading(false)
   };
 
@@ -127,7 +122,7 @@ const AddProduct = () => {
     <Row className="add-product">
       <Col xs={12}>
         <Row>
-          <Col xs={12} className="add-product-page-title">
+          <Col xs={12} className="add-product-page-title fw-bold">
             AddProduct
           </Col>
 
@@ -228,14 +223,15 @@ const AddProduct = () => {
                       type="number"
                     />
                   </Form.Item>
-                </Col>
 
-                <Col xs={12}>
                   <ImageCrop setImgSrc={setImgSrc} />
                 </Col>
 
+              </Row>
+
+              <Row>
                 <Col xs={12}>
-                  <Button htmlType="submit" className="create-product-btn" loading={loading}>
+                  <Button htmlType="submit" className="create-product-btn fs-5" loading={loading}>
                     Create product
                   </Button>
                 </Col>

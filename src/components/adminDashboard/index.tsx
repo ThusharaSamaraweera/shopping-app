@@ -12,6 +12,7 @@ import AdminRoutes from "../Route/AdminRoutes";
 import { GET_ALL_ORDERS } from "../../graphQL/order/orderQuery";
 import { setAllOrders } from "../../state/actions/admin/orderActions";
 import { setTimeout } from "timers";
+import Footer from "../Footer";
 
 const { Content, Sider } = Layout;
 
@@ -114,6 +115,7 @@ const AdminDashboard: React.FC = () => {
           </div>
         </Content>
       </Layout>
+      <Footer/>
     </Container>
   );
 };

@@ -2,7 +2,6 @@
 
 .idea/
 /src/apollo
-/src/config
 
 # dependencies
 /node_modules

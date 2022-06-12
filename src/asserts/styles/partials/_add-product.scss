@@ -108,10 +108,18 @@
 
     .create-product-btn {
       background-color: $main-middle-navbar-logo-btn-color;
-      float: right;
       border: none;
       color: white;
-      font-weight: 800;
+      font-weight: 700;
+      border-radius: 25px;
+      border: 2px solid $main-middle-navbar-logo-btn-color;
+      width: 100%;
+      height: auto;
+
+      &:hover{
+        color: $main-middle-navbar-logo-btn-color;
+        background-color: white;
+      }
     }
   }
 }
