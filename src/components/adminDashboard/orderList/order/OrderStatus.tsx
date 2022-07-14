@@ -4,6 +4,8 @@ import { IOrder } from "../../../../types/orderTypes";
 import { styleSelect } from "./orderConstants";
 import { IOrderStatus } from "../../../../types/orderTypes";
 import { confirmationBox } from "../../../common/SweetAlerts";
+import { useMutation } from "@apollo/client";
+import { CHANGE_ORDER_STATUS } from "../../../../graphQL/order/orderMutation";
 
 
 type OrderStatusProps = {
@@ -12,12 +14,12 @@ type OrderStatusProps = {
 
 const OrderStatus: React.FC<OrderStatusProps> = (props) => {
   const { order } = props;
-  console.log(order);
 
   const [selectedStatus, setSelectedStatus] = useState<IOrderStatus>({
     value: order?.status,
     label: order?.status,
   });
+  const [changeOrderStatus] = useMutation(CHANGE_ORDER_STATUS)
 
   useEffect(() => {
     setSelectedStatus({
@@ -29,8 +31,8 @@ const OrderStatus: React.FC<OrderStatusProps> = (props) => {
   const statusOptions = (status: string | null | undefined) => {
     if (status === "requested") {
       return [
-        { value: "Approve", label: "Approve" },
-        { value: "Reject", label: "Reject" },
+        { value: "approved", label: "Approve" },
+        { value: "rejected", label: "Reject" },
       ];
     } else {
       return [];
@@ -46,12 +48,22 @@ const OrderStatus: React.FC<OrderStatusProps> = (props) => {
       'No',
       'You won\'t be able to revert this!',
       'question'
-    ).then(({isConfirmed}) => {
-      if(isConfirmed){
-        setSelectedStatus({
-          value: selectStatus?.value,
-          label: selectStatus?.label,
-        });
+    ).then( async ({isConfirmed}) => {
+       if(isConfirmed){
+         console.log(order?.id)
+         
+        //  await changeOrderStatus({
+        //    variables: {
+        //      id: order?.id,
+        //      newStatus: selectStatus.value
+        //     }
+        //   }).then((res) => {
+        //     console.log(res)
+        //     setSelectedStatus({
+        //       value: selectStatus?.value,
+        //       label: selectStatus?.label,
+        //     });
+        // })
       }
     })
 
