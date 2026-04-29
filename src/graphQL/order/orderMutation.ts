@@ -16,3 +16,19 @@ export const PLACE_ORDER = gql`
     }
   }
 `
+export const CHANGE_ORDER_STATUS = gql`
+ mutation changeOrderStatus($id: String!, $newStatus:String!){
+  changeOrderStatus(id: $id, newStatus: $newStatus){
+    ...changeOrderStatueResponse
+  }
+ }
+
+ fragment changeOrderStatusResponse on changeOrderStatueResponse {
+   order{
+     id
+     orderCode
+     status
+   }
+   errorMassages
+ }
+`
